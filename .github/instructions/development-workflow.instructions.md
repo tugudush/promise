@@ -4,6 +4,10 @@ applyTo: '**'
 
 # Development Workflow Instructions
 
+## Project Context
+
+This is an educational JavaScript Async Programming tutorial built with React 19 + TypeScript + Vite. The complete curriculum and lesson plan can be found in `docs/lesson-plan.md`, including chapter breakdowns, learning objectives, and estimated timelines.
+
 ## Essential Commands
 
 ```bash

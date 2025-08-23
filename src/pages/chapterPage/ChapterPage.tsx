@@ -64,30 +64,36 @@ function ChapterPage() {
       difficulty: 'Intermediate',
     },
     '6': {
+      title: 'React Hooks and Async Patterns',
+      description: 'Custom hooks, useAsync, and complex async flows',
+      duration: '90 minutes',
+      difficulty: 'Advanced',
+    },
+    '7': {
       title: 'State Management with Async Operations',
       description: 'Context API, optimistic updates, and state libraries',
       duration: '60 minutes',
       difficulty: 'Advanced',
     },
-    '7': {
+    '8': {
       title: 'Real-World React Applications',
       description: 'API integration, file operations, and background tasks',
       duration: '120 minutes',
       difficulty: 'Advanced',
     },
-    '8': {
+    '9': {
       title: 'Testing Async Code in React',
       description: 'Testing async components and integration testing',
       duration: '45 minutes',
       difficulty: 'Intermediate',
     },
-    '9': {
+    '10': {
       title: 'Performance and Best Practices',
       description: 'Optimization, pitfalls, and code review guidelines',
       duration: '40 minutes',
       difficulty: 'Advanced',
     },
-    '10': {
+    '11': {
       title: 'Capstone Project',
       description: 'Build a complete React application with async patterns',
       duration: '180 minutes',
@@ -113,7 +119,7 @@ function ChapterPage() {
     <ChapterPageContainer>
       <ChapterNav>
         <NavLink to='/'>← Back to Contents</NavLink>
-        <ChapterProgress>Chapter {chapterId} of 10</ChapterProgress>
+        <ChapterProgress>Chapter {chapterId} of 11</ChapterProgress>
       </ChapterNav>
 
       <ChapterHeader>
@@ -162,7 +168,7 @@ function ChapterPage() {
           </NavButton>
         )}
 
-        {parseInt(chapterId || '1') < 10 && (
+        {parseInt(chapterId || '1') < 11 && (
           <NavButton to={`/chapter/${parseInt(chapterId || '1') + 1}`}>
             Next Chapter →
           </NavButton>
