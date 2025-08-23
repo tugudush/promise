@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 
 import Chapter01Content from '@/examples/chapter01/Chapter01Content'
 import Chapter02Content from '@/examples/chapter02/Chapter02Content'
+import Chapter03Content from '@/examples/chapter03/Chapter03Content'
 
 import {
   BackHome,
@@ -43,49 +44,56 @@ function ChapterPage() {
       difficulty: 'Beginner',
     },
     '3': {
+      title: 'Mastering Error Handling in Async React',
+      description:
+        'Advanced error patterns, retry mechanisms, and production strategies',
+      duration: '60 minutes',
+      difficulty: 'Intermediate',
+    },
+    '4': {
       title: 'Modern Async/Await Syntax',
       description: 'Converting to async/await and error handling',
       duration: '50 minutes',
       difficulty: 'Intermediate',
     },
-    '4': {
+    '5': {
       title: 'Advanced Promise Patterns',
       description:
         'Promise.all(), Promise.race(), and performance optimization',
       duration: '75 minutes',
       difficulty: 'Intermediate',
     },
-    '5': {
+    '6': {
       title: 'React Hooks and Async Patterns',
       description: 'Custom hooks, useAsync, and complex async flows',
       duration: '90 minutes',
-      difficulty: 'Intermediate',
+      difficulty: 'Advanced',
     },
-    '6': {
+    '7': {
       title: 'State Management with Async Operations',
       description: 'Context API, optimistic updates, and state libraries',
       duration: '60 minutes',
       difficulty: 'Advanced',
     },
-    '7': {
+    '8': {
       title: 'Real-World React Applications',
       description: 'API integration, file operations, and background tasks',
       duration: '120 minutes',
       difficulty: 'Advanced',
     },
-    '8': {
+    '9': {
       title: 'Testing Async Code in React',
       description: 'Testing async components and integration testing',
       duration: '45 minutes',
       difficulty: 'Intermediate',
     },
-    '9': {
+    '10': {
       title: 'Performance and Best Practices',
       description: 'Optimization, pitfalls, and code review guidelines',
       duration: '40 minutes',
       difficulty: 'Advanced',
     },
-    '10': {
+    '11': {
       title: 'Capstone Project',
       description: 'Build a complete React application with async patterns',
       duration: '180 minutes',
@@ -111,7 +119,7 @@ function ChapterPage() {
     <ChapterPageContainer>
       <ChapterNav>
         <NavLink to='/'>← Back to Contents</NavLink>
-        <ChapterProgress>Chapter {chapterId} of 10</ChapterProgress>
+        <ChapterProgress>Chapter {chapterId} of 11</ChapterProgress>
       </ChapterNav>
 
       <ChapterHeader>
@@ -133,6 +141,8 @@ function ChapterPage() {
           <Chapter01Content />
         ) : chapterId === '2' ? (
           <Chapter02Content />
+        ) : chapterId === '3' ? (
+          <Chapter03Content />
         ) : (
           <ComingSoon>
             <h2>🚧 Content Coming Soon</h2>
@@ -158,7 +168,7 @@ function ChapterPage() {
           </NavButton>
         )}
 
-        {parseInt(chapterId || '1') < 10 && (
+        {parseInt(chapterId || '1') < 11 && (
           <NavButton to={`/chapter/${parseInt(chapterId || '1') + 1}`}>
             Next Chapter →
           </NavButton>

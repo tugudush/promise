@@ -6,6 +6,8 @@ JavaScript Async Programming is an interactive educational project teaching Java
 
 **Educational Focus**: Comprehensive tutorial covering async JavaScript patterns from basic Promise concepts to advanced real-world React applications, emphasizing practical, production-ready patterns.
 
+**Curriculum**: See the complete lesson plan and chapter breakdown in `docs/lesson-plan.md` for detailed learning objectives, chapter contents, and estimated timelines.
+
 ## Quick Reference
 
 ### Tech Stack

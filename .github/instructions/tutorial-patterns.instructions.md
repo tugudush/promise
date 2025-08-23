@@ -8,6 +8,8 @@ applyTo: '**'
 
 JavaScript Async Programming is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. All code should prioritize educational clarity and progressive learning.
 
+**Complete Curriculum**: For detailed chapter breakdowns, learning objectives, timelines, and assessment materials, see the comprehensive lesson plan at `docs/lesson-plan.md`.
+
 ## Tutorial Structure & Learning Objectives
 
 ### Core Topics Covered
@@ -204,14 +206,14 @@ useEffect(() => {
 
 - **`language`**: Programming language for syntax highlighting
   - `javascript` - JavaScript code
-  - `typescript` - TypeScript/React code  
+  - `typescript` - TypeScript/React code
   - `json` - JSON data/API responses
   - `css` - Stylesheets
   - `bash` - Terminal commands
   - And 200+ other languages supported by Prism.js
 
 - **`showLanguageLabel`**: Display language name at top (default: `true`)
-- **`showLineNumbers`**: Show line numbers (default: `false`)  
+- **`showLineNumbers`**: Show line numbers (default: `false`)
 - **`customStyle`**: Override default styling if needed
 
 #### Code Block Best Practices
