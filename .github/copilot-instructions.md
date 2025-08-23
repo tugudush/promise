@@ -9,6 +9,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 ## Tutorial Structure & Learning Objectives
 
 ### Core Topics Covered
+
 - **Promise fundamentals** - Basic async operations and Promise lifecycle
 - **Async/await syntax** - Modern asynchronous programming patterns
 - **React integration** - Async operations in React components and hooks
@@ -18,6 +19,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 - **Testing strategies** - Testing async React components and patterns
 
 ### Tutorial Progression
+
 1. **Chapters 1-3**: Foundations (Promises → async/await → basic React patterns)
 2. **Chapters 4-6**: Advanced patterns (React hooks, state management, custom hooks)
 3. **Chapters 7-10**: Real-world applications (API integration, testing, performance, capstone project)
@@ -33,6 +35,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 - **Public**: `public/` - Static assets served directly
 
 ### Tutorial Code Organization
+
 - **Examples by Chapter**: Each tutorial chapter has dedicated example components
 - **Async Patterns**: Reusable patterns organized by complexity (basic → advanced)
 - **Error Scenarios**: Dedicated components for demonstrating error handling
@@ -41,6 +44,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 ## Path Aliases
 
 Use the `@/` alias for all `src/` imports:
+
 ```typescript
 // ✅ Correct
 import { formatMessage } from '@/utils/helpers'
@@ -52,18 +56,23 @@ import { formatMessage } from '../utils/helpers'
 ## Code Quality Standards
 
 ### ESLint Configuration
+
 - Uses ESLint 9.x with flat config (`eslint.config.js`)
+- **Code Quality Focus**: ESLint handles logic, code quality, and React Hooks rules
 - React Hooks rules enforced (`eslint-plugin-react-hooks`)
 - TypeScript strict mode enabled
-- Prettier integration with `prettier/prettier` as error
+- **Separation of Concerns**: ESLint does NOT handle formatting (that's Prettier's job)
 
 ### Prettier Configuration
+
+- **Formatting Only**: Prettier handles ALL code formatting
 - **No semicolons** (`"semi": false`)
 - **Single quotes** for JS/TS and JSX
 - **Import sorting** via `@trivago/prettier-plugin-sort-imports`
 - Import order: React → React DOM → External packages → `@/` imports → Relative imports
 
 ### TypeScript Setup
+
 - Project references architecture (`tsconfig.json` → `tsconfig.app.json` + `tsconfig.node.json`)
 - Strict type checking enabled
 - `noUnusedLocals` and `noUnusedParameters` enforced
@@ -72,23 +81,30 @@ import { formatMessage } from '../utils/helpers'
 ## Development Workflow
 
 ### Essential Commands
+
 ```bash
 npm run dev         # Start dev server (http://localhost:5173)
 npm run build       # Production build (tsc + vite build)
-npm run lf          # Lint fix + format (one-stop cleanup)
-npm run lint        # Check for ESLint issues
+npm run fix         # Lint fix + format (one-stop cleanup)
+npm run check       # Check both linting and formatting
+npm run lint        # Check for ESLint code quality issues only
 npm run format      # Format all files with Prettier
 ```
 
-### Code Style Enforcement
-- **Always run `npm run lf`** before committing - it fixes linting issues and formats code
-- ESLint will error on Prettier violations (not just warnings)
+### Code Quality & Formatting Workflow
+
+- **Clear Separation**: ESLint handles code quality, Prettier handles formatting
+- **Run `npm run fix`** before committing - fixes code issues AND formats code
+- **Run `npm run check`** to verify both linting and formatting without changes
+- ESLint will NOT show formatting errors (that's Prettier's domain)
 - Unused variables/parameters will cause TypeScript compilation errors
 
 ## Key Patterns
 
 ### Component Structure for Tutorials
+
 Follow patterns optimized for educational clarity:
+
 - Clear, descriptive component and variable names
 - Extensive code comments explaining async concepts
 - Step-by-step progression in complex examples
@@ -96,6 +112,7 @@ Follow patterns optimized for educational clarity:
 - Loading states that clearly demonstrate async behavior
 
 ### Tutorial Example Standards
+
 - Each async pattern includes both "before" and "after" examples
 - Common mistakes demonstrated alongside correct implementations
 - Real-world context provided for each pattern
@@ -103,6 +120,7 @@ Follow patterns optimized for educational clarity:
 - Testing examples included where relevant
 
 ### Educational Code Style
+
 - Prioritize clarity over brevity in tutorial examples
 - Use descriptive variable names that explain the async operation
 - Include detailed comments explaining Promise states and transitions
@@ -110,14 +128,18 @@ Follow patterns optimized for educational clarity:
 - Demonstrate progressive enhancement from basic to advanced patterns
 
 ### Import Organization
+
 Prettier will auto-sort imports in this order:
-1. `react` and `react-dom` 
+
+1. `react` and `react-dom`
 2. External packages (`@` scoped and regular)
 3. Internal `@/` imports
 4. Relative imports (`./`, `../`)
 
 ### Utility Functions for Async Tutorials
+
 Create educational utilities in `src/utils/` that demonstrate async patterns:
+
 ```typescript
 // src/utils/async-helpers.ts
 export const simulateApiCall = (delay: number = 1000): Promise<string> => {
@@ -126,17 +148,23 @@ export const simulateApiCall = (delay: number = 1000): Promise<string> => {
   })
 }
 
-export const createAsyncExample = (name: string, operation: () => Promise<any>) => {
+export const createAsyncExample = (
+  name: string,
+  operation: () => Promise<any>
+) => {
   // Wrapper for tutorial examples with consistent logging
 }
 ```
 
 ### Tutorial-Specific Import Patterns
+
 ```typescript
 // Tutorial component imports
-import React, { useState, useEffect } from 'react'
-import { simulateApiCall, handleAsyncError } from '@/utils/async-helpers'
-import { LoadingSpinner, ErrorBoundary } from '@/components/tutorial'
+import React, { useEffect, useState } from 'react'
+
+import { ErrorBoundary, LoadingSpinner } from '@/components/tutorial'
+import { handleAsyncError, simulateApiCall } from '@/utils/async-helpers'
+
 import './TutorialExample.css'
 ```
 
