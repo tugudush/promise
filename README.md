@@ -1,4 +1,4 @@
-# Promise - JavaScript Async Programming Tutorial
+# JavaScript Async Programming Tutorial
 
 An interactive tutorial project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) in the context of React applications. Built with React 19 + TypeScript + Vite.
 
