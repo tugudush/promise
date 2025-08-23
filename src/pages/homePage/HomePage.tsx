@@ -21,7 +21,7 @@ function HomePage() {
   return (
     <HomePageContainer>
       <Hero>
-        <h1>Promise</h1>
+        <h1>JavaScript Async Programming</h1>
         <HeroSubtitle>
           Master JavaScript Async Programming in React
         </HeroSubtitle>

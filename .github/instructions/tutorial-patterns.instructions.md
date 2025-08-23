@@ -6,7 +6,7 @@ applyTo: '**'
 
 ## Educational Focus
 
-Promise is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. All code should prioritize educational clarity and progressive learning.
+JavaScript Async Programming is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. All code should prioritize educational clarity and progressive learning.
 
 ## Tutorial Structure & Learning Objectives
 

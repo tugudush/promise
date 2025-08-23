@@ -1,8 +1,8 @@
-# Copilot Instructions for Promise - JavaScript Async Programming Tutorial
+# Copilot Instructions for JavaScript Async Programming Tutorial
 
 ## Project Overview
 
-Promise is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. Built with React 19 + TypeScript + Vite with Emotion CSS-in-JS for modern, maintainable code.
+JavaScript Async Programming is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. Built with React 19 + TypeScript + Vite with Emotion CSS-in-JS for modern, maintainable code.
 
 **Educational Focus**: Comprehensive tutorial covering async JavaScript patterns from basic Promise concepts to advanced real-world React applications, emphasizing practical, production-ready patterns.
 
