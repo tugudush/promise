@@ -63,38 +63,67 @@
 
 ---
 
-## Chapter 3: Modern Async/Await Syntax
+## Chapter 3: Mastering Error Handling in Async React
+
+**Duration**: 60 minutes | **Difficulty**: Intermediate
+
+### 3.1 Error Handling Pattern Comparison
+
+- `.catch()` vs `try/catch` - when to use each approach
+- Error propagation in Promise chains vs async/await
+- Converting between error handling patterns
+- **React Example**: Comparing error handling approaches in data fetching
+
+### 3.2 React-Specific Error Strategies
+
+- Error boundaries for async operations
+- Component error states and loading indicators
+- Error recovery and retry mechanisms
+- Optimistic updates with error rollback
+- **Hands-on**: Building a resilient form submission component
+
+### 3.3 Production-Ready Error Handling
+
+- Logging and monitoring async errors
+- Graceful degradation strategies
+- User-friendly error messages and fallbacks
+- Network error vs application error handling
+- **React Example**: Comprehensive error handling in a dashboard app
+
+---
+
+## Chapter 4: Modern Async/Await Syntax
 
 **Duration**: 50 minutes | **Difficulty**: Intermediate
 
-### 3.1 Introduction to Async/Await
+### 4.1 Introduction to Async/Await
 
 - Converting from `.then()` to `async/await`
 - Syntax benefits and readability
 - When to use async/await vs Promises
 - **React Example**: Refactoring a data fetching component
 
-### 3.2 Async Functions in React
+### 4.2 Async Functions in React
 
 - Async event handlers
 - Async functions in useEffect
 - Common pitfalls and solutions
 - **Hands-on**: Search functionality with debouncing
 
-### 3.3 Error Handling with Try/Catch
+### 4.3 Advanced Try/Catch Patterns
 
-- Try/catch blocks with async/await
+- Complex try/catch blocks with async/await
+- Nested error handling and recovery
 - Combining with React error boundaries
-- Graceful degradation patterns
-- **React Example**: File upload with error recovery
+- **React Example**: Multi-step async operations with granular error handling
 
 ---
 
-## Chapter 4: Advanced Promise Patterns
+## Chapter 5: Advanced Promise Patterns
 
 **Duration**: 75 minutes | **Difficulty**: Intermediate to Advanced
 
-### 4.1 Promise Utilities
+### 5.1 Promise Utilities
 
 - `Promise.all()` for parallel execution
 - `Promise.allSettled()` for partial failures
@@ -102,14 +131,14 @@
 - `Promise.any()` for first success
 - **React Example**: Dashboard with multiple data sources
 
-### 4.2 Custom Promise Patterns
+### 5.2 Custom Promise Patterns
 
 - Creating Promise wrappers
 - Promisifying callback-based APIs
 - Building reusable async utilities
 - **Hands-on**: Custom hook for API calls
 
-### 4.3 Performance Optimization
+### 5.3 Performance Optimization
 
 - Avoiding unnecessary re-renders with async data
 - Memoization strategies for async operations
@@ -118,25 +147,25 @@
 
 ---
 
-## Chapter 5: React Hooks and Async Patterns
+## Chapter 6: React Hooks and Async Patterns
 
 **Duration**: 90 minutes | **Difficulty**: Intermediate to Advanced
 
-### 5.1 useEffect and Async Operations
+### 6.1 useEffect and Async Operations
 
 - Proper async patterns in useEffect
 - Cleanup and cancellation
 - Dependency array best practices
 - **Hands-on**: Real-time data subscription
 
-### 5.2 Custom Hooks for Async Logic
+### 6.2 Custom Hooks for Async Logic
 
 - Building `useFetch` hook
 - `useAsync` pattern implementation
 - State management in custom async hooks
 - **React Example**: Reusable data fetching hooks
 
-### 5.3 Advanced Hook Patterns
+### 6.3 Advanced Hook Patterns
 
 - `useCallback` with async functions
 - `useMemo` for expensive async computations
@@ -145,25 +174,25 @@
 
 ---
 
-## Chapter 6: State Management with Async Operations
+## Chapter 7: State Management with Async Operations
 
 **Duration**: 60 minutes | **Difficulty**: Advanced
 
-### 6.1 Local State Patterns
+### 7.1 Local State Patterns
 
 - Managing loading, data, and error states
 - Optimistic updates
 - State normalization for async data
 - **React Example**: Todo app with server sync
 
-### 6.2 Context API and Async Operations
+### 7.2 Context API and Async Operations
 
 - Async actions in React Context
 - Provider patterns for async data
 - Avoiding context re-render issues
 - **Hands-on**: Global user authentication state
 
-### 6.3 Integration with State Libraries
+### 7.3 Integration with State Libraries
 
 - Redux Toolkit Query patterns
 - Zustand async actions
@@ -172,25 +201,25 @@
 
 ---
 
-## Chapter 7: Real-World React Applications
+## Chapter 8: Real-World React Applications
 
 **Duration**: 120 minutes | **Difficulty**: Advanced
 
-### 7.1 API Integration Patterns
+### 8.1 API Integration Patterns
 
 - RESTful API consumption
 - GraphQL with async/await
 - WebSocket integration
 - **Project**: News feed application
 
-### 7.2 File Operations and Media
+### 8.2 File Operations and Media
 
 - File upload with progress tracking
 - Image processing and async operations
 - Streaming data handling
 - **Project**: Media gallery with upload
 
-### 7.3 Background Tasks and Web Workers
+### 8.3 Background Tasks and Web Workers
 
 - Using Web Workers with React
 - Background data synchronization
@@ -199,18 +228,18 @@
 
 ---
 
-## Chapter 8: Testing Async Code in React
+## Chapter 9: Testing Async Code in React
 
 **Duration**: 45 minutes | **Difficulty**: Intermediate
 
-### 8.1 Testing Components with Async Operations
+### 9.1 Testing Components with Async Operations
 
 - Mocking async functions
 - Testing loading and error states
 - React Testing Library async utilities
 - **Hands-on**: Comprehensive test suite
 
-### 8.2 Integration Testing
+### 9.2 Integration Testing
 
 - Testing async flows end-to-end
 - Mock Service Worker setup
@@ -219,18 +248,18 @@
 
 ---
 
-## Chapter 9: Performance and Best Practices
+## Chapter 10: Performance and Best Practices
 
 **Duration**: 40 minutes | **Difficulty**: Advanced
 
-### 9.1 Common Async Pitfalls
+### 10.1 Common Async Pitfalls
 
 - Memory leaks with unhandled promises
 - Race conditions in React
 - Over-fetching and under-fetching data
 - **Review**: Code review checklist
 
-### 9.2 Performance Optimization
+### 10.2 Performance Optimization
 
 - Bundle splitting with async imports
 - Lazy loading components
@@ -239,24 +268,24 @@
 
 ---
 
-## Chapter 10: Capstone Project
+## Chapter 11: Capstone Project
 
 **Duration**: 180 minutes | **Difficulty**: Advanced
 
-### 10.1 Project Planning
+### 11.1 Project Planning
 
 - Requirements analysis
 - Architecture decisions
 - Technology stack selection
 
-### 10.2 Implementation
+### 11.2 Implementation
 
 - Building a full-featured React application
 - Implementing multiple async patterns
 - Error handling and user experience
 - **Project**: Social media dashboard
 
-### 10.3 Review and Deployment
+### 11.3 Review and Deployment
 
 - Code review session
 - Performance analysis
@@ -270,11 +299,12 @@
 ### Progressive Exercises
 
 1. **Basic Promise Chain** (Chapter 1-2)
-2. **Async/Await Conversion** (Chapter 3)
-3. **Custom Hook Development** (Chapter 5)
-4. **Error Handling Scenarios** (Throughout)
-5. **Performance Optimization** (Chapter 9)
-6. **Full Application Build** (Chapter 10)
+2. **Error Handling Mastery** (Chapter 3)
+3. **Async/Await Conversion** (Chapter 4)
+4. **Custom Hook Development** (Chapter 6)
+5. **Error Handling Scenarios** (Throughout)
+6. **Performance Optimization** (Chapter 10)
+7. **Full Application Build** (Chapter 11)
 
 ### Code Challenges
 
@@ -294,10 +324,10 @@
 
 ## Estimated Timeline
 
-- **Total Duration**: 12-15 hours of instruction
-- **Self-paced Learning**: 3-4 weeks
-- **Bootcamp Format**: 2-3 intensive days
-- **University Course**: 6-8 week module
+- **Total Duration**: 13-16 hours of instruction
+- **Self-paced Learning**: 4-5 weeks
+- **Bootcamp Format**: 3-4 intensive days
+- **University Course**: 7-9 week module
 
 ## Prerequisites Check
 
