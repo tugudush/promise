@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Promise is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. Built with React 19 + TypeScript + Vite with comprehensive ESLint and Prettier configuration for maintaining clean, educational code examples.
+Promise is an interactive educational project teaching JavaScript asynchronous programming patterns (async/await, Promises, resolve, then, etc.) specifically in React context. Built with React 19 + TypeScript + Vite with Emotion CSS-in-JS, comprehensive ESLint and Prettier configuration for maintaining clean, educational code examples.
 
 **Educational Focus**: This project serves as a comprehensive tutorial covering async JavaScript patterns from basic Promise concepts to advanced real-world React applications, with emphasis on practical, production-ready patterns.
 
@@ -29,11 +29,36 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 - **Entry Point**: `src/main.tsx` - React 19 app initialization for tutorial interface
 - **Main Component**: `src/App.tsx` - Primary tutorial navigation and layout
 - **Router**: `src/router.tsx` - React Router configuration with createBrowserRouter
+- **Pages**: `src/pages/` - Page components with directory-based structure
 - **Tutorial Examples**: `src/examples/` - Interactive async pattern demonstrations
 - **Utilities**: `src/utils/` - Helper functions for async operations (e.g., API utilities)
 - **Documentation**: `docs/` - Comprehensive lesson plans and guides
 - **Assets**: `src/assets/` - Tutorial-specific assets and resources
 - **Public**: `public/` - Static assets served directly
+
+### Component Directory Structure
+
+Each page/component has its own directory with organized files:
+
+```
+src/pages/
+├── index.ts                          # Barrel exports for clean imports
+├── homePage/
+│   ├── index.ts                     # Re-exports HomePage as default
+│   ├── HomePage.tsx                 # Main component logic
+│   └── HomePage.styles.ts           # Emotion styled components
+└── chapterPage/
+    ├── index.ts                     # Re-exports ChapterPage as default
+    ├── ChapterPage.tsx              # Main component logic
+    └── ChapterPage.styles.ts        # Emotion styled components
+```
+
+**Directory Structure Rules**:
+- Each component/page must have its own directory (camelCase naming)
+- Component logic goes in `ComponentName.tsx`
+- Styles go in `ComponentName.styles.ts` using Emotion
+- Use `index.ts` for clean re-exports
+- Use barrel exports at the directory level (`src/pages/index.ts`)
 
 ### Tutorial Code Organization
 
@@ -78,6 +103,74 @@ import { formatMessage } from '../utils/helpers'
 - Strict type checking enabled
 - `noUnusedLocals` and `noUnusedParameters` enforced
 - Path mapping configured for `@/*` → `src/*`
+- JSX configured for Emotion (`jsxImportSource: "@emotion/react"`)
+
+## Styling with Emotion CSS-in-JS
+
+### Emotion Configuration
+
+- **CSS-in-JS**: Uses `@emotion/react` and `@emotion/styled` for component styling
+- **Scoped Styles**: Each component has isolated styles preventing conflicts
+- **TypeScript Support**: Full type safety for styled components and props
+- **Vite Integration**: Configured with Emotion Babel plugin for optimal performance
+- **No Global CSS**: Avoid global CSS files; use Emotion styled components instead
+
+### Styling Patterns
+
+**Styled Components Structure**:
+```typescript
+// ComponentName.styles.ts
+import { Link } from 'react-router-dom'
+import styled from '@emotion/styled'
+
+export const Container = styled.div`
+  padding: 2rem;
+  background: white;
+`
+
+export const StyledLink = styled(Link)`
+  color: #4f46e5;
+  text-decoration: none;
+  
+  &:hover {
+    color: #6366f1;
+  }
+`
+
+export const DynamicButton = styled.button<{ variant: 'primary' | 'secondary' }>`
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  
+  ${props => props.variant === 'primary' 
+    ? 'background: #667eea; color: white;'
+    : 'background: #f3f4f6; color: #374151;'
+  }
+`
+```
+
+**Component Usage**:
+```typescript
+// ComponentName.tsx
+import { Container, StyledLink, DynamicButton } from './ComponentName.styles'
+
+function ComponentName() {
+  return (
+    <Container>
+      <StyledLink to="/path">Link Text</StyledLink>
+      <DynamicButton variant="primary">Click Me</DynamicButton>
+    </Container>
+  )
+}
+```
+
+### Styling Best Practices
+
+- **Named Exports**: Always use named exports for styled components
+- **Semantic Naming**: Use descriptive names like `ChapterNumber`, `NavButton`
+- **Props Interface**: Type props for dynamic styling with TypeScript
+- **CSS Variables**: Use CSS custom properties for theme consistency
+- **Responsive Design**: Use CSS media queries within styled components
+- **Avoid Inline Styles**: Use styled components instead of `style` prop
 
 ## Development Workflow
 
@@ -137,6 +230,37 @@ Prettier will auto-sort imports in this order:
 3. Internal `@/` imports
 4. Relative imports (`./`, `../`)
 
+### Component Import Patterns
+
+```typescript
+// Page component imports
+import { useParams } from 'react-router-dom'
+
+import {
+  Container,
+  Header,
+  StyledButton,
+} from './ComponentName.styles'
+
+// Barrel exports from pages
+import { ChapterPage, HomePage } from '@/pages'
+
+// Utils and helpers
+import { simulateApiCall } from '@/utils/async-helpers'
+```
+
+**Directory-based Imports**:
+```typescript
+// ✅ Clean barrel exports
+import { ChapterPage, HomePage } from '@/pages'
+
+// ✅ Direct directory import with index.ts
+import ChapterPage from '@/pages/chapterPage'
+
+// ❌ Avoid direct file imports when directory exports exist
+import ChapterPage from '@/pages/chapterPage/ChapterPage'
+```
+
 ### Utility Functions for Async Tutorials
 
 Create educational utilities in `src/utils/` that demonstrate async patterns:
@@ -155,18 +279,6 @@ export const createAsyncExample = (
 ) => {
   // Wrapper for tutorial examples with consistent logging
 }
-```
-
-### Tutorial-Specific Import Patterns
-
-```typescript
-// Tutorial component imports
-import React, { useEffect, useState } from 'react'
-
-import { ErrorBoundary, LoadingSpinner } from '@/components/tutorial'
-import { handleAsyncError, simulateApiCall } from '@/utils/async-helpers'
-
-import './TutorialExample.css'
 ```
 
 ## Modern React Patterns
