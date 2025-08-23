@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 import Chapter01Content from '@/examples/chapter01/Chapter01Content'
+import Chapter02Content from '@/examples/chapter02/Chapter02Content'
 
 import {
   BackHome,
@@ -130,6 +131,8 @@ function ChapterPage() {
       <ChapterContent>
         {chapterId === '1' ? (
           <Chapter01Content />
+        ) : chapterId === '2' ? (
+          <Chapter02Content />
         ) : (
           <ComingSoon>
             <h2>🚧 Content Coming Soon</h2>

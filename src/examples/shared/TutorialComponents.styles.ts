@@ -151,6 +151,20 @@ export const SuccessNote = styled.div`
   }
 `
 
+export const WarningNote = styled.div`
+  background: #fffbeb;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+
+  &::before {
+    content: '⚠️ Warning: ';
+    font-weight: 600;
+    color: #92400e;
+  }
+`
+
 export const TutorialContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
