@@ -1,39 +1,8 @@
 .app {
+  width: 100%;
   min-height: 100vh;
   background: #ffffff;
   color: #333;
-}
-
-/* Global styles for the tutorial app */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.2;
-}
-
-a {
-  color: #4f46e5;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #6366f1;
 }
 
 /* Code styling for tutorial examples */
