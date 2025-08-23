@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { simulateUnreliableApiCall } from '@/utils/async-helpers'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
@@ -11,7 +11,7 @@ import {
   ExampleTitle,
   LearningObjective,
   StatusIndicator,
-} from '../shared/TutorialComponents.styles'
+} from '../shared'
 
 /**
  * Interactive demonstration of Promise error handling
@@ -143,7 +143,7 @@ function ErrorHandlingDemo() {
         </div>
       </DemoContainer>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Promise Error Handling Patterns
 
 // 1. Using .catch() method
@@ -176,7 +176,7 @@ fetchData()
       console.log('Unexpected error:', error.message)
     }
   })`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
     </DemoSection>
   )
 }

@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
   DemoSection,
   ExampleTitle,
   StatusIndicator,
-} from '@/examples/shared/TutorialComponents.styles'
+} from '@/examples/shared'
 import { simulateApiCall } from '@/utils/async-helpers'
 
 /**
@@ -78,7 +78,7 @@ function UseEffectBasicsDemo() {
 
       <div>
         <h4>Correct Pattern</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript' showLanguageLabel>
           {`useEffect(() => {
   // Create async function inside useEffect
   const fetchData = async () => {
@@ -97,12 +97,12 @@ function UseEffectBasicsDemo() {
 
   fetchData() // Call the async function
 }, []) // Empty dependency array - runs once on mount`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <div>
         <h4>Common Mistakes to Avoid</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript' showLanguageLabel>
           {`// ❌ DON'T: Make useEffect callback async
 useEffect(async () => {
   const data = await fetchData() // This breaks cleanup!
@@ -119,7 +119,7 @@ useEffect(() => {
   fetchData().then(setData).catch(setError)
   // User has no idea something is loading!
 }, [])`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <DemoOutput>

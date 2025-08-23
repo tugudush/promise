@@ -4,12 +4,12 @@ import {
   PromiseBasicsDemo,
 } from '@/examples/chapter01'
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   ImportantNote,
   LearningObjective,
   SuccessNote,
   TutorialContent,
-} from '@/examples/shared/TutorialComponents.styles'
+} from '@/examples/shared'
 
 /**
  * Chapter 1: Foundations of Asynchronous JavaScript
@@ -48,7 +48,7 @@ function Chapter01Content() {
 
       <h3>Synchronous vs Asynchronous</h3>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='javascript'>
         {`// ❌ Synchronous (blocking) - Don't do this for long operations
 console.log('Start')
 // This would freeze the browser for 3 seconds
@@ -61,7 +61,7 @@ setTimeout(() => {
   console.log('This runs after 3 seconds')
 }, 3000)
 console.log('End') // This runs immediately`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <h2>The JavaScript Event Loop</h2>
 
@@ -71,7 +71,7 @@ console.log('End') // This runs immediately`}
         the task queue.
       </p>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='javascript'>
         {`// Understanding execution order
 console.log('1: Synchronous')
 
@@ -87,7 +87,7 @@ console.log('4: Synchronous')
 
 // Output: 1, 4, 3, 2
 // Promises have higher priority than timeouts!`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <h2>From Callbacks to Promises</h2>
 
@@ -126,7 +126,7 @@ console.log('4: Synchronous')
 
       <h3>Creating and Using Promises</h3>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='javascript'>
         {`// Creating a Promise
 const myPromise = new Promise((resolve, reject) => {
   // Simulate async operation
@@ -149,7 +149,7 @@ myPromise
   .catch(error => {
     console.error('Error:', error.message)
   })`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <PromiseBasicsDemo />
 
@@ -170,7 +170,7 @@ myPromise
         operations together, creating clean, readable asynchronous code.
       </p>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='javascript'>
         {`// Promise chaining
 fetchUser(userId)
   .then(user => {
@@ -187,7 +187,7 @@ fetchUser(userId)
   .catch(error => {
     console.error('Something went wrong:', error)
   })`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <SuccessNote>
         Always end Promise chains with a .catch() to handle any errors that

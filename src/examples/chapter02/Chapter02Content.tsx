@@ -1,11 +1,11 @@
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   ImportantNote,
   LearningObjective,
   SuccessNote,
   TutorialContent,
   WarningNote,
-} from '@/examples/shared/TutorialComponents.styles'
+} from '@/examples/shared'
 
 import EffectDependencyDemo from './EffectDependencyDemo'
 import ErrorBoundaryDemo from './ErrorBoundaryDemo'
@@ -55,7 +55,7 @@ function Chapter02Content() {
         Here's the correct pattern for using async operations inside useEffect:
       </p>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`// ❌ DON'T do this - async useEffect callback
 useEffect(async () => {
   const data = await fetchData()
@@ -75,7 +75,7 @@ useEffect(() => {
   
   fetchDataAsync()
 }, [])`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <UseEffectBasicsDemo />
 
@@ -100,7 +100,7 @@ useEffect(() => {
         operations:
       </p>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`const [data, setData] = useState(null)
 const [loading, setLoading] = useState(false)
 const [error, setError] = useState(null)
@@ -122,7 +122,7 @@ useEffect(() => {
   
   fetchData()
 }, [])`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <LoadingStatesDemo />
 
@@ -155,7 +155,7 @@ useEffect(() => {
         </li>
       </ul>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Runs after every render - usually not what you want
 useEffect(() => {
   fetchUserData(userId)
@@ -170,7 +170,7 @@ useEffect(() => {
 useEffect(() => {
   fetchUserData(userId)
 }, [userId])`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <EffectDependencyDemo />
 
@@ -184,7 +184,7 @@ useEffect(() => {
 
       <h3>AbortController Pattern</h3>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`useEffect(() => {
   const controller = new AbortController()
   
@@ -227,7 +227,7 @@ useEffect(() => {
     isMounted = false
   }
 }, [])`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <h2>Error Boundaries for Async Errors</h2>
 
@@ -251,7 +251,7 @@ useEffect(() => {
         needed:
       </p>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Custom hook for error handling
 function useAsyncError() {
   const [, setError] = useState()
@@ -279,7 +279,7 @@ function MyComponent() {
     fetchData()
   }, [throwAsyncError])
 }`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <ErrorBoundaryDemo />
 
@@ -287,7 +287,7 @@ function MyComponent() {
 
       <h3>1. Data Fetching Pattern</h3>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`function useApiData(url) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -327,11 +327,11 @@ function MyComponent() {
   
   return { data, loading, error }
 }`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <h3>2. Debounced Search Pattern</h3>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`function useSearch(searchTerm, delay = 300) {
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
@@ -360,11 +360,11 @@ function MyComponent() {
   
   return { results, loading }
 }`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <h3>3. Retry Pattern</h3>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`function useRetryableAsync(asyncFn, maxRetries = 3) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -399,7 +399,7 @@ function MyComponent() {
   
   return { data, loading, error, retryCount, execute }
 }`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <SuccessNote>
         <strong>Chapter Summary:</strong> You've learned how to properly
