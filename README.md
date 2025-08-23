@@ -1,69 +1,61 @@
-# React + TypeScript + Vite
+# Promise
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript + Vite project with ESLint and Prettier configuration.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the repository:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+   ```bash
+   git clone <repository-url>
+   cd promise
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Project
+
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The application will be available at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Available Scripts
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Development
+
+- **`npm run dev`** - Start the development server with hot module replacement (HMR)
+- **`npm run preview`** - Preview the production build locally
+
+### Building
+
+- **`npm run build`** - Build the project for production (runs TypeScript compiler and Vite build)
+
+### Code Quality
+
+- **`npm run lint`** - Run ESLint to check for code issues
+- **`npm run lint:fix`** - Run ESLint and automatically fix issues where possible
+- **`npm run format`** - Format all files using Prettier
+- **`npm run format:check`** - Check if files are properly formatted (without making changes)
+- **`npm run lf`** - Run both lint:fix and format in sequence (shortcut for code cleanup)
+
+## Tech Stack
+
+- **React 19** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **ESLint** - Code linting and quality checks
+- **Prettier** - Code formatting
+- **Path aliases** - Configured for cleaner imports
