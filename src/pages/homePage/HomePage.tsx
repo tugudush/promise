@@ -91,7 +91,10 @@ function HomePage() {
                 <ChapterNumber>03</ChapterNumber>
                 <div>
                   <h4>Mastering Error Handling in Async React</h4>
-                  <p>Error patterns, React error boundaries, and production strategies</p>
+                  <p>
+                    Error patterns, React error boundaries, and production
+                    strategies
+                  </p>
                   <Duration>60 min</Duration>
                 </div>
               </ChapterLink>
@@ -99,7 +102,9 @@ function HomePage() {
                 <ChapterNumber>04</ChapterNumber>
                 <div>
                   <h4>Modern Async/Await Syntax</h4>
-                  <p>Converting to async/await and advanced try/catch patterns</p>
+                  <p>
+                    Converting to async/await and advanced try/catch patterns
+                  </p>
                   <Duration>50 min</Duration>
                 </div>
               </ChapterLink>
