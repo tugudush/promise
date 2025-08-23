@@ -18,8 +18,8 @@ applyTo: '**'
 
 ```typescript
 // ComponentName.styles.ts
-import { Link } from 'react-router-dom'
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   padding: 2rem;
@@ -29,20 +29,22 @@ export const Container = styled.div`
 export const StyledLink = styled(Link)`
   color: #4f46e5;
   text-decoration: none;
-  
+
   &:hover {
     color: #6366f1;
   }
 `
 
-export const DynamicButton = styled.button<{ variant: 'primary' | 'secondary' }>`
+export const DynamicButton = styled.button<{
+  variant: 'primary' | 'secondary'
+}>`
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  
-  ${props => props.variant === 'primary' 
-    ? 'background: #667eea; color: white;'
-    : 'background: #f3f4f6; color: #374151;'
-  }
+
+  ${(props) =>
+    props.variant === 'primary'
+      ? 'background: #667eea; color: white;'
+      : 'background: #f3f4f6; color: #374151;'}
 `
 ```
 
@@ -83,34 +85,36 @@ function ComponentName() {
 ### Conditional Styling Based on Props
 
 ```typescript
-export const StatusBadge = styled.span<{ status: 'success' | 'error' | 'warning' }>`
+export const StatusBadge = styled.span<{
+  status: 'success' | 'error' | 'warning'
+}>`
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
-  
-  ${props => {
+
+  ${(props) => {
     switch (props.status) {
       case 'success':
         return `
           background-color: #dcfce7;
           color: #166534;
-        `;
+        `
       case 'error':
         return `
           background-color: #fee2e2;
           color: #991b1b;
-        `;
+        `
       case 'warning':
         return `
           background-color: #fef3c7;
           color: #92400e;
-        `;
+        `
       default:
         return `
           background-color: #f3f4f6;
           color: #374151;
-        `;
+        `
     }
   }}
 `
@@ -122,14 +126,14 @@ export const StatusBadge = styled.span<{ status: 'success' | 'error' | 'warning'
 export const ResponsiveGrid = styled.div`
   display: grid;
   gap: 1rem;
-  
+
   /* Mobile first approach */
   grid-template-columns: 1fr;
-  
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -144,7 +148,7 @@ export const ThemedButton = styled.button`
   background: var(--color-primary, #667eea);
   color: var(--color-primary-text, white);
   border: 1px solid var(--color-primary-border, #667eea);
-  
+
   &:hover {
     background: var(--color-primary-hover, #5a67d8);
   }
@@ -166,32 +170,34 @@ export const CodeBlock = styled.pre`
   margin: 1rem 0;
 `
 
-export const HighlightBox = styled.div<{ type: 'info' | 'warning' | 'success' }>`
+export const HighlightBox = styled.div<{
+  type: 'info' | 'warning' | 'success'
+}>`
   padding: 1rem;
   border-radius: 8px;
   border-left: 4px solid;
   margin: 1rem 0;
-  
-  ${props => {
+
+  ${(props) => {
     switch (props.type) {
       case 'info':
         return `
           background: #eff6ff;
           border-color: #3b82f6;
           color: #1e40af;
-        `;
+        `
       case 'warning':
         return `
           background: #fffbeb;
           border-color: #f59e0b;
           color: #92400e;
-        `;
+        `
       case 'success':
         return `
           background: #f0fdf4;
           border-color: #10b981;
           color: #065f46;
-        `;
+        `
     }
   }}
 `

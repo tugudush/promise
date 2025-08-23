@@ -50,7 +50,9 @@ Follow patterns optimized for educational clarity:
 
 ```typescript
 // ✅ Educational Example - Clear and Descriptive
-const [userDataLoadingState, setUserDataLoadingState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+const [userDataLoadingState, setUserDataLoadingState] = useState<
+  'idle' | 'loading' | 'success' | 'error'
+>('idle')
 const [userData, setUserData] = useState<User | null>(null)
 const [userDataError, setUserDataError] = useState<string | null>(null)
 
@@ -58,28 +60,29 @@ const [userDataError, setUserDataError] = useState<string | null>(null)
 const fetchUserData = async (userId: string): Promise<User> => {
   // Step 1: Set loading state to show async operation has started
   setUserDataLoadingState('loading')
-  
+
   try {
     // Step 2: Simulate network delay (real API would have similar delay)
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+
     // Step 3: Simulate potential API response
     const response = await fetch(`/api/users/${userId}`)
-    
+
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`)
     }
-    
+
     const user = await response.json()
-    
+
     // Step 4: Update state with successful data
     setUserData(user)
     setUserDataLoadingState('success')
-    
+
     return user
   } catch (error) {
     // Step 5: Handle errors gracefully with user-friendly messages
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error occurred'
     setUserDataError(errorMessage)
     setUserDataLoadingState('error')
     throw error
@@ -175,9 +178,9 @@ export const LearningObjective = styled.div`
   border-radius: 8px;
   padding: 1rem;
   margin: 1rem 0;
-  
+
   &::before {
-    content: "💡 Learning Objective: ";
+    content: '💡 Learning Objective: ';
     font-weight: 600;
     color: #0369a1;
   }
@@ -212,7 +215,7 @@ function AsyncOperationDemo() {
       <button onClick={runAsyncOperation} disabled={status === 'loading'}>
         {status === 'loading' ? 'Loading...' : 'Start Async Operation'}
       </button>
-      
+
       <StatusDisplay status={status}>
         {status === 'idle' && 'Ready to start'}
         {status === 'loading' && 'Operation in progress...'}
@@ -265,16 +268,17 @@ interface ChapterMetadata {
 export const chapterMetadata: ChapterMetadata = {
   id: 'chapter-01',
   title: 'Foundations of Asynchronous JavaScript',
-  description: 'Understanding the Event Loop, Promises, and basic async patterns',
+  description:
+    'Understanding the Event Loop, Promises, and basic async patterns',
   duration: '45 minutes',
   difficulty: 'Beginner',
   learningObjectives: [
     'Understand how the JavaScript event loop works',
     'Create and use basic Promises',
-    'Handle Promise resolution and rejection'
+    'Handle Promise resolution and rejection',
   ],
   prerequisites: ['Basic JavaScript knowledge', 'Functions and callbacks'],
-  keyWords: ['Promise', 'async', 'Event Loop', 'resolve', 'reject']
+  keyWords: ['Promise', 'async', 'Event Loop', 'resolve', 'reject'],
 }
 ```
 

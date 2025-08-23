@@ -9,6 +9,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 ## Quick Reference
 
 ### Tech Stack
+
 - **Frontend**: React 19 + TypeScript + Vite
 - **Styling**: Emotion CSS-in-JS with scoped components
 - **Routing**: React Router v6+ with createBrowserRouter
@@ -16,6 +17,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 - **Build**: Vite with path aliases (`@/` → `src/`)
 
 ### Essential Commands
+
 ```bash
 npm run dev         # Start development server
 npm run build       # Production build with type checking
@@ -24,6 +26,7 @@ npm run check       # Verify code quality without changes
 ```
 
 ### Project Structure
+
 ```
 src/
 ├── pages/           # Page components (directory-based organization)
@@ -39,24 +42,28 @@ src/
 For comprehensive guidance on specific aspects of development, see the modular instruction files:
 
 ### 🎨 **Styling**: [styling.instructions.md](./instructions/styling.instructions.md)
+
 - Emotion CSS-in-JS patterns and configuration
 - Styled components with TypeScript
 - Dynamic styling and responsive design
 - Performance optimization for styles
 
 ### 🏗️ **Architecture**: [component-architecture.instructions.md](./instructions/component-architecture.instructions.md)
+
 - Directory structure and file organization
 - Component composition and naming conventions
 - Import patterns and barrel exports
 - Scalability and maintainability patterns
 
 ### 🔧 **Workflow**: [development-workflow.instructions.md](./instructions/development-workflow.instructions.md)
+
 - Development commands and build process
 - Code quality workflow (ESLint + Prettier + TypeScript)
 - Git conventions and troubleshooting
 - Performance monitoring and optimization
 
 ### 📚 **Tutorials**: [tutorial-patterns.instructions.md](./instructions/tutorial-patterns.instructions.md)
+
 - Educational code standards and clarity
 - Interactive tutorial component patterns
 - Progressive learning and complexity management
@@ -65,6 +72,7 @@ For comprehensive guidance on specific aspects of development, see the modular i
 ## Path Aliases
 
 Use `@/` for all `src/` imports:
+
 ```typescript
 // ✅ Correct
 import { ChapterPage, HomePage } from '@/pages'

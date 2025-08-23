@@ -74,17 +74,12 @@ export { default as HomePage } from './homePage'
 // Page component imports
 import { useParams } from 'react-router-dom'
 
-import {
-  Container,
-  Header,
-  StyledButton,
-} from './ComponentName.styles'
-
 // Barrel exports from pages
 import { ChapterPage, HomePage } from '@/pages'
-
 // Utils and helpers
 import { simulateApiCall } from '@/utils/async-helpers'
+
+import { Container, Header, StyledButton } from './ComponentName.styles'
 ```
 
 ### Directory-based Import Best Practices
@@ -103,16 +98,19 @@ import ChapterPage from '@/pages/chapterPage/ChapterPage'
 ## Component Types and Organization
 
 ### Page Components
+
 - Located in `src/pages/`
 - Each page has its own directory
 - Contains main application routes
 
 ### Feature Components
+
 - Located in `src/components/`
 - Reusable across multiple pages
 - Organized by feature or functionality
 
 ### Tutorial Components
+
 - Located in `src/examples/` or `src/components/tutorial/`
 - Educational components specific to tutorial content
 - Interactive examples and demonstrations

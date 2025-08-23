@@ -177,9 +177,7 @@ function HomePage() {
           Each chapter builds upon the previous one with hands-on examples and
           real-world applications.
         </p>
-        <StartButton to='/chapter/1'>
-          Start Chapter 1: Foundations
-        </StartButton>
+        <StartButton to='/chapter/1'>Start Chapter 1: Foundations</StartButton>
       </GettingStarted>
     </HomePageContainer>
   )
