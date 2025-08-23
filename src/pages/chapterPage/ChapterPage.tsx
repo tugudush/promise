@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Chapter01Content from '@/examples/chapter01/Chapter01Content'
 import Chapter02Content from '@/examples/chapter02/Chapter02Content'
 import Chapter03Content from '@/examples/chapter03/Chapter03Content'
+import Chapter04Content from '@/examples/chapter04/Chapter04Content'
 
 import {
   BackHome,
@@ -143,6 +144,8 @@ function ChapterPage() {
           <Chapter02Content />
         ) : chapterId === '3' ? (
           <Chapter03Content />
+        ) : chapterId === '4' ? (
+          <Chapter04Content />
         ) : (
           <ComingSoon>
             <h2>🚧 Content Coming Soon</h2>

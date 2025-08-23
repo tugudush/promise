@@ -23,6 +23,7 @@ JavaScript Async Programming is an interactive educational project teaching Java
 ```bash
 npm run dev         # Start development server
 npm run build       # Production build with type checking
+npm run typecheck   # TypeScript type checking only
 npm run fix         # Fix all linting and formatting issues
 npm run check       # Verify code quality without changes
 ```

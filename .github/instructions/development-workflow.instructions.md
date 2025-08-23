@@ -13,6 +13,7 @@ This is an educational JavaScript Async Programming tutorial built with React 19
 ```bash
 npm run dev         # Start dev server (http://localhost:5173)
 npm run build       # Production build (tsc + vite build)
+npm run typecheck   # TypeScript type checking only (no build)
 npm run fix         # Lint fix + format (one-stop cleanup)
 npm run check       # Check both linting and formatting
 npm run lint        # Check for ESLint code quality issues only

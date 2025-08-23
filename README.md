@@ -67,11 +67,13 @@ The tutorial application will be available at `http://localhost:5173`
 
 ### Code Quality & Maintenance
 
+- **`npm run typecheck`** - Run TypeScript compiler to check for type errors only
 - **`npm run lint`** - Run ESLint to check for code issues in tutorial examples
 - **`npm run lint:fix`** - Run ESLint and automatically fix issues where possible
 - **`npm run format`** - Format all files using Prettier (maintains consistent tutorial code style)
 - **`npm run format:check`** - Check if files are properly formatted (without making changes)
-- **`npm run lf`** - Run both lint:fix and format in sequence (shortcut for code cleanup)
+- **`npm run check`** - Check both linting and formatting without making changes
+- **`npm run fix`** - Run both lint:fix and format in sequence (shortcut for code cleanup)
 
 ## 🛠️ Tech Stack
 
