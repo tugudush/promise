@@ -10,7 +10,7 @@ export const CodeBlockWrapper = styled.div`
   /* Override react-syntax-highlighter default styles */
   pre {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 1rem !important; /* Force generous padding */
     border-radius: 0 !important;
     background: #1a202c !important; /* Force dark background */
   }

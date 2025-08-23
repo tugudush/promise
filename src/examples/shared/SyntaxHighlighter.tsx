@@ -14,7 +14,7 @@ interface SyntaxHighlighterProps {
 // Enforced dark theme with consistent colors
 const DARK_THEME_OVERRIDE = {
   margin: 0,
-  padding: '1.5rem',
+  padding: '1rem', // Even more padding for comfortable spacing
   fontSize: '0.875rem',
   lineHeight: '1.5',
   fontFamily: '"Fira Code", "Monaco", "Consolas", monospace',
