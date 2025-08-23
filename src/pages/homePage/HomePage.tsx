@@ -90,8 +90,16 @@ function HomePage() {
               <ChapterLink to='/chapter/3'>
                 <ChapterNumber>03</ChapterNumber>
                 <div>
+                  <h4>Mastering Error Handling in Async React</h4>
+                  <p>Error patterns, React error boundaries, and production strategies</p>
+                  <Duration>60 min</Duration>
+                </div>
+              </ChapterLink>
+              <ChapterLink to='/chapter/4'>
+                <ChapterNumber>04</ChapterNumber>
+                <div>
                   <h4>Modern Async/Await Syntax</h4>
-                  <p>Converting to async/await and error handling</p>
+                  <p>Converting to async/await and advanced try/catch patterns</p>
                   <Duration>50 min</Duration>
                 </div>
               </ChapterLink>
@@ -101,8 +109,8 @@ function HomePage() {
           <ChapterGroup>
             <h3>Advanced Patterns (Intermediate)</h3>
             <Chapters>
-              <ChapterLink to='/chapter/4'>
-                <ChapterNumber>04</ChapterNumber>
+              <ChapterLink to='/chapter/5'>
+                <ChapterNumber>05</ChapterNumber>
                 <div>
                   <h4>Advanced Promise Patterns</h4>
                   <p>
@@ -111,16 +119,16 @@ function HomePage() {
                   <Duration>75 min</Duration>
                 </div>
               </ChapterLink>
-              <ChapterLink to='/chapter/5'>
-                <ChapterNumber>05</ChapterNumber>
+              <ChapterLink to='/chapter/6'>
+                <ChapterNumber>06</ChapterNumber>
                 <div>
                   <h4>React Hooks and Async Patterns</h4>
                   <p>Custom hooks, useAsync, and complex async flows</p>
                   <Duration>90 min</Duration>
                 </div>
               </ChapterLink>
-              <ChapterLink to='/chapter/6'>
-                <ChapterNumber>06</ChapterNumber>
+              <ChapterLink to='/chapter/7'>
+                <ChapterNumber>07</ChapterNumber>
                 <div>
                   <h4>State Management with Async Operations</h4>
                   <p>Context API, optimistic updates, and state libraries</p>
@@ -133,32 +141,32 @@ function HomePage() {
           <ChapterGroup>
             <h3>Real-World Applications (Advanced)</h3>
             <Chapters>
-              <ChapterLink to='/chapter/7'>
-                <ChapterNumber>07</ChapterNumber>
+              <ChapterLink to='/chapter/8'>
+                <ChapterNumber>08</ChapterNumber>
                 <div>
                   <h4>Real-World React Applications</h4>
                   <p>API integration, file operations, and background tasks</p>
                   <Duration>120 min</Duration>
                 </div>
               </ChapterLink>
-              <ChapterLink to='/chapter/8'>
-                <ChapterNumber>08</ChapterNumber>
+              <ChapterLink to='/chapter/9'>
+                <ChapterNumber>09</ChapterNumber>
                 <div>
                   <h4>Testing Async Code in React</h4>
                   <p>Testing async components and integration testing</p>
                   <Duration>45 min</Duration>
                 </div>
               </ChapterLink>
-              <ChapterLink to='/chapter/9'>
-                <ChapterNumber>09</ChapterNumber>
+              <ChapterLink to='/chapter/10'>
+                <ChapterNumber>10</ChapterNumber>
                 <div>
                   <h4>Performance and Best Practices</h4>
                   <p>Optimization, pitfalls, and code review guidelines</p>
                   <Duration>40 min</Duration>
                 </div>
               </ChapterLink>
-              <ChapterLink to='/chapter/10'>
-                <ChapterNumber>10</ChapterNumber>
+              <ChapterLink to='/chapter/11'>
+                <ChapterNumber>11</ChapterNumber>
                 <div>
                   <h4>Capstone Project</h4>
                   <p>Build a complete React application with async patterns</p>
