@@ -1,10 +1,4 @@
 import {
-  AsyncAwaitBasicsDemo,
-  AsyncEventHandlersDemo,
-  AsyncToAwaitConversionDemo,
-  TryCatchPatternsDemo,
-} from '@/examples/chapter04'
-import {
   CodeSyntaxHighlighter,
   ImportantNote,
   LearningObjective,
@@ -12,6 +6,11 @@ import {
   TutorialContent,
   WarningNote,
 } from '@/examples/shared'
+
+import AsyncAwaitBasicsDemo from './AsyncAwaitBasicsDemo'
+import AsyncEventHandlersDemo from './AsyncEventHandlersDemo'
+import AsyncToAwaitConversionDemo from './AsyncToAwaitConversionDemo'
+import TryCatchPatternsDemo from './TryCatchPatternsDemo'
 
 /**
  * Chapter 4: Modern Async/Await Syntax
