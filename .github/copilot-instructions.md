@@ -28,6 +28,7 @@ Promise is an interactive educational project teaching JavaScript asynchronous p
 
 - **Entry Point**: `src/main.tsx` - React 19 app initialization for tutorial interface
 - **Main Component**: `src/App.tsx` - Primary tutorial navigation and layout
+- **Router**: `src/router.tsx` - React Router configuration with createBrowserRouter
 - **Tutorial Examples**: `src/examples/` - Interactive async pattern demonstrations
 - **Utilities**: `src/utils/` - Helper functions for async operations (e.g., API utilities)
 - **Documentation**: `docs/` - Comprehensive lesson plans and guides
