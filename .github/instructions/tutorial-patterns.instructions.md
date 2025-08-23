@@ -204,14 +204,14 @@ useEffect(() => {
 
 - **`language`**: Programming language for syntax highlighting
   - `javascript` - JavaScript code
-  - `typescript` - TypeScript/React code  
+  - `typescript` - TypeScript/React code
   - `json` - JSON data/API responses
   - `css` - Stylesheets
   - `bash` - Terminal commands
   - And 200+ other languages supported by Prism.js
 
 - **`showLanguageLabel`**: Display language name at top (default: `true`)
-- **`showLineNumbers`**: Show line numbers (default: `false`)  
+- **`showLineNumbers`**: Show line numbers (default: `false`)
 - **`customStyle`**: Override default styling if needed
 
 #### Code Block Best Practices
