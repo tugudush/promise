@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 
 export const ChapterPageContainer = styled.div`
   width: 100%;
@@ -77,29 +77,29 @@ export const DifficultyBadge = styled.span<{ difficulty: string }>`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  
-  ${props => {
+
+  ${(props) => {
     switch (props.difficulty.toLowerCase()) {
       case 'beginner':
         return `
           background-color: #dcfce7;
           color: #166534;
-        `;
+        `
       case 'intermediate':
         return `
           background-color: #fef3c7;
           color: #92400e;
-        `;
+        `
       case 'advanced':
         return `
           background-color: #fee2e2;
           color: #991b1b;
-        `;
+        `
       default:
         return `
           background-color: #f3f4f6;
           color: #374151;
-        `;
+        `
     }
   }}
 `
@@ -158,7 +158,7 @@ export const ComingSoon = styled.div`
     text-align: left;
     max-width: 400px;
     margin: 0 auto 2rem;
-    
+
     li {
       color: #475569;
       margin-bottom: 0.5rem;
