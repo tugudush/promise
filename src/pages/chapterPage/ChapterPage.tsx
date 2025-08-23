@@ -1,6 +1,24 @@
-import { Link, useParams } from 'react-router-dom'
-
-import './ChapterPage.css'
+import { useParams } from 'react-router-dom'
+import {
+  BackHome,
+  ChapterBadges,
+  ChapterContent,
+  ChapterDescription,
+  ChapterHeader,
+  ChapterMeta,
+  ChapterNav,
+  ChapterNavigation,
+  ChapterNotFound,
+  ChapterNumber,
+  ChapterPageContainer,
+  ChapterProgress,
+  ChapterTitle,
+  ComingSoon,
+  DifficultyBadge,
+  DurationBadge,
+  NavButton,
+  NavLink,
+} from './ChapterPage.styles'
 
 function ChapterPage() {
   const { chapterId } = useParams()
@@ -75,45 +93,39 @@ function ChapterPage() {
 
   if (!chapter) {
     return (
-      <div className='chapter-page'>
-        <div className='chapter-not-found'>
+      <ChapterPageContainer>
+        <ChapterNotFound>
           <h1>Chapter Not Found</h1>
           <p>The requested chapter does not exist.</p>
-          <Link to='/' className='back-home'>
-            ← Back to Home
-          </Link>
-        </div>
-      </div>
+          <BackHome to="/">← Back to Home</BackHome>
+        </ChapterNotFound>
+      </ChapterPageContainer>
     )
   }
 
   return (
-    <div className='chapter-page'>
-      <nav className='chapter-nav'>
-        <Link to='/' className='nav-link'>
-          ← Back to Contents
-        </Link>
-        <div className='chapter-progress'>Chapter {chapterId} of 10</div>
-      </nav>
+    <ChapterPageContainer>
+      <ChapterNav>
+        <NavLink to="/">← Back to Contents</NavLink>
+        <ChapterProgress>Chapter {chapterId} of 10</ChapterProgress>
+      </ChapterNav>
 
-      <header className='chapter-header'>
-        <div className='chapter-meta'>
-          <span className='chapter-number'>Chapter {chapterId}</span>
-          <div className='chapter-badges'>
-            <span
-              className={`difficulty-badge ${chapter.difficulty.toLowerCase()}`}
-            >
+      <ChapterHeader>
+        <ChapterMeta>
+          <ChapterNumber>Chapter {chapterId}</ChapterNumber>
+          <ChapterBadges>
+            <DifficultyBadge difficulty={chapter.difficulty}>
               {chapter.difficulty}
-            </span>
-            <span className='duration-badge'>{chapter.duration}</span>
-          </div>
-        </div>
-        <h1>{chapter.title}</h1>
-        <p className='chapter-description'>{chapter.description}</p>
-      </header>
+            </DifficultyBadge>
+            <DurationBadge>{chapter.duration}</DurationBadge>
+          </ChapterBadges>
+        </ChapterMeta>
+        <ChapterTitle>{chapter.title}</ChapterTitle>
+        <ChapterDescription>{chapter.description}</ChapterDescription>
+      </ChapterHeader>
 
-      <main className='chapter-content'>
-        <div className='coming-soon'>
+      <ChapterContent>
+        <ComingSoon>
           <h2>🚧 Content Coming Soon</h2>
           <p>
             This chapter is currently under development. The tutorial content
@@ -126,29 +138,23 @@ function ChapterPage() {
             <li>Real-world React patterns</li>
           </ul>
           <p>Check back soon for the complete tutorial content!</p>
-        </div>
-      </main>
+        </ComingSoon>
+      </ChapterContent>
 
-      <nav className='chapter-navigation'>
+      <ChapterNavigation>
         {parseInt(chapterId || '1') > 1 && (
-          <Link
-            to={`/chapter/${parseInt(chapterId || '1') - 1}`}
-            className='nav-button prev'
-          >
+          <NavButton to={`/chapter/${parseInt(chapterId || '1') - 1}`}>
             ← Previous Chapter
-          </Link>
+          </NavButton>
         )}
 
         {parseInt(chapterId || '1') < 10 && (
-          <Link
-            to={`/chapter/${parseInt(chapterId || '1') + 1}`}
-            className='nav-button next'
-          >
+          <NavButton to={`/chapter/${parseInt(chapterId || '1') + 1}`}>
             Next Chapter →
-          </Link>
+          </NavButton>
         )}
-      </nav>
-    </div>
+      </ChapterNavigation>
+    </ChapterPageContainer>
   )
 }
 

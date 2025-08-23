@@ -1,172 +1,187 @@
-import { Link } from 'react-router-dom'
-
-import './HomePage.css'
+import {
+  ChapterGroup,
+  ChapterLink,
+  ChapterNumber,
+  Chapters,
+  ChaptersGrid,
+  Duration,
+  GettingStarted,
+  Hero,
+  HeroDescription,
+  HeroSubtitle,
+  HomePageContainer,
+  LearningCard,
+  LearningGrid,
+  Overview,
+  StartButton,
+  TableOfContents,
+} from './HomePage.styles'
 
 function HomePage() {
   return (
-    <div className='home-page'>
-      <header className='hero'>
+    <HomePageContainer>
+      <Hero>
         <h1>Promise</h1>
-        <p className='hero-subtitle'>
+        <HeroSubtitle>
           Master JavaScript Async Programming in React
-        </p>
-        <p className='hero-description'>
+        </HeroSubtitle>
+        <HeroDescription>
           An interactive tutorial covering async/await, Promises, and
           asynchronous patterns specifically designed for React developers.
-        </p>
-      </header>
+        </HeroDescription>
+      </Hero>
 
-      <section className='overview'>
+      <Overview>
         <h2>What You'll Learn</h2>
-        <div className='learning-grid'>
-          <div className='learning-card'>
+        <LearningGrid>
+          <LearningCard>
             <h3>🔗 Promise Fundamentals</h3>
             <p>
               Understanding async operations, Promise states, and basic patterns
             </p>
-          </div>
-          <div className='learning-card'>
+          </LearningCard>
+          <LearningCard>
             <h3>⚡ Async/Await Syntax</h3>
             <p>Modern asynchronous programming with clean, readable code</p>
-          </div>
-          <div className='learning-card'>
+          </LearningCard>
+          <LearningCard>
             <h3>⚛️ React Integration</h3>
             <p>Handling async operations in React components and hooks</p>
-          </div>
-          <div className='learning-card'>
+          </LearningCard>
+          <LearningCard>
             <h3>🛠️ Custom Hooks</h3>
             <p>
               Building reusable async logic with useFetch and useAsync patterns
             </p>
-          </div>
-          <div className='learning-card'>
+          </LearningCard>
+          <LearningCard>
             <h3>🛡️ Error Handling</h3>
             <p>Graceful error management in async React applications</p>
-          </div>
-          <div className='learning-card'>
+          </LearningCard>
+          <LearningCard>
             <h3>🚀 Performance</h3>
             <p>Optimization techniques for better user experience</p>
-          </div>
-        </div>
-      </section>
+          </LearningCard>
+        </LearningGrid>
+      </Overview>
 
-      <section className='table-of-contents'>
+      <TableOfContents>
         <h2>Tutorial Chapters</h2>
-        <div className='chapters-grid'>
-          <div className='chapter-group'>
+        <ChaptersGrid>
+          <ChapterGroup>
             <h3>Foundation (Beginner)</h3>
-            <div className='chapters'>
-              <Link to='/chapter/1' className='chapter-link'>
-                <span className='chapter-number'>01</span>
+            <Chapters>
+              <ChapterLink to='/chapter/1'>
+                <ChapterNumber>01</ChapterNumber>
                 <div>
                   <h4>Foundations of Asynchronous JavaScript</h4>
                   <p>Event loop, Promises, and basic async patterns</p>
-                  <span className='duration'>45 min</span>
+                  <Duration>45 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/2' className='chapter-link'>
-                <span className='chapter-number'>02</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/2'>
+                <ChapterNumber>02</ChapterNumber>
                 <div>
                   <h4>Promise Patterns in React</h4>
                   <p>useEffect, loading states, and error boundaries</p>
-                  <span className='duration'>60 min</span>
+                  <Duration>60 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/3' className='chapter-link'>
-                <span className='chapter-number'>03</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/3'>
+                <ChapterNumber>03</ChapterNumber>
                 <div>
                   <h4>Modern Async/Await Syntax</h4>
                   <p>Converting to async/await and error handling</p>
-                  <span className='duration'>50 min</span>
+                  <Duration>50 min</Duration>
                 </div>
-              </Link>
-            </div>
-          </div>
+              </ChapterLink>
+            </Chapters>
+          </ChapterGroup>
 
-          <div className='chapter-group'>
+          <ChapterGroup>
             <h3>Advanced Patterns (Intermediate)</h3>
-            <div className='chapters'>
-              <Link to='/chapter/4' className='chapter-link'>
-                <span className='chapter-number'>04</span>
+            <Chapters>
+              <ChapterLink to='/chapter/4'>
+                <ChapterNumber>04</ChapterNumber>
                 <div>
                   <h4>Advanced Promise Patterns</h4>
                   <p>
                     Promise.all(), Promise.race(), and performance optimization
                   </p>
-                  <span className='duration'>75 min</span>
+                  <Duration>75 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/5' className='chapter-link'>
-                <span className='chapter-number'>05</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/5'>
+                <ChapterNumber>05</ChapterNumber>
                 <div>
                   <h4>React Hooks and Async Patterns</h4>
                   <p>Custom hooks, useAsync, and complex async flows</p>
-                  <span className='duration'>90 min</span>
+                  <Duration>90 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/6' className='chapter-link'>
-                <span className='chapter-number'>06</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/6'>
+                <ChapterNumber>06</ChapterNumber>
                 <div>
                   <h4>State Management with Async Operations</h4>
                   <p>Context API, optimistic updates, and state libraries</p>
-                  <span className='duration'>60 min</span>
+                  <Duration>60 min</Duration>
                 </div>
-              </Link>
-            </div>
-          </div>
+              </ChapterLink>
+            </Chapters>
+          </ChapterGroup>
 
-          <div className='chapter-group'>
+          <ChapterGroup>
             <h3>Real-World Applications (Advanced)</h3>
-            <div className='chapters'>
-              <Link to='/chapter/7' className='chapter-link'>
-                <span className='chapter-number'>07</span>
+            <Chapters>
+              <ChapterLink to='/chapter/7'>
+                <ChapterNumber>07</ChapterNumber>
                 <div>
                   <h4>Real-World React Applications</h4>
                   <p>API integration, file operations, and background tasks</p>
-                  <span className='duration'>120 min</span>
+                  <Duration>120 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/8' className='chapter-link'>
-                <span className='chapter-number'>08</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/8'>
+                <ChapterNumber>08</ChapterNumber>
                 <div>
                   <h4>Testing Async Code in React</h4>
                   <p>Testing async components and integration testing</p>
-                  <span className='duration'>45 min</span>
+                  <Duration>45 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/9' className='chapter-link'>
-                <span className='chapter-number'>09</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/9'>
+                <ChapterNumber>09</ChapterNumber>
                 <div>
                   <h4>Performance and Best Practices</h4>
                   <p>Optimization, pitfalls, and code review guidelines</p>
-                  <span className='duration'>40 min</span>
+                  <Duration>40 min</Duration>
                 </div>
-              </Link>
-              <Link to='/chapter/10' className='chapter-link'>
-                <span className='chapter-number'>10</span>
+              </ChapterLink>
+              <ChapterLink to='/chapter/10'>
+                <ChapterNumber>10</ChapterNumber>
                 <div>
                   <h4>Capstone Project</h4>
                   <p>Build a complete React application with async patterns</p>
-                  <span className='duration'>180 min</span>
+                  <Duration>180 min</Duration>
                 </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+              </ChapterLink>
+            </Chapters>
+          </ChapterGroup>
+        </ChaptersGrid>
+      </TableOfContents>
 
-      <section className='getting-started'>
+      <GettingStarted>
         <h2>Ready to Start?</h2>
         <p>
           Begin with the fundamentals and work your way up to advanced patterns.
           Each chapter builds upon the previous one with hands-on examples and
           real-world applications.
         </p>
-        <Link to='/chapter/1' className='start-button'>
+        <StartButton to='/chapter/1'>
           Start Chapter 1: Foundations
-        </Link>
-      </section>
-    </div>
+        </StartButton>
+      </GettingStarted>
+    </HomePageContainer>
   )
 }
 
