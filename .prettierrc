@@ -9,16 +9,8 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports"
-  ],
-  "importOrder": [
-    "^react$",
-    "^react-dom$",
-    "^@?\\w",
-    "^@/(.*)$",
-    "^[./]"
-  ],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": ["^react$", "^react-dom$", "^@?\\w", "^@/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

@@ -7,7 +7,7 @@ An interactive tutorial project teaching JavaScript asynchronous programming pat
 This repository contains comprehensive tutorials and practical examples covering:
 
 - **Promise fundamentals** - Understanding async operations in JavaScript
-- **Async/await patterns** - Modern asynchronous syntax and best practices  
+- **Async/await patterns** - Modern asynchronous syntax and best practices
 - **React integration** - How to handle async operations in React components
 - **Custom hooks** - Building reusable async logic with React hooks
 - **Error handling** - Graceful error management in async React applications
@@ -19,6 +19,7 @@ This repository contains comprehensive tutorials and practical examples covering
 The tutorial is organized into progressive chapters, from basic Promise concepts to advanced real-world React applications. See the complete [Lesson Plan](docs/lesson-plan.md) for detailed curriculum.
 
 **Key Learning Paths:**
+
 - Beginner: Chapters 1-3 (Foundations and basic patterns)
 - Intermediate: Chapters 4-6 (Advanced patterns and React hooks)
 - Advanced: Chapters 7-10 (Real-world applications and optimization)
@@ -41,6 +42,7 @@ The tutorial is organized into progressive chapters, from basic Promise concepts
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
