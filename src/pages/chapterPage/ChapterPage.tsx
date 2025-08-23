@@ -1,4 +1,7 @@
 import { useParams } from 'react-router-dom'
+
+import Chapter01Content from '@/examples/chapter01/Chapter01Content'
+
 import {
   BackHome,
   ChapterBadges,
@@ -97,7 +100,7 @@ function ChapterPage() {
         <ChapterNotFound>
           <h1>Chapter Not Found</h1>
           <p>The requested chapter does not exist.</p>
-          <BackHome to="/">← Back to Home</BackHome>
+          <BackHome to='/'>← Back to Home</BackHome>
         </ChapterNotFound>
       </ChapterPageContainer>
     )
@@ -106,7 +109,7 @@ function ChapterPage() {
   return (
     <ChapterPageContainer>
       <ChapterNav>
-        <NavLink to="/">← Back to Contents</NavLink>
+        <NavLink to='/'>← Back to Contents</NavLink>
         <ChapterProgress>Chapter {chapterId} of 10</ChapterProgress>
       </ChapterNav>
 
@@ -125,20 +128,24 @@ function ChapterPage() {
       </ChapterHeader>
 
       <ChapterContent>
-        <ComingSoon>
-          <h2>🚧 Content Coming Soon</h2>
-          <p>
-            This chapter is currently under development. The tutorial content
-            will include:
-          </p>
-          <ul>
-            <li>Interactive code examples</li>
-            <li>Step-by-step explanations</li>
-            <li>Hands-on exercises</li>
-            <li>Real-world React patterns</li>
-          </ul>
-          <p>Check back soon for the complete tutorial content!</p>
-        </ComingSoon>
+        {chapterId === '1' ? (
+          <Chapter01Content />
+        ) : (
+          <ComingSoon>
+            <h2>🚧 Content Coming Soon</h2>
+            <p>
+              This chapter is currently under development. The tutorial content
+              will include:
+            </p>
+            <ul>
+              <li>Interactive code examples</li>
+              <li>Step-by-step explanations</li>
+              <li>Hands-on exercises</li>
+              <li>Real-world React patterns</li>
+            </ul>
+            <p>Check back soon for the complete tutorial content!</p>
+          </ComingSoon>
+        )}
       </ChapterContent>
 
       <ChapterNavigation>
