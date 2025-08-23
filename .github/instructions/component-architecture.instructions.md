@@ -109,6 +109,23 @@ import ChapterPage from '@/pages/chapterPage/ChapterPage'
 - Reusable across multiple pages
 - Organized by feature or functionality
 
+### Shared Components
+
+- Located in `src/examples/shared/`
+- Tutorial-specific reusable components
+- Examples: `CodeSyntaxHighlighter`, styled tutorial components
+- Exported via barrel exports from `src/examples/shared/index.ts`
+
+#### Shared Component Structure
+
+```
+src/examples/shared/
+├── index.ts                           # Barrel exports
+├── CodeSyntaxHighlighter.tsx          # Syntax highlighting component
+├── CodeSyntaxHighlighter.styles.ts    # Syntax highlighter styles
+└── TutorialComponents.styles.ts       # Common tutorial styled components
+```
+
 ### Tutorial Components
 
 - Located in `src/examples/` or `src/components/tutorial/`

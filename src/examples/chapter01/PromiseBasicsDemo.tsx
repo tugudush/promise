@@ -3,14 +3,14 @@ import { useState } from 'react'
 import { simulateApiCall } from '@/utils/async-helpers'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
   DemoSection,
   ExampleTitle,
   StatusIndicator,
-} from '../shared/TutorialComponents.styles'
+} from '../shared'
 
 /**
  * Interactive demonstration of basic Promise creation and usage
@@ -108,7 +108,7 @@ function PromiseBasicsDemo() {
         </div>
       </DemoContainer>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Basic Promise Example
 const basicPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -120,7 +120,7 @@ const basicPromise = new Promise((resolve, reject) => {
 basicPromise
   .then(result => console.log(result))
   .catch(error => console.error(error))`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
     </DemoSection>
   )
 }

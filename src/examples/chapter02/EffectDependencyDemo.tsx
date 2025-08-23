@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
   DemoSection,
   ExampleTitle,
   StatusIndicator,
-} from '@/examples/shared/TutorialComponents.styles'
+} from '@/examples/shared'
 import { simulateApiCall } from '@/utils/async-helpers'
 
 /**
@@ -155,7 +155,7 @@ function EffectDependencyDemo() {
 
       <div>
         <h4>Dependency Array Patterns</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// 1. No dependency array - runs after EVERY render
 useEffect(() => {
   console.log('This runs after every render!')
@@ -178,12 +178,12 @@ useEffect(() => {
 useEffect(() => {
   fetchUserData(userId, filters, sortBy)
 }, [userId, filters, sortBy]) // Runs when ANY dependency changes`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <div>
         <h4>Common Dependency Pitfalls</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// ❌ WRONG: Missing dependency (stale closure)
 const [count, setCount] = useState(0)
 useEffect(() => {
@@ -215,12 +215,12 @@ const fetchData = useCallback(() => {
 useEffect(() => {
   fetchData()
 }, [fetchData]) // Now fetchData is stable`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <div>
         <h4>Advanced Patterns</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Pattern 1: Conditional effects
 useEffect(() => {
   if (!shouldFetch) return
@@ -247,7 +247,7 @@ useEffect(() => {
   
   return () => clearTimeout(timeoutId)
 }, [searchTerm]) // Debounce search when term changes`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <DemoOutput>

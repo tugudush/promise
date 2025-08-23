@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
   DemoSection,
   ExampleTitle,
   StatusIndicator,
-} from '@/examples/shared/TutorialComponents.styles'
+} from '@/examples/shared'
 import { simulateUnreliableApiCall } from '@/utils/async-helpers'
 
 // Error Boundary component
@@ -244,7 +244,7 @@ function ErrorBoundaryDemo() {
 
       <div>
         <h4>Error Boundary Implementation</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Error Boundary Class Component
 class AsyncErrorBoundary extends React.Component {
   constructor(props) {
@@ -278,12 +278,12 @@ class AsyncErrorBoundary extends React.Component {
     return this.props.children
   }
 }`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <div>
         <h4>Custom Hook for Async Errors</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Hook to throw async errors to error boundary
 function useAsyncError() {
   const [, setError] = useState()
@@ -315,12 +315,12 @@ function MyComponent() {
     fetchData()
   }, [throwAsyncError])
 }`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <div>
         <h4>Error Handling Strategies</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Strategy 1: Local error handling (most common)
 const fetchData = async () => {
   try {
@@ -359,12 +359,12 @@ const fetchData = async () => {
     }
   }
 }`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <div>
         <h4>Best Practices</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// 1. Granular error boundaries
 function App() {
   return (
@@ -413,7 +413,7 @@ class RetryErrorBoundary extends React.Component {
     )
   }
 }`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <DemoOutput>

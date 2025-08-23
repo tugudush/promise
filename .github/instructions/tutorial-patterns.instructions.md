@@ -149,6 +149,93 @@ export const createAsyncExample = (
 
 ## Interactive Tutorial Components
 
+### Code Syntax Highlighting
+
+All code examples in tutorials use the `CodeSyntaxHighlighter` component for consistent, professional syntax highlighting with enforced dark theme:
+
+```typescript
+// Basic usage with JavaScript
+<CodeSyntaxHighlighter language="javascript">
+{`// Example JavaScript code
+const fetchData = async () => {
+  const response = await fetch('/api/data')
+  return response.json()
+}`}
+</CodeSyntaxHighlighter>
+
+// TypeScript/React examples
+<CodeSyntaxHighlighter language="typescript" showLanguageLabel>
+{`// React Hook example
+const [data, setData] = useState<User[]>([])
+const [loading, setLoading] = useState(false)
+
+useEffect(() => {
+  const loadData = async () => {
+    setLoading(true)
+    try {
+      const result = await fetchUsers()
+      setData(result)
+    } finally {
+      setLoading(false)
+    }
+  }
+  loadData()
+}, [])`}
+</CodeSyntaxHighlighter>
+
+// JSON API responses
+<CodeSyntaxHighlighter language="json" showLineNumbers>
+{`{
+  "status": "success",
+  "data": {
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com"
+      }
+    ]
+  }
+}`}
+</CodeSyntaxHighlighter>
+```
+
+#### CodeSyntaxHighlighter Props
+
+- **`language`**: Programming language for syntax highlighting
+  - `javascript` - JavaScript code
+  - `typescript` - TypeScript/React code  
+  - `json` - JSON data/API responses
+  - `css` - Stylesheets
+  - `bash` - Terminal commands
+  - And 200+ other languages supported by Prism.js
+
+- **`showLanguageLabel`**: Display language name at top (default: `true`)
+- **`showLineNumbers`**: Show line numbers (default: `false`)  
+- **`customStyle`**: Override default styling if needed
+
+#### Code Block Best Practices
+
+- **Use appropriate language**: Choose `typescript` for React code, `javascript` for plain JS
+- **Show language labels**: Helps students understand what they're looking at
+- **Include comments**: Explain complex async concepts within code examples
+- **Consistent formatting**: All code blocks have enforced dark theme with generous padding
+- **Educational clarity**: Prioritize readability over brevity in code examples
+
+#### Migration from Old CodeBlock
+
+```typescript
+// ❌ Old pattern (deprecated)
+<CodeBlock>
+  {`const example = 'old way'`}
+</CodeBlock>
+
+// ✅ New pattern (use this)
+<CodeSyntaxHighlighter language="javascript">
+  {`const example = 'new way with syntax highlighting'`}
+</CodeSyntaxHighlighter>
+```
+
 ### Tutorial Layout Components
 
 ```typescript

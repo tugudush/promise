@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { callbackHellExample, promiseChainExample } from '@/utils/async-helpers'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
@@ -12,7 +12,7 @@ import {
   ImportantNote,
   StatusIndicator,
   SuccessNote,
-} from '../shared/TutorialComponents.styles'
+} from '../shared'
 
 /**
  * Demonstrates the problems with callback hell and how Promises solve them
@@ -106,7 +106,7 @@ function CallbackVsPromiseDemo() {
         </div>
       </DemoContainer>
 
-      <CodeBlock>
+      <CodeSyntaxHighlighter language='javascript' showLanguageLabel>
         {`// ❌ Callback Hell (Hard to read and maintain)
 fetchUser(userId, (userError, user) => {
   if (userError) throw userError
@@ -129,7 +129,7 @@ fetchUser(userId)
   .then(preferences => fetchUserProfile(preferences.userId))
   .then(profile => displayDashboard(profile))
   .catch(error => handleError(error))`}
-      </CodeBlock>
+      </CodeSyntaxHighlighter>
 
       <SuccessNote>
         Promises solve callback hell by providing a cleaner, more readable way

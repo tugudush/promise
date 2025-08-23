@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
 import {
-  CodeBlock,
+  CodeSyntaxHighlighter,
   DemoButton,
   DemoContainer,
   DemoOutput,
   DemoSection,
   ExampleTitle,
   StatusIndicator,
-} from '@/examples/shared/TutorialComponents.styles'
+} from '@/examples/shared'
 import {
   simulateApiCall,
   simulateUnreliableApiCall,
@@ -282,7 +282,7 @@ function LoadingStatesDemo() {
 
       <div>
         <h4>Loading State Management Code</h4>
-        <CodeBlock>
+        <CodeSyntaxHighlighter language='typescript'>
           {`// 1. Basic pattern with three states
 const [data, setData] = useState(null)
 const [loading, setLoading] = useState(false)
@@ -329,7 +329,7 @@ const updateOperation = (opKey, updates) => {
     [opKey]: { ...prev[opKey], ...updates }
   }))
 }`}
-        </CodeBlock>
+        </CodeSyntaxHighlighter>
       </div>
 
       <DemoOutput>
