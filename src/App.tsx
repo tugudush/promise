@@ -9,7 +9,7 @@ function App() {
   return (
     <ErrorBoundary>
       <div className='app'>
-        <Suspense fallback={<LoadingSpinner message="Loading tutorial..." />}>
+        <Suspense fallback={<LoadingSpinner message='Loading tutorial...' />}>
           <AppRouter />
         </Suspense>
       </div>

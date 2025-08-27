@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
+import styled from '@emotion/styled'
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -12,22 +12,22 @@ const LoadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 50vh;
-  padding: 2rem;
+  padding: var(--spacing-lg);
 `
 
 const Spinner = styled.div`
   width: 40px;
   height: 40px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3b82f6;
+  border: 4px solid var(--bg-tertiary);
+  border-top: 4px solid var(--color-accent);
   border-radius: 50%;
   animation: ${spin} 1s linear infinite;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 `
 
 const LoadingText = styled.p`
-  color: #6b7280;
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
   margin: 0;
 `
 

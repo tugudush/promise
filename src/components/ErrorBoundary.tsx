@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
+
 import styled from '@emotion/styled'
 
 import { logger } from '@/utils/logger'
@@ -64,7 +65,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     logger.error('ErrorBoundary caught an error:', error, errorInfo)
-    
+
     // In production, you might want to log this to an error reporting service
     if (process.env.NODE_ENV === 'production') {
       // Example: logErrorToService(error, errorInfo)
@@ -85,30 +86,30 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         <ErrorContainer>
           <ErrorTitle>🚨 Something went wrong</ErrorTitle>
           <ErrorMessage>
-            We encountered an unexpected error while loading the tutorial. 
-            This might be a temporary issue. Please try refreshing the page 
-            or contact support if the problem persists.
+            We encountered an unexpected error while loading the tutorial. This
+            might be a temporary issue. Please try refreshing the page or
+            contact support if the problem persists.
           </ErrorMessage>
           {process.env.NODE_ENV === 'development' && this.state.error && (
             <details style={{ marginBottom: '2rem', textAlign: 'left' }}>
               <summary style={{ cursor: 'pointer', marginBottom: '1rem' }}>
                 Error Details (Development)
               </summary>
-              <pre style={{ 
-                background: '#f3f4f6', 
-                padding: '1rem', 
-                borderRadius: '4px',
-                fontSize: '0.875rem',
-                overflow: 'auto',
-                maxWidth: '100%'
-              }}>
+              <pre
+                style={{
+                  background: '#f3f4f6',
+                  padding: '1rem',
+                  borderRadius: '4px',
+                  fontSize: '0.875rem',
+                  overflow: 'auto',
+                  maxWidth: '100%',
+                }}
+              >
                 {this.state.error.stack}
               </pre>
             </details>
           )}
-          <ErrorButton onClick={this.handleReset}>
-            Try Again
-          </ErrorButton>
+          <ErrorButton onClick={this.handleReset}>Try Again</ErrorButton>
         </ErrorContainer>
       )
     }

@@ -1,13 +1,8 @@
-import { lazy, Suspense } from 'react'
+import { Suspense, lazy } from 'react'
+
 import { useParams } from 'react-router-dom'
 
 import { LoadingSpinner } from '@/components'
-
-// Lazy load chapter content components for better code splitting
-const Chapter01Content = lazy(() => import('@/examples/chapter01/Chapter01Content'))
-const Chapter02Content = lazy(() => import('@/examples/chapter02/Chapter02Content'))
-const Chapter03Content = lazy(() => import('@/examples/chapter03/Chapter03Content'))
-const Chapter04Content = lazy(() => import('@/examples/chapter04/Chapter04Content'))
 
 import {
   BackHome,
@@ -29,6 +24,20 @@ import {
   NavButton,
   NavLink,
 } from './ChapterPage.styles'
+
+// Lazy load chapter content components for better code splitting
+const Chapter01Content = lazy(
+  () => import('@/examples/chapter01/Chapter01Content')
+)
+const Chapter02Content = lazy(
+  () => import('@/examples/chapter02/Chapter02Content')
+)
+const Chapter03Content = lazy(
+  () => import('@/examples/chapter03/Chapter03Content')
+)
+const Chapter04Content = lazy(
+  () => import('@/examples/chapter04/Chapter04Content')
+)
 
 function ChapterPage() {
   const { chapterId } = useParams()
@@ -142,7 +151,9 @@ function ChapterPage() {
       </ChapterHeader>
 
       <ChapterContent>
-        <Suspense fallback={<LoadingSpinner message="Loading chapter content..." />}>
+        <Suspense
+          fallback={<LoadingSpinner message='Loading chapter content...' />}
+        >
           {chapterId === '1' ? (
             <Chapter01Content />
           ) : chapterId === '2' ? (
@@ -155,8 +166,8 @@ function ChapterPage() {
             <ComingSoon>
               <h2>🚧 Content Coming Soon</h2>
               <p>
-                This chapter is currently under development. The tutorial content
-                will include:
+                This chapter is currently under development. The tutorial
+                content will include:
               </p>
               <ul>
                 <li>Interactive code examples</li>

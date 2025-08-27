@@ -1,0 +1,225 @@
+import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
+
+export const HomePageContainer = styled.div`
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+`
+
+export const Hero = styled.header`
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--text-light);
+  margin: 0;
+
+  h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    margin: 0 0 var(--spacing-lg) 0;
+    text-shadow: var(--shadow-sm);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-3xl);
+    }
+  }
+`
+
+export const HeroSubtitle = styled.p`
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-md) 0;
+  opacity: 0.95;
+`
+
+export const HeroDescription = styled.p`
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+`
+
+export const Overview = styled.section`
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: var(--font-size-3xl);
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+`
+
+export const LearningGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+`
+
+export const LearningCard = styled.div`
+  background: var(--bg-primary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--bg-tertiary);
+  transition: all var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+`
+
+export const TableOfContents = styled.section`
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background: var(--bg-secondary);
+  margin: 0;
+
+  h2 {
+    font-size: var(--font-size-3xl);
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xl);
+  }
+`
+
+export const ChaptersGrid = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--spacing-xl);
+`
+
+export const ChapterGroup = styled.div`
+  h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--bg-tertiary);
+  }
+`
+
+export const Chapters = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+`
+
+export const ChapterLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  border: 1px solid var(--bg-tertiary);
+  transition: all var(--transition-normal);
+
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent-hover);
+  }
+
+  h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: var(--line-height-normal);
+
+export const ChapterNumber = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  border-radius: var(--border-radius-md);
+  flex-shrink: 0;
+`
+
+export const Duration = styled.span`
+  background: var(--color-gray-100);
+  color: var(--text-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+`
+
+export const GettingStarted = styled.section`
+  text-align: center;
+  padding: var(--spacing-4xl) var(--spacing-lg);
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: var(--font-size-3xl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  p {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--spacing-2xl);
+  }
+`
+
+export const StartButton = styled(Link)`
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-all);
+  box-shadow: var(--shadow-md);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`

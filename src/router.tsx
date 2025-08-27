@@ -1,4 +1,5 @@
 import { lazy } from 'react'
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 // Lazy load pages for code splitting
