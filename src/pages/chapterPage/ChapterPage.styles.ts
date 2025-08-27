@@ -194,10 +194,12 @@ export const NavButton = styled(Link)`
   &:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    color: white;
   }
 
   &:active {
     transform: translateY(0);
+    color: white;
   }
 `
 
