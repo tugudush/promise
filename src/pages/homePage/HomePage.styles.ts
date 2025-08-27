@@ -8,6 +8,13 @@ export const HomePageContainer = styled.div`
   min-height: 100vh;
 `
 
+export const Container = styled.div`
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+`
+
 export const Hero = styled.header`
   text-align: center;
   padding: 6rem 2rem 4rem;
@@ -20,6 +27,7 @@ export const Hero = styled.header`
     font-weight: 800;
     margin: 0 0 1.5rem 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
   }
 `
 
@@ -27,7 +35,8 @@ export const HeroSubtitle = styled.p`
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
-  opacity: 0.95;
+  color: white;
+  opacity: 1;
 `
 
 export const HeroDescription = styled.p`
@@ -37,7 +46,8 @@ export const HeroDescription = styled.p`
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
-  opacity: 0.9;
+  color: white;
+  opacity: 1;
 `
 
 export const Overview = styled.section`
@@ -219,5 +229,68 @@ export const StartButton = styled(Link)`
 
   &:active {
     transform: translateY(0);
+  }
+`
+
+// Keep the remaining components that might still be used
+export const ChapterList = styled.section`
+  padding: 4rem 2rem;
+  background: #f9fafb;
+
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 3rem;
+  }
+`
+
+export const ChapterGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`
+
+export const ChapterCard = styled(Link)`
+  display: block;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #667eea;
+  }
+`
+
+export const ChapterHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+`
+
+export const ChapterInfo = styled.div`
+  flex: 1;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
   }
 `

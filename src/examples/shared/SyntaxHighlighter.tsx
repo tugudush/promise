@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -66,4 +68,8 @@ function CodeSyntaxHighlighter({
   )
 }
 
-export default CodeSyntaxHighlighter
+// memo is still useful here because:
+// 1. Syntax highlighting is computationally expensive
+// 2. Component receives frequently changing string content
+// 3. Manual optimization provides better performance than React Compiler for this use case
+export default memo(CodeSyntaxHighlighter)

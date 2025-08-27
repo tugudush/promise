@@ -1,9 +1,8 @@
+import { Suspense, lazy } from 'react'
+
 import { useParams } from 'react-router-dom'
 
-import Chapter01Content from '@/examples/chapter01/Chapter01Content'
-import Chapter02Content from '@/examples/chapter02/Chapter02Content'
-import Chapter03Content from '@/examples/chapter03/Chapter03Content'
-import Chapter04Content from '@/examples/chapter04/Chapter04Content'
+import { LoadingSpinner } from '@/components'
 
 import {
   BackHome,
@@ -25,6 +24,20 @@ import {
   NavButton,
   NavLink,
 } from './ChapterPage.styles'
+
+// Lazy load chapter content components for better code splitting
+const Chapter01Content = lazy(
+  () => import('@/examples/chapter01/Chapter01Content')
+)
+const Chapter02Content = lazy(
+  () => import('@/examples/chapter02/Chapter02Content')
+)
+const Chapter03Content = lazy(
+  () => import('@/examples/chapter03/Chapter03Content')
+)
+const Chapter04Content = lazy(
+  () => import('@/examples/chapter04/Chapter04Content')
+)
 
 function ChapterPage() {
   const { chapterId } = useParams()
@@ -138,30 +151,34 @@ function ChapterPage() {
       </ChapterHeader>
 
       <ChapterContent>
-        {chapterId === '1' ? (
-          <Chapter01Content />
-        ) : chapterId === '2' ? (
-          <Chapter02Content />
-        ) : chapterId === '3' ? (
-          <Chapter03Content />
-        ) : chapterId === '4' ? (
-          <Chapter04Content />
-        ) : (
-          <ComingSoon>
-            <h2>🚧 Content Coming Soon</h2>
-            <p>
-              This chapter is currently under development. The tutorial content
-              will include:
-            </p>
-            <ul>
-              <li>Interactive code examples</li>
-              <li>Step-by-step explanations</li>
-              <li>Hands-on exercises</li>
-              <li>Real-world React patterns</li>
-            </ul>
-            <p>Check back soon for the complete tutorial content!</p>
-          </ComingSoon>
-        )}
+        <Suspense
+          fallback={<LoadingSpinner message='Loading chapter content...' />}
+        >
+          {chapterId === '1' ? (
+            <Chapter01Content />
+          ) : chapterId === '2' ? (
+            <Chapter02Content />
+          ) : chapterId === '3' ? (
+            <Chapter03Content />
+          ) : chapterId === '4' ? (
+            <Chapter04Content />
+          ) : (
+            <ComingSoon>
+              <h2>🚧 Content Coming Soon</h2>
+              <p>
+                This chapter is currently under development. The tutorial
+                content will include:
+              </p>
+              <ul>
+                <li>Interactive code examples</li>
+                <li>Step-by-step explanations</li>
+                <li>Hands-on exercises</li>
+                <li>Real-world React patterns</li>
+              </ul>
+              <p>Check back soon for the complete tutorial content!</p>
+            </ComingSoon>
+          )}
+        </Suspense>
       </ChapterContent>
 
       <ChapterNavigation>

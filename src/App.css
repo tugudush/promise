@@ -1,30 +1,57 @@
+/* App-specific styles using design system variables */
 .app {
   width: 100%;
   min-height: 100vh;
-  background: #ffffff;
-  color: #333;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Code styling for tutorial examples */
-code {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
-  background: #f1f5f9;
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-  font-size: 0.9em;
+/* Tutorial-specific code styling */
+.tutorial-code {
+  font-family: var(--font-family-mono);
+  background: var(--bg-tertiary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
 }
 
-pre {
-  background: #1e293b;
-  color: #e2e8f0;
-  padding: 1rem;
-  border-radius: 8px;
+.tutorial-pre {
+  background: var(--bg-code);
+  color: var(--text-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
   overflow-x: auto;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  margin: var(--spacing-md) 0;
 }
 
-pre code {
-  background: none;
+.tutorial-pre .tutorial-code {
+  background: transparent;
   padding: 0;
   color: inherit;
+}
+
+/* Loading and error states */
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: var(--text-secondary);
+}
+
+.app-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-error);
 }

@@ -1,6 +1,10 @@
+import { lazy } from 'react'
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { ChapterPage, HomePage } from '@/pages'
+// Lazy load pages for code splitting
+const HomePage = lazy(() => import('@/pages/homePage'))
+const ChapterPage = lazy(() => import('@/pages/chapterPage'))
 
 const router = createBrowserRouter([
   {
