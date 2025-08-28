@@ -23,7 +23,9 @@ interface DashboardData {
  * Shows dashboard loading scenario with multiple concurrent API calls
  */
 function PromiseAllDemo() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null)
   const [error, setError] = useState<string>('')
   const [executionTime, setExecutionTime] = useState<number>(0)
@@ -128,27 +130,44 @@ function PromiseAllDemo() {
       <ExampleTitle>Promise.all() - Parallel Execution</ExampleTitle>
 
       <p>
-        <code>Promise.all()</code> executes multiple promises in parallel and waits for
-        all of them to resolve. It's perfect for loading dashboard data where you need
-        multiple pieces of information simultaneously.
+        <code>Promise.all()</code> executes multiple promises in parallel and
+        waits for all of them to resolve. It's perfect for loading dashboard
+        data where you need multiple pieces of information simultaneously.
       </p>
 
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li><strong>Parallel Execution:</strong> All promises start immediately</li>
-          <li><strong>All-or-Nothing:</strong> If any promise rejects, the entire operation fails</li>
-          <li><strong>Order Preserved:</strong> Results array matches input array order</li>
-          <li><strong>Performance:</strong> Total time = longest individual request (not sum)</li>
+          <li>
+            <strong>Parallel Execution:</strong> All promises start immediately
+          </li>
+          <li>
+            <strong>All-or-Nothing:</strong> If any promise rejects, the entire
+            operation fails
+          </li>
+          <li>
+            <strong>Order Preserved:</strong> Results array matches input array
+            order
+          </li>
+          <li>
+            <strong>Performance:</strong> Total time = longest individual
+            request (not sum)
+          </li>
         </ul>
       </ImportantNote>
 
       <DemoContainer>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <DemoButton onClick={loadDashboardDataSuccess} disabled={status === 'loading'}>
+          <DemoButton
+            onClick={loadDashboardDataSuccess}
+            disabled={status === 'loading'}
+          >
             Load Dashboard (Success)
           </DemoButton>
-          <DemoButton onClick={loadDashboardDataWithError} disabled={status === 'loading'}>
+          <DemoButton
+            onClick={loadDashboardDataWithError}
+            disabled={status === 'loading'}
+          >
             Load Dashboard (With Error)
           </DemoButton>
         </div>
@@ -156,14 +175,15 @@ function PromiseAllDemo() {
         <StatusIndicator status={status}>
           <strong>Status:</strong> {status}
           {executionTime > 0 && (
-            <span> | <strong>Execution Time:</strong> {executionTime}ms</span>
+            <span>
+              {' '}
+              | <strong>Execution Time:</strong> {executionTime}ms
+            </span>
           )}
         </StatusIndicator>
 
         {dashboardData && (
-          <DemoOutput>
-            {JSON.stringify(dashboardData, null, 2)}
-          </DemoOutput>
+          <DemoOutput>{JSON.stringify(dashboardData, null, 2)}</DemoOutput>
         )}
 
         {error && (
@@ -175,7 +195,7 @@ function PromiseAllDemo() {
 
       <h4>React Implementation</h4>
 
-      <CodeSyntaxHighlighter language="typescript">
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Dashboard component using Promise.all for parallel loading
 function Dashboard() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -222,16 +242,29 @@ function Dashboard() {
       <h4>When to Use Promise.all()</h4>
 
       <ul>
-        <li><strong>Dashboard Loading:</strong> Load multiple independent data sources</li>
-        <li><strong>Batch Operations:</strong> Process multiple items simultaneously</li>
-        <li><strong>Resource Fetching:</strong> Load CSS, images, and data in parallel</li>
-        <li><strong>Form Validation:</strong> Run multiple async validations simultaneously</li>
+        <li>
+          <strong>Dashboard Loading:</strong> Load multiple independent data
+          sources
+        </li>
+        <li>
+          <strong>Batch Operations:</strong> Process multiple items
+          simultaneously
+        </li>
+        <li>
+          <strong>Resource Fetching:</strong> Load CSS, images, and data in
+          parallel
+        </li>
+        <li>
+          <strong>Form Validation:</strong> Run multiple async validations
+          simultaneously
+        </li>
       </ul>
 
       <ImportantNote>
-        <strong>Caution:</strong> Promise.all() fails fast. If any promise rejects,
-        the entire operation fails immediately, even if other promises would have
-        succeeded. Use Promise.allSettled() if you need partial results.
+        <strong>Caution:</strong> Promise.all() fails fast. If any promise
+        rejects, the entire operation fails immediately, even if other promises
+        would have succeeded. Use Promise.allSettled() if you need partial
+        results.
       </ImportantNote>
     </DemoSection>
   )

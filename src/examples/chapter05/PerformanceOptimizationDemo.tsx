@@ -25,11 +25,15 @@ interface InfiniteScrollItem {
  * Shows cancellation, memoization, and efficient data loading patterns
  */
 function PerformanceOptimizationDemo() {
-  const [cancelDemo, setCancelDemo] = useState<'idle' | 'loading' | 'cancelled' | 'success' | 'error'>('idle')
+  const [cancelDemo, setCancelDemo] = useState<
+    'idle' | 'loading' | 'cancelled' | 'success' | 'error'
+  >('idle')
   const [cancelResult, setCancelResult] = useState('')
   const abortControllerRef = useRef<AbortController | null>(null)
 
-  const [memoDemo, setMemoDemo] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [memoDemo, setMemoDemo] = useState<'idle' | 'loading' | 'success'>(
+    'idle'
+  )
   const [searchTerm, setSearchTerm] = useState('react')
   const [searchResults, setSearchResults] = useState<string[]>([])
 
@@ -42,7 +46,7 @@ function PerformanceOptimizationDemo() {
   const startCancellableRequest = async () => {
     setCancelDemo('loading')
     setCancelResult('')
-    
+
     // Create new AbortController for this request
     const controller = new AbortController()
     abortControllerRef.current = controller
@@ -74,7 +78,9 @@ function PerformanceOptimizationDemo() {
         setCancelResult('Request was cancelled by user')
         setCancelDemo('cancelled')
       } else {
-        setCancelResult(error instanceof Error ? error.message : 'Unknown error')
+        setCancelResult(
+          error instanceof Error ? error.message : 'Unknown error'
+        )
         setCancelDemo('error')
       }
     } finally {
@@ -93,10 +99,10 @@ function PerformanceOptimizationDemo() {
     if (!searchTerm.trim()) return []
 
     setMemoDemo('loading')
-    
+
     // Simulate expensive search operation
     await simulateApiCall(1500)
-    
+
     const mockResults = [
       `${searchTerm} tutorial`,
       `Advanced ${searchTerm} patterns`,
@@ -104,7 +110,7 @@ function PerformanceOptimizationDemo() {
       `${searchTerm} performance tips`,
       `Building with ${searchTerm}`,
     ]
-    
+
     setMemoDemo('success')
     return mockResults
   }, [searchTerm])
@@ -112,44 +118,50 @@ function PerformanceOptimizationDemo() {
   // Update search results when memoized search completes
   useEffect(() => {
     if (expensiveSearch) {
-      expensiveSearch.then(results => {
+      expensiveSearch.then((results) => {
         setSearchResults(results)
       })
     }
   }, [expensiveSearch])
 
   // Demo 3: Efficient infinite scroll with pagination
-  const loadMoreItems = useCallback(async (page: number) => {
-    if (scrollLoading || !hasMore) return
+  const loadMoreItems = useCallback(
+    async (page: number) => {
+      if (scrollLoading || !hasMore) return
 
-    setScrollLoading(true)
+      setScrollLoading(true)
 
-    try {
-      await simulateApiCall(800)
+      try {
+        await simulateApiCall(800)
 
-      // Simulate pagination - stop after page 5
-      if (page > 5) {
+        // Simulate pagination - stop after page 5
+        if (page > 5) {
+          setHasMore(false)
+          setScrollLoading(false)
+          return
+        }
+
+        const newItems: InfiniteScrollItem[] = Array.from(
+          { length: 10 },
+          (_, i) => ({
+            id: (page - 1) * 10 + i,
+            title: `Item ${(page - 1) * 10 + i + 1}`,
+            description: `Description for item ${(page - 1) * 10 + i + 1}`,
+            timestamp: new Date().toLocaleTimeString(),
+          })
+        )
+
+        setScrollItems((prev) => [...prev, ...newItems])
+        setScrollPage(page + 1)
+      } catch {
+        // Handle error - in production, you might want to show user feedback
         setHasMore(false)
+      } finally {
         setScrollLoading(false)
-        return
       }
-
-      const newItems: InfiniteScrollItem[] = Array.from({ length: 10 }, (_, i) => ({
-        id: (page - 1) * 10 + i,
-        title: `Item ${(page - 1) * 10 + i + 1}`,
-        description: `Description for item ${(page - 1) * 10 + i + 1}`,
-        timestamp: new Date().toLocaleTimeString(),
-      }))
-
-      setScrollItems(prev => [...prev, ...newItems])
-      setScrollPage(page + 1)
-    } catch {
-      // Handle error - in production, you might want to show user feedback
-      setHasMore(false)
-    } finally {
-      setScrollLoading(false)
-    }
-  }, [scrollLoading, hasMore])
+    },
+    [scrollLoading, hasMore]
+  )
 
   // Load initial items
   useEffect(() => {
@@ -160,7 +172,7 @@ function PerformanceOptimizationDemo() {
 
   // Debounced search to avoid excessive API calls
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm)
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm)
@@ -181,17 +193,27 @@ function PerformanceOptimizationDemo() {
       <ExampleTitle>Performance Optimization Techniques</ExampleTitle>
 
       <p>
-        Learn advanced techniques for optimizing async operations in React applications,
-        including request cancellation, memoization, and efficient data loading patterns.
+        Learn advanced techniques for optimizing async operations in React
+        applications, including request cancellation, memoization, and efficient
+        data loading patterns.
       </p>
 
       <ImportantNote>
         <strong>Key Performance Strategies:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li><strong>Request Cancellation:</strong> Prevent memory leaks and unnecessary processing</li>
-          <li><strong>Memoization:</strong> Cache expensive async computations</li>
-          <li><strong>Debouncing:</strong> Reduce API calls for user input</li>
-          <li><strong>Efficient Pagination:</strong> Load data incrementally</li>
+          <li>
+            <strong>Request Cancellation:</strong> Prevent memory leaks and
+            unnecessary processing
+          </li>
+          <li>
+            <strong>Memoization:</strong> Cache expensive async computations
+          </li>
+          <li>
+            <strong>Debouncing:</strong> Reduce API calls for user input
+          </li>
+          <li>
+            <strong>Efficient Pagination:</strong> Load data incrementally
+          </li>
         </ul>
       </ImportantNote>
 
@@ -199,38 +221,42 @@ function PerformanceOptimizationDemo() {
       <div style={{ marginBottom: '2rem' }}>
         <h4>1. Request Cancellation with AbortController</h4>
         <p>
-          Cancel long-running requests to prevent memory leaks and unnecessary processing
-          when components unmount or users navigate away.
+          Cancel long-running requests to prevent memory leaks and unnecessary
+          processing when components unmount or users navigate away.
         </p>
 
         <DemoContainer>
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <DemoButton 
-              onClick={startCancellableRequest} 
+            <DemoButton
+              onClick={startCancellableRequest}
               disabled={cancelDemo === 'loading'}
             >
               Start Long Request (3s)
             </DemoButton>
-            <DemoButton 
-              onClick={cancelRequest} 
+            <DemoButton
+              onClick={cancelRequest}
               disabled={cancelDemo !== 'loading'}
             >
               Cancel Request
             </DemoButton>
           </div>
 
-          <StatusIndicator status={cancelDemo === 'loading' ? 'pending' : cancelDemo === 'success' ? 'fulfilled' : 'rejected'}>
+          <StatusIndicator
+            status={
+              cancelDemo === 'loading'
+                ? 'pending'
+                : cancelDemo === 'success'
+                  ? 'fulfilled'
+                  : 'rejected'
+            }
+          >
             <strong>Status:</strong> {cancelDemo}
           </StatusIndicator>
 
-          {cancelResult && (
-            <DemoOutput>
-              {cancelResult}
-            </DemoOutput>
-          )}
+          {cancelResult && <DemoOutput>{cancelResult}</DemoOutput>}
         </DemoContainer>
 
-        <CodeSyntaxHighlighter language="typescript">
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Request cancellation with AbortController
 function CancellableRequest() {
   const [loading, setLoading] = useState(false)
@@ -303,7 +329,7 @@ function CancellableRequest() {
               Search term (debounced):
             </label>
             <input
-              type="text"
+              type='text'
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{
@@ -315,7 +341,9 @@ function CancellableRequest() {
             />
           </div>
 
-          <StatusIndicator status={memoDemo === 'loading' ? 'pending' : 'fulfilled'}>
+          <StatusIndicator
+            status={memoDemo === 'loading' ? 'pending' : 'fulfilled'}
+          >
             <strong>Search Status:</strong> {memoDemo}
             {debouncedSearchTerm !== searchTerm && (
               <span> | Debouncing...</span>
@@ -323,13 +351,11 @@ function CancellableRequest() {
           </StatusIndicator>
 
           {searchResults.length > 0 && (
-            <DemoOutput>
-              {searchResults.join('\n')}
-            </DemoOutput>
+            <DemoOutput>{searchResults.join('\n')}</DemoOutput>
           )}
         </DemoContainer>
 
-        <CodeSyntaxHighlighter language="typescript">
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Memoized search with debouncing
 function SearchComponent() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -374,18 +400,19 @@ function SearchComponent() {
       <div>
         <h4>3. Efficient Infinite Scroll</h4>
         <p>
-          Implement performant infinite scrolling with proper cleanup and
-          memory management for large datasets.
+          Implement performant infinite scrolling with proper cleanup and memory
+          management for large datasets.
         </p>
 
         <DemoContainer>
           <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-            <DemoButton onClick={() => loadMoreItems(scrollPage)} disabled={scrollLoading || !hasMore}>
+            <DemoButton
+              onClick={() => loadMoreItems(scrollPage)}
+              disabled={scrollLoading || !hasMore}
+            >
               Load More Items
             </DemoButton>
-            <DemoButton onClick={resetInfiniteScroll}>
-              Reset List
-            </DemoButton>
+            <DemoButton onClick={resetInfiniteScroll}>Reset List</DemoButton>
           </div>
 
           <StatusIndicator status={scrollLoading ? 'pending' : 'fulfilled'}>
@@ -394,26 +421,37 @@ function SearchComponent() {
             {scrollLoading && <span> | Loading...</span>}
           </StatusIndicator>
 
-          <div style={{ 
-            maxHeight: '300px', 
-            overflow: 'auto', 
-            border: '1px solid #d1d5db', 
-            borderRadius: '4px',
-            padding: '1rem',
-          }}>
-            {scrollItems.map(item => (
-              <div key={item.id} style={{ 
-                padding: '0.5rem 0', 
-                borderBottom: '1px solid #f3f4f6' 
-              }}>
+          <div
+            style={{
+              maxHeight: '300px',
+              overflow: 'auto',
+              border: '1px solid #d1d5db',
+              borderRadius: '4px',
+              padding: '1rem',
+            }}
+          >
+            {scrollItems.map((item) => (
+              <div
+                key={item.id}
+                style={{
+                  padding: '0.5rem 0',
+                  borderBottom: '1px solid #f3f4f6',
+                }}
+              >
                 <strong>{item.title}</strong>
-                <p style={{ margin: '0.25rem 0', color: '#6b7280', fontSize: '0.875rem' }}>
+                <p
+                  style={{
+                    margin: '0.25rem 0',
+                    color: '#6b7280',
+                    fontSize: '0.875rem',
+                  }}
+                >
                   {item.description}
                 </p>
                 <small style={{ color: '#9ca3af' }}>{item.timestamp}</small>
               </div>
             ))}
-            
+
             {scrollLoading && (
               <div style={{ textAlign: 'center', padding: '1rem' }}>
                 Loading more items...
@@ -422,7 +460,7 @@ function SearchComponent() {
           </div>
         </DemoContainer>
 
-        <CodeSyntaxHighlighter language="typescript">
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Efficient infinite scroll implementation
 function InfiniteScrollList() {
   const [items, setItems] = useState([])
@@ -487,9 +525,17 @@ function InfiniteScrollList() {
         <strong>Pro Tips:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
           <li>Always cleanup AbortControllers on component unmount</li>
-          <li>Use useMemo for expensive computations, useCallback for event handlers</li>
-          <li>Implement proper debouncing for user input (300-500ms is optimal)</li>
-          <li>Consider virtualization for very large lists (react-window/react-virtualized)</li>
+          <li>
+            Use useMemo for expensive computations, useCallback for event
+            handlers
+          </li>
+          <li>
+            Implement proper debouncing for user input (300-500ms is optimal)
+          </li>
+          <li>
+            Consider virtualization for very large lists
+            (react-window/react-virtualized)
+          </li>
           <li>Monitor memory usage and implement cleanup strategies</li>
         </ul>
       </SuccessNote>

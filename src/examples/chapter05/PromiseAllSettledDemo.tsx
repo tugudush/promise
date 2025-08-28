@@ -31,9 +31,12 @@ function PromiseAllSettledDemo() {
   const [totalTime, setTotalTime] = useState<number>(0)
 
   // Simulate different service health checks with varying success rates
-  const checkUserService = async (): Promise<{ service: string; healthy: boolean }> => {
+  const checkUserService = async (): Promise<{
+    service: string
+    healthy: boolean
+  }> => {
     await simulateApiCall(600)
-    
+
     // 90% success rate
     if (Math.random() > 0.1) {
       return { service: 'User Service', healthy: true }
@@ -42,9 +45,12 @@ function PromiseAllSettledDemo() {
     }
   }
 
-  const checkPaymentService = async (): Promise<{ service: string; healthy: boolean }> => {
+  const checkPaymentService = async (): Promise<{
+    service: string
+    healthy: boolean
+  }> => {
     await simulateApiCall(800)
-    
+
     // 70% success rate (less reliable)
     if (Math.random() > 0.3) {
       return { service: 'Payment Service', healthy: true }
@@ -53,9 +59,12 @@ function PromiseAllSettledDemo() {
     }
   }
 
-  const checkNotificationService = async (): Promise<{ service: string; healthy: boolean }> => {
+  const checkNotificationService = async (): Promise<{
+    service: string
+    healthy: boolean
+  }> => {
     await simulateApiCall(400)
-    
+
     // 95% success rate (very reliable)
     if (Math.random() > 0.05) {
       return { service: 'Notification Service', healthy: true }
@@ -64,14 +73,19 @@ function PromiseAllSettledDemo() {
     }
   }
 
-  const checkAnalyticsService = async (): Promise<{ service: string; healthy: boolean }> => {
+  const checkAnalyticsService = async (): Promise<{
+    service: string
+    healthy: boolean
+  }> => {
     await simulateApiCall(1000)
-    
+
     // 60% success rate (unreliable)
     if (Math.random() > 0.4) {
       return { service: 'Analytics Service', healthy: true }
     } else {
-      throw new Error('Analytics Service: Data warehouse maintenance in progress')
+      throw new Error(
+        'Analytics Service: Data warehouse maintenance in progress'
+      )
     }
   }
 
@@ -93,13 +107,19 @@ function PromiseAllSettledDemo() {
 
     // Transform results into our display format
     const healthData: HealthCheckResult[] = results.map((result, index) => {
-      const services = ['User Service', 'Payment Service', 'Notification Service', 'Analytics Service']
-      
+      const services = [
+        'User Service',
+        'Payment Service',
+        'Notification Service',
+        'Analytics Service',
+      ]
+
       return {
         service: services[index],
         status: result.status,
         value: result.status === 'fulfilled' ? result.value : undefined,
-        reason: result.status === 'rejected' ? result.reason.message : undefined,
+        reason:
+          result.status === 'rejected' ? result.reason.message : undefined,
         responseTime: [600, 800, 400, 1000][index], // Simulated response times
       }
     })
@@ -111,7 +131,7 @@ function PromiseAllSettledDemo() {
   const getHealthSummary = () => {
     if (healthResults.length === 0) return null
 
-    const healthy = healthResults.filter(r => r.status === 'fulfilled').length
+    const healthy = healthResults.filter((r) => r.status === 'fulfilled').length
     const total = healthResults.length
     const percentage = Math.round((healthy / total) * 100)
 
@@ -119,8 +139,11 @@ function PromiseAllSettledDemo() {
       healthy,
       total,
       percentage,
-      critical: healthResults.filter(r => r.status === 'rejected' && 
-        (r.service.includes('User') || r.service.includes('Payment'))).length
+      critical: healthResults.filter(
+        (r) =>
+          r.status === 'rejected' &&
+          (r.service.includes('User') || r.service.includes('Payment'))
+      ).length,
     }
   }
 
@@ -128,21 +151,34 @@ function PromiseAllSettledDemo() {
 
   return (
     <DemoSection>
-      <ExampleTitle>Promise.allSettled() - Graceful Partial Failures</ExampleTitle>
+      <ExampleTitle>
+        Promise.allSettled() - Graceful Partial Failures
+      </ExampleTitle>
 
       <p>
-        <code>Promise.allSettled()</code> waits for all promises to settle (resolve or reject)
-        and returns all results. Unlike Promise.all(), it never rejects and always provides
-        complete information about successes and failures.
+        <code>Promise.allSettled()</code> waits for all promises to settle
+        (resolve or reject) and returns all results. Unlike Promise.all(), it
+        never rejects and always provides complete information about successes
+        and failures.
       </p>
 
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li><strong>Never Rejects:</strong> Always resolves with all results</li>
-          <li><strong>Complete Information:</strong> Get both successes and failures</li>
-          <li><strong>Graceful Degradation:</strong> Continue with partial data</li>
-          <li><strong>Perfect for Health Checks:</strong> Monitor multiple services</li>
+          <li>
+            <strong>Never Rejects:</strong> Always resolves with all results
+          </li>
+          <li>
+            <strong>Complete Information:</strong> Get both successes and
+            failures
+          </li>
+          <li>
+            <strong>Graceful Degradation:</strong> Continue with partial data
+          </li>
+          <li>
+            <strong>Perfect for Health Checks:</strong> Monitor multiple
+            services
+          </li>
         </ul>
       </ImportantNote>
 
@@ -151,24 +187,45 @@ function PromiseAllSettledDemo() {
           Run System Health Check
         </DemoButton>
 
-        <StatusIndicator status={status === 'loading' ? 'pending' : 'fulfilled'}>
-          <strong>Status:</strong> {status === 'loading' ? 'Checking services...' : `Complete in ${totalTime}ms`}
+        <StatusIndicator
+          status={status === 'loading' ? 'pending' : 'fulfilled'}
+        >
+          <strong>Status:</strong>{' '}
+          {status === 'loading'
+            ? 'Checking services...'
+            : `Complete in ${totalTime}ms`}
         </StatusIndicator>
 
         {summary && (
-          <div style={{ 
-            background: summary.percentage >= 75 ? '#dcfce7' : summary.percentage >= 50 ? '#fef3c7' : '#fee2e2',
-            padding: '1rem',
-            borderRadius: '8px',
-            margin: '1rem 0',
-            border: `1px solid ${summary.percentage >= 75 ? '#10b981' : summary.percentage >= 50 ? '#f59e0b' : '#ef4444'}`
-          }}>
+          <div
+            style={{
+              background:
+                summary.percentage >= 75
+                  ? '#dcfce7'
+                  : summary.percentage >= 50
+                    ? '#fef3c7'
+                    : '#fee2e2',
+              padding: '1rem',
+              borderRadius: '8px',
+              margin: '1rem 0',
+              border: `1px solid ${summary.percentage >= 75 ? '#10b981' : summary.percentage >= 50 ? '#f59e0b' : '#ef4444'}`,
+            }}
+          >
             <h4 style={{ margin: '0 0 0.5rem 0' }}>System Health Summary</h4>
             <p style={{ margin: '0.25rem 0' }}>
-              <strong>{summary.healthy}/{summary.total}</strong> services healthy ({summary.percentage}%)
+              <strong>
+                {summary.healthy}/{summary.total}
+              </strong>{' '}
+              services healthy ({summary.percentage}%)
             </p>
             {summary.critical > 0 && (
-              <p style={{ margin: '0.25rem 0', color: '#991b1b', fontWeight: '600' }}>
+              <p
+                style={{
+                  margin: '0.25rem 0',
+                  color: '#991b1b',
+                  fontWeight: '600',
+                }}
+              >
                 ⚠️ {summary.critical} critical service(s) down
               </p>
             )}
@@ -177,22 +234,26 @@ function PromiseAllSettledDemo() {
 
         {healthResults.length > 0 && (
           <DemoOutput>
-            {healthResults.map((result, index) => (
-              `${result.service}:
+            {healthResults
+              .map(
+                (result, index) =>
+                  `${result.service}:
   Status: ${result.status}
-  ${result.status === 'fulfilled' 
-    ? `✅ Healthy - Response: ${result.responseTime}ms`
-    : `❌ Failed - ${result.reason}`
+  ${
+    result.status === 'fulfilled'
+      ? `✅ Healthy - Response: ${result.responseTime}ms`
+      : `❌ Failed - ${result.reason}`
   }
 ${index < healthResults.length - 1 ? '\n' : ''}`
-            )).join('')}
+              )
+              .join('')}
           </DemoOutput>
         )}
       </DemoContainer>
 
       <h4>React Implementation</h4>
 
-      <CodeSyntaxHighlighter language="typescript">
+      <CodeSyntaxHighlighter language='typescript'>
         {`// System health dashboard using Promise.allSettled
 function HealthDashboard() {
   const [healthStatus, setHealthStatus] = useState<HealthCheckResult[]>([])
@@ -255,17 +316,29 @@ function HealthDashboard() {
       <h4>When to Use Promise.allSettled()</h4>
 
       <ul>
-        <li><strong>System Health Checks:</strong> Monitor multiple services independently</li>
-        <li><strong>Batch Processing:</strong> Process items where some might fail</li>
-        <li><strong>Feature Flags:</strong> Load multiple configuration sources</li>
-        <li><strong>Analytics Collection:</strong> Send data to multiple endpoints</li>
-        <li><strong>Social Media Posting:</strong> Post to multiple platforms</li>
+        <li>
+          <strong>System Health Checks:</strong> Monitor multiple services
+          independently
+        </li>
+        <li>
+          <strong>Batch Processing:</strong> Process items where some might fail
+        </li>
+        <li>
+          <strong>Feature Flags:</strong> Load multiple configuration sources
+        </li>
+        <li>
+          <strong>Analytics Collection:</strong> Send data to multiple endpoints
+        </li>
+        <li>
+          <strong>Social Media Posting:</strong> Post to multiple platforms
+        </li>
       </ul>
 
       <SuccessNote>
-        <strong>Best Practice:</strong> Use Promise.allSettled() when you need to continue
-        operation even if some promises fail. It provides complete visibility into
-        both successes and failures, enabling graceful degradation strategies.
+        <strong>Best Practice:</strong> Use Promise.allSettled() when you need
+        to continue operation even if some promises fail. It provides complete
+        visibility into both successes and failures, enabling graceful
+        degradation strategies.
       </SuccessNote>
     </DemoSection>
   )

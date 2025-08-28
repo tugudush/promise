@@ -18,25 +18,31 @@ import { simulateApiCall } from '@/utils/async-helpers'
  * Shows how to build reusable async patterns for React applications
  */
 function CustomPromisePatternsDemo() {
-  const [retryStatus, setRetryStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [retryStatus, setRetryStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
   const [retryResult, setRetryResult] = useState('')
   const [retryAttempts, setRetryAttempts] = useState(0)
 
-  const [batchStatus, setBatchStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [batchStatus, setBatchStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
   const [batchResults, setBatchResults] = useState<string[]>([])
 
-  const [chainStatus, setChainStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [chainStatus, setChainStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
   const [chainProgress, setChainProgress] = useState<string[]>([])
 
   // Demo function that fails randomly
   const unreliableOperation = async (): Promise<string> => {
     await simulateApiCall(500 + Math.random() * 500)
-    
+
     // 60% failure rate
     if (Math.random() > 0.4) {
       throw new Error('Random service failure')
     }
-    
+
     return `Success! Operation completed at ${new Date().toLocaleTimeString()}`
   }
 
@@ -61,14 +67,16 @@ function CustomPromisePatternsDemo() {
           return
         } catch (error) {
           lastError = error as Error
-          
+
           if (attempt === maxRetries) {
-            throw new Error(`Failed after ${maxRetries} attempts: ${lastError.message}`)
+            throw new Error(
+              `Failed after ${maxRetries} attempts: ${lastError.message}`
+            )
           }
 
           // Exponential backoff delay
           const delay = initialDelay * Math.pow(backoffMultiplier, attempt - 1)
-          await new Promise(resolve => setTimeout(resolve, delay))
+          await new Promise((resolve) => setTimeout(resolve, delay))
         }
       }
     } catch (error) {
@@ -95,21 +103,23 @@ function CustomPromisePatternsDemo() {
     try {
       for (let i = 0; i < items.length; i += batchSize) {
         const batch = items.slice(i, i + batchSize)
-        
+
         // Process batch in parallel
         const batchResults = await Promise.all(batch.map(processItem))
         results.push(...batchResults)
-        
+
         // Delay between batches to avoid rate limits
         if (i + batchSize < items.length) {
-          await new Promise(resolve => setTimeout(resolve, delay))
+          await new Promise((resolve) => setTimeout(resolve, delay))
         }
       }
 
       setBatchResults(results)
       setBatchStatus('success')
     } catch (error) {
-      setBatchResults([error instanceof Error ? error.message : 'Batch processing failed'])
+      setBatchResults([
+        error instanceof Error ? error.message : 'Batch processing failed',
+      ])
       setBatchStatus('error')
     }
   }
@@ -132,13 +142,16 @@ function CustomPromisePatternsDemo() {
         const task = tasks[i]
         await simulateApiCall(task.delay)
         const result = `${task.name} completed`
-        
-        setChainProgress(prev => [...prev, `Step ${i + 1}: ${result}`])
+
+        setChainProgress((prev) => [...prev, `Step ${i + 1}: ${result}`])
       }
-      
+
       setChainStatus('success')
     } catch (error) {
-      setChainProgress(prev => [...prev, `Error: ${error instanceof Error ? error.message : 'Unknown error'}`])
+      setChainProgress((prev) => [
+        ...prev,
+        `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      ])
       setChainStatus('error')
     }
   }
@@ -148,17 +161,27 @@ function CustomPromisePatternsDemo() {
       <ExampleTitle>Custom Promise Patterns</ExampleTitle>
 
       <p>
-        Learn to build reusable Promise utilities that solve common async challenges
-        in React applications. These patterns help create more robust and maintainable code.
+        Learn to build reusable Promise utilities that solve common async
+        challenges in React applications. These patterns help create more robust
+        and maintainable code.
       </p>
 
       <ImportantNote>
         <strong>Key Benefits of Custom Promise Utilities:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li><strong>Reusability:</strong> Write once, use everywhere</li>
-          <li><strong>Consistency:</strong> Standardized error handling and retry logic</li>
-          <li><strong>Maintainability:</strong> Centralized async logic</li>
-          <li><strong>Testing:</strong> Easier to test isolated utility functions</li>
+          <li>
+            <strong>Reusability:</strong> Write once, use everywhere
+          </li>
+          <li>
+            <strong>Consistency:</strong> Standardized error handling and retry
+            logic
+          </li>
+          <li>
+            <strong>Maintainability:</strong> Centralized async logic
+          </li>
+          <li>
+            <strong>Testing:</strong> Easier to test isolated utility functions
+          </li>
         </ul>
       </ImportantNote>
 
@@ -166,28 +189,40 @@ function CustomPromisePatternsDemo() {
       <div style={{ marginBottom: '2rem' }}>
         <h4>1. Retry with Exponential Backoff</h4>
         <p>
-          Automatically retry failed operations with increasing delays between attempts.
-          Perfect for handling transient network failures.
+          Automatically retry failed operations with increasing delays between
+          attempts. Perfect for handling transient network failures.
         </p>
 
         <DemoContainer>
-          <DemoButton onClick={testRetryPattern} disabled={retryStatus === 'loading'}>
+          <DemoButton
+            onClick={testRetryPattern}
+            disabled={retryStatus === 'loading'}
+          >
             Test Retry Pattern
           </DemoButton>
 
-          <StatusIndicator status={retryStatus === 'loading' ? 'pending' : retryStatus === 'success' ? 'fulfilled' : 'rejected'}>
+          <StatusIndicator
+            status={
+              retryStatus === 'loading'
+                ? 'pending'
+                : retryStatus === 'success'
+                  ? 'fulfilled'
+                  : 'rejected'
+            }
+          >
             <strong>Status:</strong> {retryStatus}
-            {retryAttempts > 0 && <span> | <strong>Attempts:</strong> {retryAttempts}</span>}
+            {retryAttempts > 0 && (
+              <span>
+                {' '}
+                | <strong>Attempts:</strong> {retryAttempts}
+              </span>
+            )}
           </StatusIndicator>
 
-          {retryResult && (
-            <DemoOutput>
-              {retryResult}
-            </DemoOutput>
-          )}
+          {retryResult && <DemoOutput>{retryResult}</DemoOutput>}
         </DemoContainer>
 
-        <CodeSyntaxHighlighter language="typescript">
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Retry utility with exponential backoff
 const retryWithBackoff = async <T>(
   operation: () => Promise<T>,
@@ -242,24 +277,41 @@ const fetchUserDataWithRetry = async () => {
         </p>
 
         <DemoContainer>
-          <DemoButton onClick={testBatchProcessing} disabled={batchStatus === 'loading'}>
+          <DemoButton
+            onClick={testBatchProcessing}
+            disabled={batchStatus === 'loading'}
+          >
             Process 10 Items in Batches
           </DemoButton>
 
-          <StatusIndicator status={batchStatus === 'loading' ? 'pending' : batchStatus === 'success' ? 'fulfilled' : 'rejected'}>
+          <StatusIndicator
+            status={
+              batchStatus === 'loading'
+                ? 'pending'
+                : batchStatus === 'success'
+                  ? 'fulfilled'
+                  : 'rejected'
+            }
+          >
             <strong>Status:</strong> {batchStatus}
-            {batchResults.length > 0 && <span> | <strong>Processed:</strong> {batchResults.length} items</span>}
+            {batchResults.length > 0 && (
+              <span>
+                {' '}
+                | <strong>Processed:</strong> {batchResults.length} items
+              </span>
+            )}
           </StatusIndicator>
 
           {batchResults.length > 0 && (
             <DemoOutput>
               {batchResults.slice(0, 5).join('\n')}
-              {batchResults.length > 5 && `\n... and ${batchResults.length - 5} more items`}
+              {batchResults.length > 5 &&
+                `\n... and ${batchResults.length - 5} more items`}
             </DemoOutput>
           )}
         </DemoContainer>
 
-        <CodeSyntaxHighlighter language="typescript">
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Batch processing utility
 const processBatch = async <T, R>(
   items: T[],
@@ -305,28 +357,42 @@ const uploadFiles = async (files: File[]) => {
       <div style={{ marginBottom: '2rem' }}>
         <h4>3. Sequential Execution (Waterfall)</h4>
         <p>
-          Execute promises sequentially where each step depends on the previous one.
-          Perfect for initialization sequences and dependent operations.
+          Execute promises sequentially where each step depends on the previous
+          one. Perfect for initialization sequences and dependent operations.
         </p>
 
         <DemoContainer>
-          <DemoButton onClick={testPromiseWaterfall} disabled={chainStatus === 'loading'}>
+          <DemoButton
+            onClick={testPromiseWaterfall}
+            disabled={chainStatus === 'loading'}
+          >
             Run Sequential Tasks
           </DemoButton>
 
-          <StatusIndicator status={chainStatus === 'loading' ? 'pending' : chainStatus === 'success' ? 'fulfilled' : 'rejected'}>
+          <StatusIndicator
+            status={
+              chainStatus === 'loading'
+                ? 'pending'
+                : chainStatus === 'success'
+                  ? 'fulfilled'
+                  : 'rejected'
+            }
+          >
             <strong>Status:</strong> {chainStatus}
-            {chainProgress.length > 0 && <span> | <strong>Steps completed:</strong> {chainProgress.length}</span>}
+            {chainProgress.length > 0 && (
+              <span>
+                {' '}
+                | <strong>Steps completed:</strong> {chainProgress.length}
+              </span>
+            )}
           </StatusIndicator>
 
           {chainProgress.length > 0 && (
-            <DemoOutput>
-              {chainProgress.join('\n')}
-            </DemoOutput>
+            <DemoOutput>{chainProgress.join('\n')}</DemoOutput>
           )}
         </DemoContainer>
 
-        <CodeSyntaxHighlighter language="typescript">
+        <CodeSyntaxHighlighter language='typescript'>
           {`// Sequential promise execution (waterfall)
 const promiseWaterfall = async <T>(
   tasks: (() => Promise<T>)[],
@@ -366,9 +432,10 @@ const initializeApp = async () => {
       </div>
 
       <SuccessNote>
-        <strong>Pro Tip:</strong> Combine these patterns for powerful async workflows.
-        For example, use batch processing with retry logic for resilient bulk operations,
-        or chain multiple retry operations in a waterfall sequence.
+        <strong>Pro Tip:</strong> Combine these patterns for powerful async
+        workflows. For example, use batch processing with retry logic for
+        resilient bulk operations, or chain multiple retry operations in a
+        waterfall sequence.
       </SuccessNote>
     </DemoSection>
   )

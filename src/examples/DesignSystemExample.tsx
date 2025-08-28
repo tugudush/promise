@@ -1,3 +1,5 @@
+import styled from '@emotion/styled'
+
 import {
   Button,
   Container,
@@ -10,7 +12,6 @@ import {
   spacing,
   typography,
 } from '@/design-system'
-import styled from '@emotion/styled'
 
 /**
  * Example Component - Demonstrates Design System Usage
@@ -19,7 +20,11 @@ import styled from '@emotion/styled'
 
 const ExampleSection = styled(Section)`
   margin: ${spacing[8]} auto;
-  background: linear-gradient(135deg, ${colors.secondary[50]} 0%, ${colors.secondary[100]} 100%);
+  background: linear-gradient(
+    135deg,
+    ${colors.secondary[50]} 0%,
+    ${colors.secondary[100]} 100%
+  );
 `
 
 const ButtonGrid = styled.div`
@@ -48,9 +53,9 @@ const ColorSwatch = styled.div`
 
 function DesignSystemExample() {
   return (
-    <Container size="large" padding="large">
-      <H1 align="center">Design System Example</H1>
-      <P align="center" color="secondary">
+    <Container size='large' padding='large'>
+      <H1 align='center'>Design System Example</H1>
+      <P align='center' color='secondary'>
         This component demonstrates how to use the design system effectively
       </P>
 
@@ -61,29 +66,29 @@ function DesignSystemExample() {
         </P>
 
         <ButtonGrid>
-          <Button variant="primary" size="small">
+          <Button variant='primary' size='small'>
             Small Primary
           </Button>
-          <Button variant="primary" size="medium">
+          <Button variant='primary' size='medium'>
             Medium Primary
           </Button>
-          <Button variant="primary" size="large">
+          <Button variant='primary' size='large'>
             Large Primary
           </Button>
-          <Button variant="primary" disabled>
+          <Button variant='primary' disabled>
             Disabled Primary
           </Button>
         </ButtonGrid>
 
         <ButtonGrid>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="success">Success</Button>
-          <Button variant="warning">Warning</Button>
-          <Button variant="error">Error</Button>
+          <Button variant='secondary'>Secondary</Button>
+          <Button variant='success'>Success</Button>
+          <Button variant='warning'>Warning</Button>
+          <Button variant='error'>Error</Button>
         </ButtonGrid>
 
         <ButtonGrid>
-          <Button variant="primary" fullWidth>
+          <Button variant='primary' fullWidth>
             Full Width Button
           </Button>
         </ButtonGrid>
@@ -92,22 +97,23 @@ function DesignSystemExample() {
       <ExampleSection>
         <H2>Typography Scale</H2>
         <P>
-          Consistent typography using design tokens for font sizes, weights, and spacing.
+          Consistent typography using design tokens for font sizes, weights, and
+          spacing.
         </P>
 
         <H1>Heading 1 - Main page title</H1>
         <H2>Heading 2 - Section title</H2>
-        <P>Paragraph - Regular body text with proper line height and spacing.</P>
-        <P size="small" color="secondary">
+        <P>
+          Paragraph - Regular body text with proper line height and spacing.
+        </P>
+        <P size='small' color='secondary'>
           Small paragraph - Secondary text for captions or metadata.
         </P>
       </ExampleSection>
 
       <ExampleSection>
         <H2>Color Palette</H2>
-        <P>
-          Primary color variations used throughout the application.
-        </P>
+        <P>Primary color variations used throughout the application.</P>
 
         <ColorPalette>
           <ColorSwatch style={{ background: colors.primary[100] }}>
@@ -130,37 +136,45 @@ function DesignSystemExample() {
 
       <ExampleSection>
         <H2>Spacing Scale</H2>
-        <P>
-          Consistent spacing using a standardized scale based on 4px units.
-        </P>
+        <P>Consistent spacing using a standardized scale based on 4px units.</P>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: spacing[4] }}>
-          <div style={{
-            height: spacing[2],
-            background: semanticColors.primary,
-            borderRadius: spacing[1]
-          }}>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: spacing[4] }}
+        >
+          <div
+            style={{
+              height: spacing[2],
+              background: semanticColors.primary,
+              borderRadius: spacing[1],
+            }}
+          >
             spacing[2] = 8px
           </div>
-          <div style={{
-            height: spacing[4],
-            background: semanticColors.primary,
-            borderRadius: spacing[1]
-          }}>
+          <div
+            style={{
+              height: spacing[4],
+              background: semanticColors.primary,
+              borderRadius: spacing[1],
+            }}
+          >
             spacing[4] = 16px
           </div>
-          <div style={{
-            height: spacing[8],
-            background: semanticColors.primary,
-            borderRadius: spacing[1]
-          }}>
+          <div
+            style={{
+              height: spacing[8],
+              background: semanticColors.primary,
+              borderRadius: spacing[1],
+            }}
+          >
             spacing[8] = 32px
           </div>
-          <div style={{
-            height: spacing[16],
-            background: semanticColors.primary,
-            borderRadius: spacing[1]
-          }}>
+          <div
+            style={{
+              height: spacing[16],
+              background: semanticColors.primary,
+              borderRadius: spacing[1],
+            }}
+          >
             spacing[16] = 64px
           </div>
         </div>

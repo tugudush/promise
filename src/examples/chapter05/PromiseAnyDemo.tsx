@@ -26,13 +26,15 @@ interface AnyResult {
  * Shows fallback strategy where we need at least one success
  */
 function PromiseAnyDemo() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
   const [anyResult, setAnyResult] = useState<AnyResult | null>(null)
 
   // Simulate different data sources with varying reliability
   const fetchFromPrimaryAPI = async (): Promise<string> => {
     await simulateApiCall(800 + Math.random() * 400) // 800-1200ms
-    
+
     // 30% success rate (unreliable primary)
     if (Math.random() > 0.7) {
       return 'Premium data from Primary API'
@@ -43,8 +45,8 @@ function PromiseAnyDemo() {
 
   const fetchFromBackupAPI = async (): Promise<string> => {
     await simulateApiCall(1200 + Math.random() * 600) // 1200-1800ms
-    
-    // 60% success rate 
+
+    // 60% success rate
     if (Math.random() > 0.4) {
       return 'Standard data from Backup API'
     } else {
@@ -54,7 +56,7 @@ function PromiseAnyDemo() {
 
   const fetchFromFallbackAPI = async (): Promise<string> => {
     await simulateApiCall(600 + Math.random() * 300) // 600-900ms
-    
+
     // 80% success rate (most reliable but basic data)
     if (Math.random() > 0.2) {
       return 'Basic data from Fallback API'
@@ -65,7 +67,7 @@ function PromiseAnyDemo() {
 
   const fetchFromCacheAPI = async (): Promise<string> => {
     await simulateApiCall(200 + Math.random() * 200) // 200-400ms (fastest)
-    
+
     // 90% success rate but might have stale data
     if (Math.random() > 0.1) {
       return 'Cached data (may be stale) from Cache API'
@@ -122,9 +124,10 @@ function PromiseAnyDemo() {
       const executionTime = endTime - startTime
 
       // Get all the failure reasons
-      const failures = aggregateError instanceof AggregateError 
-        ? aggregateError.errors.map(err => err.message)
-        : ['All services failed']
+      const failures =
+        aggregateError instanceof AggregateError
+          ? aggregateError.errors.map((err) => err.message)
+          : ['All services failed']
 
       setAnyResult({
         winner: 'None (All Failed)',
@@ -167,7 +170,7 @@ function PromiseAnyDemo() {
       // Promise.any waits for the FIRST success, ignoring failures
       const result = await Promise.any([
         alwaysFailAPI1(),
-        alwaysFailAPI2(), 
+        alwaysFailAPI2(),
         eventuallySucceedAPI(), // This will succeed after 1500ms
         alwaysFailAPI3(),
       ])
@@ -182,9 +185,10 @@ function PromiseAnyDemo() {
       setStatus('success')
     } catch (aggregateError) {
       const endTime = Date.now()
-      const failures = aggregateError instanceof AggregateError 
-        ? aggregateError.errors.map(err => err.message)
-        : ['All services failed']
+      const failures =
+        aggregateError instanceof AggregateError
+          ? aggregateError.errors.map((err) => err.message)
+          : ['All services failed']
 
       setAnyResult({
         winner: 'None (All Failed)',
@@ -202,32 +206,57 @@ function PromiseAnyDemo() {
       <ExampleTitle>Promise.any() - First Success Wins</ExampleTitle>
 
       <p>
-        <code>Promise.any()</code> resolves with the first successful promise and ignores
-        rejections. It only rejects if ALL promises reject, making it perfect for
-        implementing robust fallback strategies.
+        <code>Promise.any()</code> resolves with the first successful promise
+        and ignores rejections. It only rejects if ALL promises reject, making
+        it perfect for implementing robust fallback strategies.
       </p>
 
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li><strong>First Success Wins:</strong> Returns the first resolved promise</li>
-          <li><strong>Ignores Failures:</strong> Rejections don't stop the process</li>
-          <li><strong>Aggregate Rejection:</strong> Only fails when ALL promises reject</li>
-          <li><strong>Perfect for Fallbacks:</strong> Robust error recovery strategies</li>
+          <li>
+            <strong>First Success Wins:</strong> Returns the first resolved
+            promise
+          </li>
+          <li>
+            <strong>Ignores Failures:</strong> Rejections don't stop the process
+          </li>
+          <li>
+            <strong>Aggregate Rejection:</strong> Only fails when ALL promises
+            reject
+          </li>
+          <li>
+            <strong>Perfect for Fallbacks:</strong> Robust error recovery
+            strategies
+          </li>
         </ul>
       </ImportantNote>
 
       <DemoContainer>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <DemoButton onClick={fetchDataWithFallbacks} disabled={status === 'loading'}>
+          <DemoButton
+            onClick={fetchDataWithFallbacks}
+            disabled={status === 'loading'}
+          >
             Fetch with Multiple Fallbacks
           </DemoButton>
-          <DemoButton onClick={fetchDataMostlyFailing} disabled={status === 'loading'}>
+          <DemoButton
+            onClick={fetchDataMostlyFailing}
+            disabled={status === 'loading'}
+          >
             Fetch from Mostly Failing APIs
           </DemoButton>
         </div>
 
-        <StatusIndicator status={status === 'loading' ? 'pending' : status === 'success' ? 'fulfilled' : 'rejected'}>
+        <StatusIndicator
+          status={
+            status === 'loading'
+              ? 'pending'
+              : status === 'success'
+                ? 'fulfilled'
+                : 'rejected'
+          }
+        >
           <strong>Status:</strong> {status}
           {anyResult && (
             <span>
@@ -239,26 +268,24 @@ function PromiseAnyDemo() {
 
         {anyResult && (
           <DemoOutput>
-            {status === 'success' ? (
-              `🎯 First Success: ${anyResult.winner}
+            {status === 'success'
+              ? `🎯 First Success: ${anyResult.winner}
 📦 Result: ${anyResult.result}
 ⏱️ Time: ${anyResult.time}ms
 🔄 Strategy: First working API provided the data`
-            ) : (
-              `💥 All APIs Failed
+              : `💥 All APIs Failed
 ⏱️ Time: ${anyResult.time}ms
 ❌ Failed Services:
-${anyResult.failures?.map(f => `   • ${f}`).join('\n')}
+${anyResult.failures?.map((f) => `   • ${f}`).join('\n')}
 
-🔍 This only happens when ALL promises reject`
-            )}
+🔍 This only happens when ALL promises reject`}
           </DemoOutput>
         )}
       </DemoContainer>
 
       <h4>React Implementation for Robust Data Fetching</h4>
 
-      <CodeSyntaxHighlighter language="typescript">
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Robust data fetching with multiple fallbacks
 function ResilientDataLoader() {
   const [data, setData] = useState(null)
@@ -309,7 +336,7 @@ function ResilientDataLoader() {
 
       <h4>Promise.any() vs Promise.race() Comparison</h4>
 
-      <CodeSyntaxHighlighter language="typescript">
+      <CodeSyntaxHighlighter language='typescript'>
         {`// Promise.race() - First to finish (success OR failure) wins
 try {
   const result = await Promise.race([
@@ -336,17 +363,31 @@ try {
       <h4>When to Use Promise.any()</h4>
 
       <ul>
-        <li><strong>Fallback Strategies:</strong> Try multiple data sources until one succeeds</li>
-        <li><strong>CDN Selection:</strong> Use fastest available content delivery network</li>
-        <li><strong>Authentication:</strong> Try multiple auth providers until one works</li>
-        <li><strong>Feature Detection:</strong> Use first available browser API</li>
-        <li><strong>Redundant Systems:</strong> Multiple backup systems for critical operations</li>
+        <li>
+          <strong>Fallback Strategies:</strong> Try multiple data sources until
+          one succeeds
+        </li>
+        <li>
+          <strong>CDN Selection:</strong> Use fastest available content delivery
+          network
+        </li>
+        <li>
+          <strong>Authentication:</strong> Try multiple auth providers until one
+          works
+        </li>
+        <li>
+          <strong>Feature Detection:</strong> Use first available browser API
+        </li>
+        <li>
+          <strong>Redundant Systems:</strong> Multiple backup systems for
+          critical operations
+        </li>
       </ul>
 
       <SuccessNote>
-        <strong>Best Practice:</strong> Promise.any() is ideal for building resilient
-        applications that gracefully handle service failures. It implements the
-        "try until something works" pattern perfectly.
+        <strong>Best Practice:</strong> Promise.any() is ideal for building
+        resilient applications that gracefully handle service failures. It
+        implements the "try until something works" pattern perfectly.
       </SuccessNote>
     </DemoSection>
   )

@@ -5,6 +5,7 @@ A centralized design system for consistent styling and UI components across the 
 ## Overview
 
 This design system provides:
+
 - **Design Tokens**: Colors, spacing, typography, and other design primitives
 - **Reusable Components**: Styled components for consistent UI patterns
 - **Theme Provider**: Global styles and theming context
@@ -86,11 +87,11 @@ colors.primary[500] // Main brand color
 colors.primary[600] // Hover state
 
 // Semantic colors
-semanticColors.primary      // Main brand color
-semanticColors.success      // Success states
-semanticColors.error        // Error states
-semanticColors.text         // Primary text color
-semanticColors.background   // Primary background
+semanticColors.primary // Main brand color
+semanticColors.success // Success states
+semanticColors.error // Error states
+semanticColors.text // Primary text color
+semanticColors.background // Primary background
 ```
 
 ### Spacing
@@ -98,11 +99,11 @@ semanticColors.background   // Primary background
 Consistent spacing scale based on a 4px base unit:
 
 ```typescript
-spacing[1]   // 4px
-spacing[2]   // 8px
-spacing[4]   // 16px
-spacing[8]   // 32px
-spacing[16]  // 64px
+spacing[1] // 4px
+spacing[2] // 8px
+spacing[4] // 16px
+spacing[8] // 32px
+spacing[16] // 64px
 ```
 
 ### Typography
@@ -110,8 +111,8 @@ spacing[16]  // 64px
 Typography tokens for consistent text styling:
 
 ```typescript
-typography.fontSize.base    // Base font size (1rem)
-typography.fontWeight.bold  // Bold weight
+typography.fontSize.base // Base font size (1rem)
+typography.fontWeight.bold // Bold weight
 typography.lineHeight.normal // Normal line height
 ```
 
@@ -201,6 +202,7 @@ const CustomButton = styled(Button)`
 ### From Inline Styles
 
 **Before:**
+
 ```typescript
 const StyledComponent = styled.div`
   background: #3b82f6;
@@ -212,6 +214,7 @@ const StyledComponent = styled.div`
 ```
 
 **After:**
+
 ```typescript
 import { colors, spacing, typography } from '@/design-system'
 
@@ -227,14 +230,17 @@ const StyledComponent = styled.div`
 ### From Component Libraries
 
 **Before:**
+
 ```typescript
 // Multiple imports from different sources
 import styled from '@emotion/styled'
 import { Button as MuiButton } from '@mui/material'
+
 import { StyledLink } from '../shared/styles'
 ```
 
 **After:**
+
 ```typescript
 // Single import from design system
 import { Button } from '@/design-system'
@@ -256,4 +262,4 @@ When adding new design tokens or components:
 - **Developer Experience**: Clear API and comprehensive documentation
 - **Scalability**: Easy to extend and add new components
 - **Performance**: Optimized CSS with reduced duplication</content>
-<parameter name="filePath">c:\htdocs\promise\src\design-system\README.md
+  <parameter name="filePath">c:\htdocs\promise\src\design-system\README.md

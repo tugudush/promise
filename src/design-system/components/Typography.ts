@@ -5,7 +5,14 @@ import { colors, semanticColors, spacing, typography } from '../tokens'
 export interface TextProps {
   size?: 'small' | 'medium' | 'large'
   weight?: 'normal' | 'medium' | 'semibold' | 'bold'
-  color?: 'primary' | 'secondary' | 'tertiary' | 'inverse' | 'success' | 'warning' | 'error'
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'inverse'
+    | 'success'
+    | 'warning'
+    | 'error'
   align?: 'left' | 'center' | 'right'
 }
 

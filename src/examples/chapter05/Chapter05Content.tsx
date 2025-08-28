@@ -4,6 +4,7 @@ import {
   SuccessNote,
   TutorialContent,
 } from '@/examples/shared'
+
 import CustomPromisePatternsDemo from './CustomPromisePatternsDemo'
 import PerformanceOptimizationDemo from './PerformanceOptimizationDemo'
 import PromiseAllDemo from './PromiseAllDemo'
@@ -24,7 +25,10 @@ function Chapter05Content() {
       <LearningObjective>
         By the end of this chapter, you will understand:
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>How to use Promise utilities (Promise.all, Promise.allSettled, Promise.race, Promise.any)</li>
+          <li>
+            How to use Promise utilities (Promise.all, Promise.allSettled,
+            Promise.race, Promise.any)
+          </li>
           <li>When to choose each Promise utility for different scenarios</li>
           <li>How to create custom Promise patterns and utilities</li>
           <li>Techniques for promisifying callback-based APIs</li>
@@ -36,14 +40,16 @@ function Chapter05Content() {
       <h2>5.1 Promise Utilities</h2>
 
       <p>
-        JavaScript provides several built-in Promise utilities that help manage multiple
-        asynchronous operations efficiently. These utilities are essential for building
-        scalable React applications that handle complex async workflows.
+        JavaScript provides several built-in Promise utilities that help manage
+        multiple asynchronous operations efficiently. These utilities are
+        essential for building scalable React applications that handle complex
+        async workflows.
       </p>
 
       <ImportantNote>
-        Understanding when to use each Promise utility is crucial for building efficient
-        React applications. Each utility serves different use cases and performance characteristics.
+        Understanding when to use each Promise utility is crucial for building
+        efficient React applications. Each utility serves different use cases
+        and performance characteristics.
       </ImportantNote>
 
       <PromiseUtilitiesOverview />
@@ -55,14 +61,15 @@ function Chapter05Content() {
       <h2>5.2 Custom Promise Patterns</h2>
 
       <p>
-        Learn to create reusable Promise utilities and patterns that can be applied
-        across your React applications. We'll explore how to build custom async helpers
-        and promisify callback-based APIs.
+        Learn to create reusable Promise utilities and patterns that can be
+        applied across your React applications. We'll explore how to build
+        custom async helpers and promisify callback-based APIs.
       </p>
 
       <SuccessNote>
-        Creating reusable async utilities helps maintain consistency across your application
-        and makes complex async operations more manageable and testable.
+        Creating reusable async utilities helps maintain consistency across your
+        application and makes complex async operations more manageable and
+        testable.
       </SuccessNote>
 
       <CustomPromisePatternsDemo />
