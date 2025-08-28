@@ -41,6 +41,9 @@ const Chapter04Content = lazy(
 const Chapter05Content = lazy(
   () => import('@/examples/chapter05/Chapter05Content')
 )
+const Chapter06Content = lazy(
+  () => import('@/examples/chapter06/Chapter06Content')
+)
 
 function ChapterPage() {
   const { chapterId } = useParams()
@@ -167,6 +170,8 @@ function ChapterPage() {
             <Chapter04Content />
           ) : chapterId === '5' ? (
             <Chapter05Content />
+          ) : chapterId === '6' ? (
+            <Chapter06Content />
           ) : (
             <ComingSoon>
               <h2>🚧 Content Coming Soon</h2>
