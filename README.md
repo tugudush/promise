@@ -22,7 +22,7 @@ The tutorial is organized into progressive chapters, from basic Promise concepts
 
 - Beginner: Chapters 1-3 (Foundations and basic patterns)
 - Intermediate: Chapters 4-6 (Advanced patterns and React hooks)
-- Advanced: Chapters 7-10 (Real-world applications and optimization)
+- Advanced: Chapters 7-11 (Real-world applications and optimization)
 
 ## 🚀 Getting Started
 

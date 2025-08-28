@@ -26,7 +26,7 @@ JavaScript Async Programming is an interactive educational project teaching Java
 
 1. **Chapters 1-3**: Foundations (Promises → async/await → basic React patterns)
 2. **Chapters 4-6**: Advanced patterns (React hooks, state management, custom hooks)
-3. **Chapters 7-10**: Real-world applications (API integration, testing, performance, capstone project)
+3. **Chapters 7-11**: Real-world applications (API integration, testing, performance, capstone project)
 
 ## Educational Code Standards
 
