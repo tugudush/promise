@@ -152,6 +152,9 @@ export const ResponsiveGrid = styled.div`
 ### Theme Integration
 
 ```typescript
+// Or use design system tokens for more structured theming
+import { colors, spacing } from '@/design-system/tokens'
+
 // Use CSS custom properties for theme consistency
 export const ThemedButton = styled.button`
   background: var(--color-primary, #667eea);
@@ -162,9 +165,6 @@ export const ThemedButton = styled.button`
     background: var(--color-primary-hover, #5a67d8);
   }
 `
-
-// Or use design system tokens for more structured theming
-import { colors, spacing } from '@/design-system/tokens'
 
 export const DesignSystemButton = styled.button`
   background: ${colors.primary};

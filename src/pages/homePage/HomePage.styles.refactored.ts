@@ -21,14 +21,22 @@ import {
 
 // Layout Components
 export const HomePageContainer = styled(PageContainer)`
-  background: linear-gradient(135deg, ${colors.primary[500]} 0%, ${colors.primary[700]} 100%);
+  background: linear-gradient(
+    135deg,
+    ${colors.primary[500]} 0%,
+    ${colors.primary[700]} 100%
+  );
 `
 
 export const HeroSection = styled.section`
   text-align: center;
   padding: ${spacing[24]} ${spacing[8]} ${spacing[16]};
   color: ${colors.white};
-  background: linear-gradient(135deg, ${colors.primary[500]} 0%, ${colors.primary[700]} 100%);
+  background: linear-gradient(
+    135deg,
+    ${colors.primary[500]} 0%,
+    ${colors.primary[700]} 100%
+  );
 `
 
 export const ContentSection = styled(Section)`
@@ -36,7 +44,9 @@ export const ContentSection = styled(Section)`
   margin: ${spacing[8]} auto;
   padding: ${spacing[8]};
   border-radius: ${spacing[3]};
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
 `
 
 // Hero Components
@@ -95,11 +105,15 @@ export const LearningCard = styled.div`
   padding: ${spacing[6]};
   border-radius: ${spacing[3]};
   border: 1px solid ${colors.border.light};
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
 
   h3 {
@@ -168,7 +182,9 @@ export const ChapterLink = styled(Link)`
     background: ${colors.primary[50]};
     border-color: ${semanticColors.primary};
     transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 
   h4 {
@@ -214,7 +230,11 @@ export const Duration = styled.span`
 // Getting Started Section
 export const GettingStartedSection = styled(ContentSection)`
   text-align: center;
-  background: linear-gradient(135deg, ${colors.secondary[50]} 0%, ${colors.secondary[100]} 100%);
+  background: linear-gradient(
+    135deg,
+    ${colors.secondary[50]} 0%,
+    ${colors.secondary[100]} 100%
+  );
 `
 
 export const GettingStartedTitle = styled(H2)`

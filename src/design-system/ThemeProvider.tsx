@@ -1,6 +1,7 @@
+import { type ReactNode } from 'react'
+
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { type ReactNode } from 'react'
 
 import { colors, spacing, typography } from './tokens'
 
@@ -77,7 +78,12 @@ const globalStyles = css`
   }
 
   /* Heading styles */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: ${typography.fontFamily.sans};
     font-weight: ${typography.fontWeight.semibold};
     line-height: ${typography.lineHeight.snug};
@@ -86,12 +92,24 @@ const globalStyles = css`
     margin: 0 0 ${spacing[4]} 0;
   }
 
-  h1 { font-size: ${typography.fontSize['5xl']}; }
-  h2 { font-size: ${typography.fontSize['4xl']}; }
-  h3 { font-size: ${typography.fontSize['3xl']}; }
-  h4 { font-size: ${typography.fontSize['2xl']}; }
-  h5 { font-size: ${typography.fontSize.xl}; }
-  h6 { font-size: ${typography.fontSize.lg}; }
+  h1 {
+    font-size: ${typography.fontSize['5xl']};
+  }
+  h2 {
+    font-size: ${typography.fontSize['4xl']};
+  }
+  h3 {
+    font-size: ${typography.fontSize['3xl']};
+  }
+  h4 {
+    font-size: ${typography.fontSize['2xl']};
+  }
+  h5 {
+    font-size: ${typography.fontSize.xl};
+  }
+  h6 {
+    font-size: ${typography.fontSize.lg};
+  }
 
   /* Paragraph styles */
   p {
@@ -124,17 +142,23 @@ const globalStyles = css`
   }
 
   /* Form elements */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font: inherit;
     color: inherit;
     background: ${colors.white};
     border: 1px solid ${colors.border.medium};
     border-radius: ${spacing[2]};
     padding: ${spacing[2]} ${spacing[3]};
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     outline: none;
     border-color: ${colors.primary[500]};
     box-shadow: 0 0 0 3px ${colors.primary[100]};
