@@ -15,15 +15,10 @@ export const ExampleTitle = styled.h3`
 `
 
 export const DemoContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   margin: 1.5rem 0;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
 `
 
 export const DemoButton = styled.button<{ disabled?: boolean }>`
