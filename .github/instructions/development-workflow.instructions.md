@@ -15,9 +15,10 @@ npm run dev         # Start dev server (http://localhost:5173)
 npm run build       # Production build (tsc + vite build)
 npm run typecheck   # TypeScript type checking only (no build)
 npm run fix         # Lint fix + format (one-stop cleanup)
-npm run check       # Check both linting and formatting
+npm run check       # Check both linting and formatting without changes without changes
 npm run lint        # Check for ESLint code quality issues only
 npm run format      # Format all files with Prettier
+npm run ltfb        # Complete workflow: lint, typecheck, format, build
 ```
 
 ## Code Quality & Formatting Workflow

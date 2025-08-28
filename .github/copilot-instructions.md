@@ -14,7 +14,7 @@ JavaScript Async Programming is an interactive educational project teaching Java
 
 - **Frontend**: React 19 + TypeScript + Vite
 - **Styling**: Emotion CSS-in-JS with scoped components
-- **Routing**: React Router v6+ with createBrowserRouter
+- **Routing**: React Router v7 with createBrowserRouter
 - **Code Quality**: ESLint 9.x + Prettier + TypeScript strict mode
 - **Build**: Vite with path aliases (`@/` → `src/`)
 
