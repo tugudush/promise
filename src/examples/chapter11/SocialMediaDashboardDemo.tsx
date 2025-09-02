@@ -244,11 +244,12 @@ function SocialMediaDashboardDemo() {
               style={{
                 padding: '0.75rem 1rem',
                 backgroundColor: activeTab === tab.id ? '#dc2626' : '#f3f4f6',
-                color: activeTab === tab.id ? 'white' : '#374151',
-                border: '1px solid #d1d5db',
+                color: activeTab === tab.id ? 'white' : '#1f2937',
+                border: '1px solid',
+                borderColor: activeTab === tab.id ? '#dc2626' : '#d1d5db',
                 borderRadius: '6px',
                 cursor: 'pointer',
-                fontWeight: 500,
+                fontWeight: activeTab === tab.id ? '600' : '500',
               }}
             >
               {tab.label}
@@ -309,7 +310,7 @@ function SocialMediaDashboardDemo() {
                       connectionStatus === 'connected'
                         ? '#10b981'
                         : connectionStatus === 'connecting'
-                          ? '#f59e0b'
+                          ? '#d97706'
                           : '#ef4444',
                   }}
                 />
@@ -364,7 +365,7 @@ function SocialMediaDashboardDemo() {
               style={{
                 marginTop: '0.5rem',
                 padding: '0.5rem 1rem',
-                backgroundColor: isPosting ? '#9ca3af' : '#3b82f6',
+                backgroundColor: isPosting ? '#9ca3af' : '#1d4ed8',
                 color: 'white',
                 border: 'none',
                 borderRadius: '4px',
@@ -386,18 +387,18 @@ function SocialMediaDashboardDemo() {
           >
             <div
               style={{
-                background: '#3b82f6',
+                background: '#1d4ed8',
                 color: 'white',
                 padding: '1rem',
               }}
             >
-              <h5 style={{ margin: 0 }}>
+              <h5 style={{ margin: 0, color: 'white' }}>
                 Aggregated Feed ({posts.length} posts)
               </h5>
               <p
                 style={{
                   margin: '0.25rem 0 0 0',
-                  opacity: 0.9,
+                  color: '#e2e8f0',
                   fontSize: '0.875rem',
                 }}
               >
@@ -443,7 +444,7 @@ function SocialMediaDashboardDemo() {
                     style={{
                       padding: '1rem',
                       borderBottom: '1px solid #e2e8f0',
-                      opacity: post.id.startsWith('temp-') ? 0.7 : 1,
+                      opacity: post.id.startsWith('temp-') ? 0.85 : 1,
                     }}
                   >
                     <div
@@ -470,17 +471,17 @@ function SocialMediaDashboardDemo() {
                               ? '#1d4ed8'
                               : post.platform === 'instagram'
                                 ? '#be185d'
-                                : '#059669',
+                                : '#047857',
                         }}
                       >
                         {post.platform}
                       </span>
                       <strong>{post.author}</strong>
-                      <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>
+                      <span style={{ color: '#374151', fontSize: '0.875rem' }}>
                         {new Date(post.timestamp).toLocaleTimeString()}
                       </span>
                       {post.id.startsWith('temp-') && (
-                        <span style={{ color: '#f59e0b', fontSize: '0.75rem' }}>
+                        <span style={{ color: '#d97706', fontSize: '0.75rem' }}>
                           (Posting...)
                         </span>
                       )}
@@ -496,7 +497,7 @@ function SocialMediaDashboardDemo() {
                         display: 'flex',
                         gap: '1rem',
                         fontSize: '0.875rem',
-                        color: '#6b7280',
+                        color: '#374151',
                       }}
                     >
                       <span>👍 {post.likes}</span>
@@ -513,7 +514,7 @@ function SocialMediaDashboardDemo() {
             <div
               style={{
                 background: '#fef7cd',
-                border: '1px solid #f59e0b',
+                border: '1px solid #d97706',
                 borderRadius: '8px',
                 marginTop: '1rem',
                 overflow: 'hidden',
@@ -521,12 +522,12 @@ function SocialMediaDashboardDemo() {
             >
               <div
                 style={{
-                  background: '#f59e0b',
+                  background: '#d97706',
                   color: 'white',
                   padding: '0.75rem',
                 }}
               >
-                <h5 style={{ margin: 0 }}>
+                <h5 style={{ margin: 0, color: 'white' }}>
                   Real-time Notifications (WebSocket)
                 </h5>
               </div>
@@ -536,14 +537,14 @@ function SocialMediaDashboardDemo() {
                     key={notification.id}
                     style={{
                       padding: '0.75rem',
-                      borderBottom: '1px solid #f59e0b',
+                      borderBottom: '1px solid #d97706',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
                     }}
                   >
                     <span>{notification.message}</span>
-                    <span style={{ fontSize: '0.75rem', color: '#92400e' }}>
+                    <span style={{ fontSize: '0.75rem', color: '#78350f' }}>
                       {new Date(notification.timestamp).toLocaleTimeString()}
                     </span>
                   </div>

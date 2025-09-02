@@ -467,11 +467,14 @@ const usePostCreation = () => {
                 padding: '0.5rem 1rem',
                 backgroundColor:
                   selectedReviewType === type ? '#dc2626' : '#f3f4f6',
-                color: selectedReviewType === type ? 'white' : '#374151',
-                border: '1px solid #d1d5db',
+                color: selectedReviewType === type ? 'white' : '#1f2937',
+                border: '1px solid',
+                borderColor:
+                  selectedReviewType === type ? '#dc2626' : '#d1d5db',
                 borderRadius: '6px',
                 cursor: 'pointer',
                 textTransform: 'capitalize',
+                fontWeight: selectedReviewType === type ? '600' : '500',
               }}
             >
               {type}
@@ -496,7 +499,7 @@ const usePostCreation = () => {
             padding: '1rem',
           }}
         >
-          <h4 style={{ margin: 0 }}>{currentSection.title}</h4>
+          <h4 style={{ margin: 0, color: 'white' }}>{currentSection.title}</h4>
         </div>
 
         <div style={{ padding: '0' }}>
@@ -518,7 +521,7 @@ const usePostCreation = () => {
               <p
                 style={{
                   marginBottom: '1.5rem',
-                  color: '#6b7280',
+                  color: '#374151',
                   fontStyle: 'italic',
                 }}
               >
@@ -595,7 +598,7 @@ const usePostCreation = () => {
           background: '#fef7cd',
           padding: '1.5rem',
           borderRadius: '8px',
-          border: '1px solid #f59e0b',
+          border: '1px solid #d97706',
           marginTop: '2rem',
         }}
       >
@@ -651,12 +654,12 @@ const usePostCreation = () => {
               key={index}
               style={{
                 background: 'white',
-                border: '1px solid #f59e0b',
+                border: '1px solid #d97706',
                 borderRadius: '6px',
                 padding: '1rem',
               }}
             >
-              <h5 style={{ color: '#92400e', marginBottom: '0.5rem' }}>
+              <h5 style={{ color: '#78350f', marginBottom: '0.5rem' }}>
                 {section.category}
               </h5>
               <ul style={{ fontSize: '0.875rem', marginLeft: '1rem' }}>

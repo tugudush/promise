@@ -182,8 +182,8 @@ function ProjectPlanningDemo() {
               onClick={() => setSelectedStack(type)}
               style={{
                 padding: '0.5rem 1rem',
-                backgroundColor: selectedStack === type ? '#7c3aed' : '#f3f4f6',
-                color: selectedStack === type ? 'white' : '#374151',
+                backgroundColor: selectedStack === type ? '#5b21b6' : '#f3f4f6',
+                color: selectedStack === type ? 'white' : '#1f2937',
                 border: '1px solid #d1d5db',
                 borderRadius: '6px',
                 cursor: 'pointer',
@@ -207,12 +207,12 @@ function ProjectPlanningDemo() {
       >
         <div
           style={{
-            background: '#7c3aed',
+            background: '#5b21b6',
             color: 'white',
             padding: '1rem',
           }}
         >
-          <h4 style={{ margin: 0 }}>{currentStack.title}</h4>
+          <h4 style={{ margin: 0, color: 'white' }}>{currentStack.title}</h4>
         </div>
 
         <div style={{ padding: '1.5rem' }}>
@@ -240,7 +240,7 @@ function ProjectPlanningDemo() {
                       marginBottom: '0.5rem',
                     }}
                   >
-                    <strong style={{ color: '#7c3aed' }}>{choice.name}</strong>
+                    <strong style={{ color: '#5b21b6' }}>{choice.name}</strong>
                     <span
                       style={{
                         fontSize: '0.75rem',
@@ -254,7 +254,7 @@ function ProjectPlanningDemo() {
                     </span>
                   </div>
                   <p
-                    style={{ margin: 0, color: '#6b7280', fontSize: '0.9rem' }}
+                    style={{ margin: 0, color: '#374151', fontSize: '0.9rem' }}
                   >
                     {choice.reason}
                   </p>
@@ -272,7 +272,7 @@ function ProjectPlanningDemo() {
                   key={index}
                   style={{
                     marginBottom: '0.5rem',
-                    color: '#6b7280',
+                    color: '#374151',
                   }}
                 >
                   {alternative}
@@ -388,18 +388,18 @@ function ProjectPlanningDemo() {
               key={index}
               style={{
                 background: '#fef7cd',
-                border: '1px solid #f59e0b',
+                border: '1px solid #d97706',
                 borderRadius: '8px',
                 padding: '1rem',
               }}
             >
-              <h5 style={{ color: '#92400e', marginBottom: '0.5rem' }}>
+              <h5 style={{ color: '#78350f', marginBottom: '0.5rem' }}>
                 {week.phase}
               </h5>
               <p
                 style={{
                   fontSize: '0.875rem',
-                  color: '#78716c',
+                  color: '#374151',
                   marginBottom: '1rem',
                 }}
               >
@@ -417,8 +417,8 @@ function ProjectPlanningDemo() {
 
               <div
                 style={{
-                  background: '#fbbf24',
-                  color: '#92400e',
+                  background: '#d97706',
+                  color: '#78350f',
                   padding: '0.5rem',
                   borderRadius: '4px',
                   marginTop: '0.5rem',

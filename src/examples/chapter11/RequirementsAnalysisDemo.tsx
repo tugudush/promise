@@ -95,12 +95,15 @@ function RequirementsAnalysisDemo() {
               style={{
                 padding: '0.5rem 1rem',
                 backgroundColor:
-                  selectedRequirement === type ? '#3b82f6' : '#f3f4f6',
-                color: selectedRequirement === type ? 'white' : '#374151',
-                border: '1px solid #d1d5db',
+                  selectedRequirement === type ? '#1d4ed8' : '#f3f4f6',
+                color: selectedRequirement === type ? 'white' : '#1f2937',
+                border: '1px solid',
+                borderColor:
+                  selectedRequirement === type ? '#1d4ed8' : '#d1d5db',
                 borderRadius: '6px',
                 cursor: 'pointer',
                 textTransform: 'capitalize',
+                fontWeight: selectedRequirement === type ? '600' : '500',
               }}
             >
               {type} Requirements
@@ -120,12 +123,12 @@ function RequirementsAnalysisDemo() {
       >
         <div
           style={{
-            background: '#3b82f6',
+            background: '#1d4ed8',
             color: 'white',
             padding: '1rem',
           }}
         >
-          <h4 style={{ margin: 0 }}>{currentReq.title}</h4>
+          <h4 style={{ margin: 0, color: 'white' }}>{currentReq.title}</h4>
         </div>
 
         <div style={{ padding: '1.5rem' }}>
@@ -157,7 +160,7 @@ function RequirementsAnalysisDemo() {
                     key={index}
                     style={{
                       marginBottom: '0.5rem',
-                      color: '#059669',
+                      color: '#047857',
                       fontFamily: 'monospace',
                     }}
                   >
@@ -222,7 +225,7 @@ async function aggregateFeeds(): Promise<Post[]> {
           background: '#fef7cd',
           padding: '1.5rem',
           borderRadius: '8px',
-          border: '1px solid #f59e0b',
+          border: '1px solid #d97706',
           marginTop: '2rem',
         }}
       >

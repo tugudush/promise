@@ -51,11 +51,13 @@ function Chapter11Content() {
               style={{
                 padding: '0.5rem 1rem',
                 backgroundColor:
-                  activeSection === phase.id ? '#4f46e5' : '#e5e7eb',
-                color: activeSection === phase.id ? 'white' : '#374151',
-                border: 'none',
+                  activeSection === phase.id ? '#3730a3' : '#f3f4f6',
+                color: activeSection === phase.id ? 'white' : '#1f2937',
+                border: '1px solid',
+                borderColor: activeSection === phase.id ? '#3730a3' : '#d1d5db',
                 borderRadius: '6px',
                 cursor: 'pointer',
+                fontWeight: '500',
               }}
             >
               {phase.label}
@@ -93,7 +95,7 @@ function Chapter11Content() {
             background: '#fef7cd',
             padding: '1.5rem',
             borderRadius: '8px',
-            border: '1px solid #f59e0b',
+            border: '1px solid #d97706',
             marginBottom: '2rem',
           }}
         >
@@ -201,7 +203,7 @@ function Chapter11Content() {
               background: '#fef3c7',
               padding: '1.5rem',
               borderRadius: '8px',
-              border: '1px solid #f59e0b',
+              border: '1px solid #d97706',
               marginBottom: '2rem',
             }}
           >

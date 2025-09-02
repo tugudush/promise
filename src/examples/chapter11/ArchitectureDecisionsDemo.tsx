@@ -126,12 +126,14 @@ function ArchitectureDecisionsDemo() {
               style={{
                 padding: '0.5rem 1rem',
                 backgroundColor:
-                  selectedDecision === type ? '#059669' : '#f3f4f6',
-                color: selectedDecision === type ? 'white' : '#374151',
-                border: '1px solid #d1d5db',
+                  selectedDecision === type ? '#047857' : '#f3f4f6',
+                color: selectedDecision === type ? 'white' : '#1f2937',
+                border: '1px solid',
+                borderColor: selectedDecision === type ? '#047857' : '#d1d5db',
                 borderRadius: '6px',
                 cursor: 'pointer',
                 textTransform: 'capitalize',
+                fontWeight: selectedDecision === type ? '600' : '500',
               }}
             >
               {type}
@@ -151,13 +153,13 @@ function ArchitectureDecisionsDemo() {
       >
         <div
           style={{
-            background: '#059669',
+            background: '#047857',
             color: 'white',
             padding: '1rem',
           }}
         >
-          <h4 style={{ margin: 0 }}>{currentDecision.title}</h4>
-          <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
+          <h4 style={{ margin: 0, color: 'white' }}>{currentDecision.title}</h4>
+          <p style={{ margin: '0.5rem 0 0 0', color: '#e2e8f0' }}>
             <strong>Decision:</strong> {currentDecision.decision}
           </p>
         </div>
@@ -194,7 +196,7 @@ function ArchitectureDecisionsDemo() {
                     key={index}
                     style={{
                       marginBottom: '0.5rem',
-                      color: '#6b7280',
+                      color: '#374151',
                     }}
                   >
                     {alternative}
@@ -212,7 +214,7 @@ function ArchitectureDecisionsDemo() {
                     key={index}
                     style={{
                       marginBottom: '0.5rem',
-                      color: '#059669',
+                      color: '#047857',
                       fontWeight: 500,
                     }}
                   >
@@ -407,7 +409,7 @@ function useWebSocket({ url, reconnectAttempts = 5, reconnectInterval = 1000 }: 
           background: '#fef3c7',
           padding: '1.5rem',
           borderRadius: '8px',
-          border: '1px solid #f59e0b',
+          border: '1px solid #d97706',
           marginTop: '2rem',
         }}
       >
