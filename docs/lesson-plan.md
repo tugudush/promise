@@ -196,6 +196,7 @@
 
 - Redux Toolkit Query patterns
 - Zustand async actions
+- Jotai atomic state management
 - SWR and React Query integration
 - **Overview**: Choosing the right tool
 
