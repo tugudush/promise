@@ -51,7 +51,11 @@ export const simulateUnreliableApiCall = (
       if (Math.random() < successRate) {
         resolve('Data loaded successfully!')
       } else {
-        reject(new Error('Simulated API failure - network timeout'))
+        reject(
+          new Error(
+            '[EDUCATIONAL DEMO] Simulated API failure - network timeout'
+          )
+        )
       }
     }, delay)
   })
@@ -137,7 +141,8 @@ export const promiseCreationExamples = {
   immediate: () => Promise.resolve('This resolves immediately'),
 
   // Immediately rejected Promise factory (no promise created until called)
-  immediateError: () => Promise.reject(new Error('This rejects immediately')),
+  immediateError: () =>
+    Promise.reject(new Error('[EDUCATIONAL DEMO] This rejects immediately')),
 
   // Delayed Promise factory
   delayed: () =>
@@ -181,7 +186,7 @@ export const measureAsyncOperation = async <T>(
   } catch (error) {
     const duration = performance.now() - startTime
     throw new Error(
-      `${operationName} failed after ${Math.round(duration)}ms: ${error}`
+      `[EDUCATIONAL DEMO] ${operationName} failed after ${Math.round(duration)}ms: ${error}`
     )
   }
 }

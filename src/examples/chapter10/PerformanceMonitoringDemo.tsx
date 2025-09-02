@@ -221,7 +221,9 @@ function AsyncPerformanceDemo() {
               monitor.current.measureAsync('mixed-op-error', () =>
                 Math.random() > 0.5
                   ? simulateApiCall(500)
-                  : Promise.reject(new Error('Simulated error'))
+                  : Promise.reject(
+                      new Error('[EDUCATIONAL DEMO] Simulated error')
+                    )
               ),
             ])
             break

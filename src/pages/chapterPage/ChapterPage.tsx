@@ -1,6 +1,6 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { LoadingSpinner } from '@/components'
 
@@ -21,7 +21,7 @@ import {
   ComingSoon,
   DifficultyBadge,
   DurationBadge,
-  NavButton,
+  NavButtonElement,
   NavLink,
 } from './ChapterPage.styles'
 
@@ -59,6 +59,18 @@ const Chapter10Content = lazy(
 
 function ChapterPage() {
   const { chapterId } = useParams()
+  const navigate = useNavigate()
+
+  // Scroll to top when chapter changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [chapterId])
+
+  // Navigation handler with scroll to top
+  const navigateToChapter = (targetChapter: number) => {
+    navigate(`/chapter/${targetChapter}`)
+    // Scroll will be handled by the useEffect above when chapterId changes
+  }
 
   // Chapter data mapping
   const chapters = {
@@ -213,15 +225,19 @@ function ChapterPage() {
 
       <ChapterNavigation>
         {parseInt(chapterId || '1') > 1 && (
-          <NavButton to={`/chapter/${parseInt(chapterId || '1') - 1}`}>
+          <NavButtonElement
+            onClick={() => navigateToChapter(parseInt(chapterId || '1') - 1)}
+          >
             ← Previous Chapter
-          </NavButton>
+          </NavButtonElement>
         )}
 
         {parseInt(chapterId || '1') < 11 && (
-          <NavButton to={`/chapter/${parseInt(chapterId || '1') + 1}`}>
+          <NavButtonElement
+            onClick={() => navigateToChapter(parseInt(chapterId || '1') + 1)}
+          >
             Next Chapter →
-          </NavButton>
+          </NavButtonElement>
         )}
       </ChapterNavigation>
     </ChapterPageContainer>

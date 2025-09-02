@@ -26,13 +26,18 @@ function EffectDependencyDemo() {
   const [dependentRuns, setDependentRuns] = useState(0)
 
   // Example 1: Effect with no dependencies (runs after every render)
-  // Note: This is intentionally showing what NOT to do
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Note: This demonstrates what NOT to do - commented out to prevent infinite loop
+  // useEffect(() => {
+  //   setEffectRuns((prev) => prev + 1)
+  //   // This would cause infinite loop if we updated state that triggers re-render
+  //   console.log('Effect with no deps ran')
+  // }) // No dependency array - demonstrates the problem
+
+  // For demonstration purposes, we'll track renders differently
+  // This effect safely runs only when specific conditions change
   useEffect(() => {
     setEffectRuns((prev) => prev + 1)
-    // This would cause infinite loop if we updated state that triggers re-render
-    // console.log('Effect with no deps ran')
-  }) // No dependency array - demonstrates the problem
+  }, [userId, fetchCount]) // Only runs when these specific values change
 
   // Example 2: Effect with empty dependencies (runs once on mount)
   useEffect(() => {
@@ -118,7 +123,7 @@ function EffectDependencyDemo() {
         <div>
           <h4>Effect Execution Counts</h4>
           <StatusIndicator status='info'>
-            No deps effect runs: {effectRuns}
+            Conditional effect runs: {effectRuns}
             <br />
             Dependent effect runs: {dependentRuns}
             <br />
@@ -156,21 +161,22 @@ function EffectDependencyDemo() {
       <div>
         <h4>Dependency Array Patterns</h4>
         <CodeSyntaxHighlighter language='typescript'>
-          {`// 1. No dependency array - runs after EVERY render
+          {`// 1. No dependency array - runs after EVERY render (DANGEROUS!)
 useEffect(() => {
-  console.log('This runs after every render!')
-  // ⚠️ Be careful: updating state here causes infinite loop
+  console.log('[EDUCATIONAL] This runs after every render!')
+  // ⚠️ NEVER UPDATE STATE HERE - causes infinite loop!
+  // setState(something) // This would create an infinite loop!
 })
 
 // 2. Empty dependency array - runs ONCE on mount
 useEffect(() => {
-  console.log('This runs only once when component mounts')
+  console.log('[EDUCATIONAL] This runs only once when component mounts')
   fetchInitialData()
 }, []) // Empty array
 
 // 3. With dependencies - runs when dependencies change
 useEffect(() => {
-  console.log('This runs when userId changes')
+  console.log('[EDUCATIONAL] This runs when userId changes')
   fetchUserData(userId)
 }, [userId]) // Runs when userId changes
 

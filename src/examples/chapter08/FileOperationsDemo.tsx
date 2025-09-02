@@ -52,7 +52,7 @@ export function FileOperationsDemo() {
 
       // Simulate random upload failures
       if (Math.random() > 0.8) {
-        throw new Error('Upload failed due to network error')
+        throw new Error('[EDUCATIONAL DEMO] Upload failed due to network error')
       }
 
       // Complete upload
@@ -142,7 +142,9 @@ export function FileOperationsDemo() {
                         dataUrl: canvas.toDataURL('image/jpeg', 0.8),
                       })
                     } else {
-                      reject(new Error('Failed to compress image'))
+                      reject(
+                        new Error('[EDUCATIONAL DEMO] Failed to compress image')
+                      )
                     }
                   },
                   'image/jpeg',
@@ -150,7 +152,8 @@ export function FileOperationsDemo() {
                 )
               }
 
-              img.onerror = () => reject(new Error('Failed to load image'))
+              img.onerror = () =>
+                reject(new Error('[EDUCATIONAL DEMO] Failed to load image'))
               img.src = URL.createObjectURL(file)
             })
           })

@@ -348,7 +348,7 @@ function MyComponent() {
         const data = await searchAPI(searchTerm)
         setResults(data)
       } catch (error) {
-        console.error('Search failed:', error)
+        console.error('[EDUCATIONAL DEMO] Search failed:', error)
         setResults([])
       } finally {
         setLoading(false)

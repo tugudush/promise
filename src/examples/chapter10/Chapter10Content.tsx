@@ -72,7 +72,7 @@ function GoodComponent() {
         }
       } catch (error) {
         if (error.name !== 'AbortError') {
-          console.error('Failed to load data:', error)
+          console.error('[EDUCATIONAL DEMO] Failed to load data:', error)
         }
       }
     }
@@ -127,7 +127,7 @@ function GoodUserProfile({ userId }) {
         }
       } catch (error) {
         if (isCurrent) {
-          console.error('Failed to load user:', error)
+          console.error('[EDUCATIONAL DEMO] Failed to load user:', error)
           setLoading(false)
         }
       }
@@ -206,7 +206,7 @@ const ConditionalFeature = ({ userRole, children }) => {
       // Only load admin features when needed
       import('./AdminFeatures')
         .then(module => setFeatureComponent(() => module.default))
-        .catch(error => console.error('Failed to load admin features:', error))
+        .catch(error => console.error('[EDUCATIONAL DEMO] Failed to load admin features:', error))
     }
   }, [userRole])
   
@@ -375,7 +375,7 @@ function VirtualizedAsyncList({ endpoint, pageSize = 20 }) {
       setItems(prev => [...prev, ...newItems])
       setPage(prev => prev + 1)
     } catch (error) {
-      console.error('Failed to load more items:', error)
+      console.error('[EDUCATIONAL DEMO] Failed to load more items:', error)
     } finally {
       setLoading(false)
     }
@@ -618,7 +618,7 @@ class AsyncErrorBoundary extends Component {
       })
     } catch (logError) {
       // Silent fail - don't let logging errors break the app
-      console.error('Failed to log error:', logError)
+      console.error('[EDUCATIONAL DEMO] Failed to log error:', logError)
     }
   }
   
@@ -752,7 +752,7 @@ function useNetworkAwareLoading(endpoint, options = {}) {
         // Try to load from cache when offline
         result = await loadFromCache(options.cacheKey)
         if (!result) {
-          throw new Error('No cached data available')
+          throw new Error('[EDUCATIONAL DEMO] No cached data available')
         }
       } else {
         // Normal network request

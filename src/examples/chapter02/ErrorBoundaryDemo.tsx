@@ -29,8 +29,9 @@ class AsyncErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error) {
-    // In a real app, you'd log this to your error reporting service
-    // console.error('Error caught by boundary:', error)
+    // Educational Demo: In a real app, you'd log this to your error reporting service
+    // eslint-disable-next-line no-console
+    console.error('[EDUCATIONAL DEMO] Error caught by boundary:', error)
     this.props.onError?.(error)
   }
 
@@ -147,7 +148,9 @@ function ErrorThrowingComponent({ shouldThrow }: { shouldThrow: boolean }) {
         setData(result)
       } catch (error) {
         const err =
-          error instanceof Error ? error : new Error('Simulated async error')
+          error instanceof Error
+            ? error
+            : new Error('[EDUCATIONAL DEMO] Simulated async error')
         // This will trigger the error boundary
         throwAsyncError(err)
       } finally {
@@ -257,9 +260,12 @@ class AsyncErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log error to service like Sentry, LogRocket, etc.
-    console.error('Async error caught:', error, errorInfo)
-    this.props.onError?.(error)
+    // Educational Demo: Log error details for learning purposes
+    // eslint-disable-next-line no-console
+    console.error('[EDUCATIONAL DEMO] Advanced Error Boundary caught:', {
+      error: error.message,
+      componentStack: errorInfo.componentStack,
+    })
   }
 
   render() {

@@ -353,7 +353,7 @@ function AbortControllerDemo() {
     const fetchWithAbort = async (signal: AbortSignal) => {
       for (let i = 0; i < 30; i++) {
         if (signal.aborted) {
-          throw new Error('Request aborted')
+          throw new Error('[EDUCATIONAL DEMO] Request aborted')
         }
         await new Promise((resolve) => setTimeout(resolve, 100))
       }
@@ -426,7 +426,7 @@ fetch('/api/data', { signal: controller.signal })
   .then(response => response.json())
   .catch(error => {
     if (error.name === 'AbortError') {
-      console.log('Request was cancelled')
+      console.log('[EDUCATIONAL DEMO] Request was cancelled')
     }
   })
 
@@ -458,7 +458,7 @@ function CustomCleanupDemo() {
       return new Promise<string>((resolve, reject) => {
         timeoutId = setTimeout(() => {
           if (cancelled) {
-            reject(new Error('Operation cancelled'))
+            reject(new Error('[EDUCATIONAL DEMO] Operation cancelled'))
           } else {
             resolve('Custom async operation completed')
           }

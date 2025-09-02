@@ -31,9 +31,9 @@ class AsyncErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error) {
-    // Log error to monitoring service
-    // console.error('Error Boundary caught an error:', error)
-    this.props.onError?.(error)
+    // Educational Demo: In production, log to error reporting service
+    // eslint-disable-next-line no-console
+    console.error('[EDUCATIONAL DEMO] Error caught by boundary:', error)
   }
 
   render() {
@@ -236,10 +236,11 @@ class AsyncErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    // Log the error to monitoring service
-    console.error('Error Boundary caught:', error, errorInfo)
+    // Educational Demo: Log error to monitoring service
+    // eslint-disable-next-line no-console
+    console.error('[EDUCATIONAL DEMO] Error Boundary caught:', error, errorInfo)
     
-    // Send to error monitoring (Sentry, LogRocket, etc.)
+    // Educational Demo: Send to error monitoring (Sentry, LogRocket, etc.)
     this.props.onError?.(error)
   }
 
