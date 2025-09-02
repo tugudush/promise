@@ -66,7 +66,7 @@ class ApiClient {
   async getUsers(): Promise<User[]> {
     await this.delay(800)
     if (Math.random() > 0.8) {
-      throw new Error('Network error: Failed to fetch users')
+      throw new Error('[EDUCATIONAL DEMO] Network error: Failed to fetch users')
     }
     return mockUsers
   }
@@ -75,7 +75,7 @@ class ApiClient {
     await this.delay(500)
     const user = mockUsers.find((u) => u.id === id)
     if (!user) {
-      throw new Error(`User with id ${id} not found`)
+      throw new Error(`[EDUCATIONAL DEMO] User with id ${id} not found`)
     }
     return user
   }

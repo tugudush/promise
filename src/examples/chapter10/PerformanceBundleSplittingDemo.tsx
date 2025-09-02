@@ -158,7 +158,7 @@ function ConditionalApp({ userRole }) {
       // Only load admin code when user is admin
       import('./AdminFeatures')
         .then(module => setAdminFeatures(() => module.default))
-        .catch(error => console.error('Failed to load admin features:', error))
+        .catch(error => console.error('[EDUCATIONAL DEMO] Failed to load admin features:', error))
     }
   }, [userRole, AdminFeatures])
   

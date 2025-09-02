@@ -64,9 +64,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    logger.error('ErrorBoundary caught an error:', error, errorInfo)
+    logger.error(
+      '[EDUCATIONAL DEMO] ErrorBoundary caught an error:',
+      error,
+      errorInfo
+    )
 
-    // In production, you might want to log this to an error reporting service
+    // Educational Demo: In production, you might want to log this to an error reporting service
     if (process.env.NODE_ENV === 'production') {
       // Example: logErrorToService(error, errorInfo)
     }

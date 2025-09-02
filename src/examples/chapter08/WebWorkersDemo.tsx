@@ -65,7 +65,7 @@ export function WebWorkersDemo() {
               result = sortArray(input);
               break;
             default:
-              throw new Error('Unknown task type: ' + type);
+              throw new Error('[EDUCATIONAL DEMO] Unknown task type: ' + type);
           }
           
           self.postMessage({
