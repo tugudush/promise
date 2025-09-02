@@ -34,6 +34,7 @@ function PerformanceLazyLoadingDemo() {
 // Lazy image loading with intersection observer
 function LazyImageDemo() {
   const [imageStats, setImageStats] = useState({ loaded: 0, total: 6 })
+  const [resetKey, setResetKey] = useState(0)
 
   const handleImageLoad = useCallback(() => {
     setImageStats((prev) => ({ ...prev, loaded: prev.loaded + 1 }))
@@ -41,6 +42,7 @@ function LazyImageDemo() {
 
   const resetImages = useCallback(() => {
     setImageStats({ loaded: 0, total: 6 })
+    setResetKey(prev => prev + 1) // Force component re-mount
   }, [])
 
   const images = [
@@ -117,7 +119,7 @@ function LazyImageDemo() {
       >
         {images.map((image) => (
           <LazyImage
-            key={`${image.id}-${imageStats.loaded}`} // Force re-render on reset
+            key={`${image.id}-${resetKey}`} // Include resetKey to force re-render on reset
             src={image.src}
             alt={image.alt}
             placeholder='Loading image...'
