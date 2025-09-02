@@ -133,16 +133,17 @@ export const promiseChainExample = (): Promise<string> => {
  * Educational purpose: Shows various ways to create and work with Promises
  */
 export const promiseCreationExamples = {
-  // Immediately resolved Promise
-  immediate: Promise.resolve('This resolves immediately'),
+  // Immediately resolved Promise factory
+  immediate: () => Promise.resolve('This resolves immediately'),
 
-  // Immediately rejected Promise
-  immediateError: Promise.reject(new Error('This rejects immediately')),
+  // Immediately rejected Promise factory (no promise created until called)
+  immediateError: () => Promise.reject(new Error('This rejects immediately')),
 
-  // Promise that resolves after delay
-  delayed: new Promise<string>((resolve) => {
-    setTimeout(() => resolve('This resolves after 1 second'), 1000)
-  }),
+  // Delayed Promise factory
+  delayed: () =>
+    new Promise<string>((resolve) => {
+      setTimeout(() => resolve('This resolves after 1 second'), 1000)
+    }),
 
   // Promise with manual control
   manual: () => {

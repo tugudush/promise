@@ -815,22 +815,24 @@ function PerformanceProfilingDemo() {
               </li>
               <li>
                 Slowest operation:{' '}
-                {
-                  profileData.reduce(
-                    (slowest: ProfileDataItem, op: ProfileDataItem) =>
-                      op.duration > slowest.duration ? op : slowest,
-                    profileData[0]
-                  ).name
-                }
+                {profileData.length > 0
+                  ? profileData.reduce(
+                      (slowest: ProfileDataItem, op: ProfileDataItem) =>
+                        op.duration > slowest.duration ? op : slowest,
+                      profileData[0]
+                    ).name
+                  : 'None'}
               </li>
               <li>
                 Success rate:{' '}
-                {Math.round(
-                  (profileData.filter((op: ProfileDataItem) => op.success)
-                    .length /
-                    profileData.length) *
-                    100
-                )}
+                {profileData.length > 0
+                  ? Math.round(
+                      (profileData.filter((op: ProfileDataItem) => op.success)
+                        .length /
+                        profileData.length) *
+                        100
+                    )
+                  : 0}
                 %
               </li>
             </ul>
