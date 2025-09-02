@@ -148,6 +148,21 @@ function ChapterPage() {
     },
   }
 
+  // Chapter component mapping for cleaner code
+  const chapterComponents = {
+    '1': Chapter01Content,
+    '2': Chapter02Content,
+    '3': Chapter03Content,
+    '4': Chapter04Content,
+    '5': Chapter05Content,
+    '6': Chapter06Content,
+    '7': Chapter07Content,
+    '8': Chapter08Content,
+    '9': Chapter09Content,
+    '10': Chapter10Content,
+    '11': Chapter11Content,
+  } as const
+
   const chapter = chapters[chapterId as keyof typeof chapters]
 
   if (!chapter) {
@@ -187,44 +202,28 @@ function ChapterPage() {
         <Suspense
           fallback={<LoadingSpinner message='Loading chapter content...' />}
         >
-          {chapterId === '1' ? (
-            <Chapter01Content />
-          ) : chapterId === '2' ? (
-            <Chapter02Content />
-          ) : chapterId === '3' ? (
-            <Chapter03Content />
-          ) : chapterId === '4' ? (
-            <Chapter04Content />
-          ) : chapterId === '5' ? (
-            <Chapter05Content />
-          ) : chapterId === '6' ? (
-            <Chapter06Content />
-          ) : chapterId === '7' ? (
-            <Chapter07Content />
-          ) : chapterId === '8' ? (
-            <Chapter08Content />
-          ) : chapterId === '9' ? (
-            <Chapter09Content />
-          ) : chapterId === '10' ? (
-            <Chapter10Content />
-          ) : chapterId === '11' ? (
-            <Chapter11Content />
-          ) : (
-            <ComingSoon>
-              <h2>🚧 Content Coming Soon</h2>
-              <p>
-                This chapter is currently under development. The tutorial
-                content will include:
-              </p>
-              <ul>
-                <li>Interactive code examples</li>
-                <li>Step-by-step explanations</li>
-                <li>Hands-on exercises</li>
-                <li>Real-world React patterns</li>
-              </ul>
-              <p>Check back soon for the complete tutorial content!</p>
-            </ComingSoon>
-          )}
+          {(() => {
+            const ChapterComponent =
+              chapterComponents[chapterId as keyof typeof chapterComponents]
+            return ChapterComponent ? (
+              <ChapterComponent />
+            ) : (
+              <ComingSoon>
+                <h2>🚧 Content Coming Soon</h2>
+                <p>
+                  This chapter is currently under development. The tutorial
+                  content will include:
+                </p>
+                <ul>
+                  <li>Interactive code examples</li>
+                  <li>Step-by-step explanations</li>
+                  <li>Hands-on exercises</li>
+                  <li>Real-world React patterns</li>
+                </ul>
+                <p>Check back soon for the complete tutorial content!</p>
+              </ComingSoon>
+            )
+          })()}
         </Suspense>
       </ChapterContent>
 
