@@ -193,18 +193,18 @@ function PromiseUtilitiesOverview() {
       <ImportantNote>
         <strong>Key Differences:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='promise-all'>
             <strong>Promise.all()</strong>: All-or-nothing approach - fails fast
           </li>
-          <li>
+          <li key='promise-allsettled'>
             <strong>Promise.allSettled()</strong>: Always succeeds, returns all
             results
           </li>
-          <li>
+          <li key='promise-race'>
             <strong>Promise.race()</strong>: Winner takes all - first to finish
             (success or failure)
           </li>
-          <li>
+          <li key='promise-any'>
             <strong>Promise.any()</strong>: First success wins - ignores
             rejections until all fail
           </li>

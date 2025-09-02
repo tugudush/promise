@@ -214,18 +214,18 @@ function PromiseAnyDemo() {
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='first-success-wins'>
             <strong>First Success Wins:</strong> Returns the first resolved
             promise
           </li>
-          <li>
+          <li key='ignores-failures'>
             <strong>Ignores Failures:</strong> Rejections don't stop the process
           </li>
-          <li>
+          <li key='aggregate-rejection'>
             <strong>Aggregate Rejection:</strong> Only fails when ALL promises
             reject
           </li>
-          <li>
+          <li key='perfect-for-fallbacks'>
             <strong>Perfect for Fallbacks:</strong> Robust error recovery
             strategies
           </li>
@@ -363,22 +363,22 @@ try {
       <h4>When to Use Promise.any()</h4>
 
       <ul>
-        <li>
+        <li key='fallback-strategies'>
           <strong>Fallback Strategies:</strong> Try multiple data sources until
           one succeeds
         </li>
-        <li>
+        <li key='cdn-selection'>
           <strong>CDN Selection:</strong> Use fastest available content delivery
           network
         </li>
-        <li>
+        <li key='authentication'>
           <strong>Authentication:</strong> Try multiple auth providers until one
           works
         </li>
-        <li>
+        <li key='feature-detection'>
           <strong>Feature Detection:</strong> Use first available browser API
         </li>
-        <li>
+        <li key='redundant-systems'>
           <strong>Redundant Systems:</strong> Multiple backup systems for
           critical operations
         </li>
