@@ -11,9 +11,9 @@ import {
 const DemoTitle = ExampleTitle
 
 export function StateLibrariesOverview() {
-  const [activeLib, setActiveLib] = useState<'rtk-query' | 'zustand' | 'swr'>(
-    'rtk-query'
-  )
+  const [activeLib, setActiveLib] = useState<
+    'rtk-query' | 'zustand' | 'swr' | 'jotai'
+  >('rtk-query')
 
   const libraries = [
     {
@@ -64,6 +64,25 @@ export function StateLibrariesOverview() {
         'Additional dependency',
       ],
       useCase: 'Applications focused on server state and data fetching',
+    },
+    {
+      id: 'jotai' as const,
+      name: 'Jotai',
+      description: 'Atomic state management with bottom-up approach',
+      pros: [
+        'Atomic granular updates',
+        'No providers needed',
+        'Suspense support',
+        'TypeScript first',
+        'Minimal re-renders',
+      ],
+      cons: [
+        'Different mental model',
+        'Learning curve for atoms',
+        'Smaller ecosystem',
+      ],
+      useCase:
+        'Applications requiring fine-grained reactivity and atomic updates',
     },
   ]
 
@@ -129,6 +148,7 @@ export function StateLibrariesOverview() {
         {activeLib === 'rtk-query' && <RTKQueryExample />}
         {activeLib === 'zustand' && <ZustandExample />}
         {activeLib === 'swr' && <SWRExample />}
+        {activeLib === 'jotai' && <JotaiExample />}
       </DemoSection>
     </DemoContainer>
   )
@@ -672,6 +692,282 @@ function useRealtimeUsers() {
           <li>Request deduplication</li>
           <li>Real-time data synchronization</li>
           <li>Offline support and error retry</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+function JotaiExample() {
+  return (
+    <div>
+      <h4>Jotai Atomic State Management Example</h4>
+      <CodeSyntaxHighlighter language='typescript'>
+        {`// 1. Atoms Definition
+import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai'
+import { atomWithStorage, atomWithQuery } from 'jotai/utils'
+
+// Basic atoms
+const usersAtom = atom<User[]>([])
+const loadingAtom = atom<boolean>(false)
+const errorAtom = atom<string | null>(null)
+
+// Derived atoms (computed values)
+const userCountAtom = atom((get) => get(usersAtom).length)
+const activeUsersAtom = atom((get) => 
+  get(usersAtom).filter(user => user.isActive)
+)
+
+// Async atom with built-in query functionality
+const usersQueryAtom = atomWithQuery(() => ({
+  queryKey: ['users'],
+  queryFn: async () => {
+    const response = await fetch('/api/users')
+    if (!response.ok) throw new Error('Failed to fetch users')
+    return response.json()
+  },
+  staleTime: 5 * 60 * 1000, // 5 minutes
+  gcTime: 10 * 60 * 1000,   // 10 minutes
+}))
+
+// Persistent atom (synced with localStorage)
+const userPreferencesAtom = atomWithStorage('user-preferences', {
+  theme: 'light',
+  sortBy: 'name',
+  showInactive: false,
+})
+
+// Write-only atom for actions
+const addUserAtom = atom(
+  null,
+  async (get, set, newUser: Omit<User, 'id'>) => {
+    set(loadingAtom, true)
+    set(errorAtom, null)
+    
+    try {
+      // Optimistic update
+      const tempUser = { ...newUser, id: 'temp-' + Date.now() }
+      set(usersAtom, (users) => [...users, tempUser])
+      
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser),
+      })
+      
+      if (!response.ok) throw new Error('Failed to create user')
+      const createdUser = await response.json()
+      
+      // Replace temp user with real user
+      set(usersAtom, (users) => 
+        users.map(user => user.id === tempUser.id ? createdUser : user)
+      )
+    } catch (error) {
+      // Rollback optimistic update
+      set(usersAtom, (users) => 
+        users.filter(user => user.id !== \`temp-\${Date.now()}\`)
+      )
+      set(errorAtom, error instanceof Error ? error.message : 'Unknown error')
+      throw error
+    } finally {
+      set(loadingAtom, false)
+    }
+  }
+)
+
+const updateUserAtom = atom(
+  null,
+  async (get, set, { id, updates }: { id: string; updates: Partial<User> }) => {
+    const originalUsers = get(usersAtom)
+    
+    // Optimistic update
+    set(usersAtom, (users) => 
+      users.map(user => user.id === id ? { ...user, ...updates } : user)
+    )
+    
+    try {
+      const response = await fetch(\`/api/users/\${id}\`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates),
+      })
+      
+      if (!response.ok) throw new Error('Failed to update user')
+      const updatedUser = await response.json()
+      
+      set(usersAtom, (users) => 
+        users.map(user => user.id === id ? updatedUser : user)
+      )
+    } catch (error) {
+      // Rollback
+      set(usersAtom, originalUsers)
+      set(errorAtom, error instanceof Error ? error.message : 'Failed to update user')
+      throw error
+    }
+  }
+)
+
+// Complex async atom with dependencies
+const userStatsAtom = atom(async (get) => {
+  const users = get(usersAtom)
+  
+  // Simulate API call for stats
+  const response = await fetch('/api/users/stats', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userIds: users.map(u => u.id) }),
+  })
+  
+  return response.json()
+})
+
+// 2. Component Usage
+function UsersList() {
+  const [users, setUsers] = useAtom(usersAtom)
+  const loading = useAtomValue(loadingAtom)
+  const error = useAtomValue(errorAtom)
+  const addUser = useSetAtom(addUserAtom)
+
+  const handleCreateUser = async (userData: Omit<User, 'id'>) => {
+    try {
+      await addUser(userData)
+    } catch (error) {
+      // Error already handled in atom
+    }
+  }
+
+  if (loading && users.length === 0) return <div>Loading users...</div>
+  if (error) return <div>Error: {error}</div>
+
+  return (
+    <div>
+      {users.map(user => (
+        <UserCard key={user.id} user={user} />
+      ))}
+      <CreateUserForm onSubmit={handleCreateUser} />
+    </div>
+  )
+}
+
+// 3. Granular subscriptions (only re-renders when user count changes)
+function UserCount() {
+  const userCount = useAtomValue(userCountAtom)
+  return <div>Total users: {userCount}</div>
+}
+
+// 4. Using query atom with Suspense
+function UsersWithSuspense() {
+  const users = useAtomValue(usersQueryAtom)
+  
+  return (
+    <div>
+      {users.map(user => (
+        <UserCard key={user.id} user={user} />
+      ))}
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <ErrorBoundary fallback={<div>Something went wrong</div>}>
+      <Suspense fallback={<div>Loading users...</div>}>
+        <UsersWithSuspense />
+      </Suspense>
+    </ErrorBoundary>
+  )
+}
+
+// 5. Advanced: Atoms with dependencies and side effects
+const syncedUsersAtom = atom(
+  (get) => get(usersAtom),
+  (get, set, users: User[]) => {
+    set(usersAtom, users)
+    
+    // Side effect: sync with server
+    fetch('/api/users/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ users }),
+    })
+  }
+)
+
+// 6. Atom families for dynamic atoms
+import { atomFamily } from 'jotai/utils'
+
+const userAtomFamily = atomFamily((id: string) =>
+  atomWithQuery(() => ({
+    queryKey: ['user', id],
+    queryFn: async () => {
+      const response = await fetch(\`/api/users/\${id}\`)
+      if (!response.ok) throw new Error(\`User \${id} not found\`)
+      return response.json()
+    },
+  }))
+)
+
+function UserProfile({ userId }: { userId: string }) {
+  const userAtom = userAtomFamily(userId)
+  const user = useAtomValue(userAtom)
+  
+  return (
+    <div>
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+    </div>
+  )
+}
+
+// 7. Integration with React Suspense and Error Boundaries
+function UserManager() {
+  return (
+    <div>
+      <ErrorBoundary fallback={<div>Error loading user stats</div>}>
+        <Suspense fallback={<div>Loading stats...</div>}>
+          <UserStatsDisplay />
+        </Suspense>
+      </ErrorBoundary>
+      
+      <UsersList />
+      <UserCount />
+    </div>
+  )
+}
+
+function UserStatsDisplay() {
+  const stats = useAtomValue(userStatsAtom)
+  
+  return (
+    <div>
+      <h3>User Statistics</h3>
+      <p>Active: {stats.active}</p>
+      <p>Inactive: {stats.inactive}</p>
+      <p>Total Actions: {stats.totalActions}</p>
+    </div>
+  )
+}`}
+      </CodeSyntaxHighlighter>
+
+      <div
+        style={{
+          padding: '1rem',
+          backgroundColor: '#f0fdf4',
+          borderRadius: '6px',
+          margin: '1rem 0',
+        }}
+      >
+        <strong>Key Features:</strong>
+        <ul>
+          <li>Atomic granular updates - only affected components re-render</li>
+          <li>Built-in Suspense and async support</li>
+          <li>No providers needed - atoms work globally</li>
+          <li>Derived atoms for computed values</li>
+          <li>Atom families for dynamic state creation</li>
+          <li>
+            Integration with external libraries (React Query-like functionality)
+          </li>
+          <li>Persistent atoms with localStorage/sessionStorage</li>
         </ul>
       </div>
     </div>
