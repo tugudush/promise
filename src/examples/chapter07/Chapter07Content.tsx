@@ -136,7 +136,7 @@ export default function Chapter07Content() {
           onClick={() => setCurrentSection(Math.max(0, currentSection - 1))}
           disabled={currentSection === 0}
         >
-          Previous Section
+          ← Previous Topic
         </BackButton>
         <span>
           {currentSection + 1} of {sections.length}
@@ -147,7 +147,7 @@ export default function Chapter07Content() {
           }
           disabled={currentSection === sections.length - 1}
         >
-          Next Section
+          Next Topic →
         </NextButton>
       </NavigationButtons>
     </ChapterContainer>
