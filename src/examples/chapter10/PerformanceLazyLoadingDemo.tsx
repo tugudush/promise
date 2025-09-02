@@ -264,11 +264,12 @@ function LazyImage({
 
 // Infinite scroll demonstration
 function InfiniteScrollDemo() {
-  const [items, setItems] = useState<Array<{ id: number; content: string }>>([])
+  const [items, setItems] = useState<Array<{ id: string; content: string }>>([])
   const [loading, setLoading] = useState(false)
   const [hasMore, setHasMore] = useState(true)
   const [page, setPage] = useState(0)
   const loaderRef = useRef<HTMLDivElement>(null)
+  const nextIdRef = useRef(1) // Use ref to ensure unique IDs
 
   const loadMoreItems = useCallback(async () => {
     if (loading || !hasMore) return
@@ -279,9 +280,11 @@ function InfiniteScrollDemo() {
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     const newItems = Array.from({ length: 10 }, (_, index) => ({
-      id: page * 10 + index + 1,
-      content: `Item ${page * 10 + index + 1} - Loaded at ${new Date().toLocaleTimeString()}`,
+      id: `item-${nextIdRef.current + index}`,
+      content: `Item ${nextIdRef.current + index} - Loaded at ${new Date().toLocaleTimeString()}`,
     }))
+
+    nextIdRef.current += 10 // Update counter for next batch
 
     if (page >= 4) {
       // Limit to 50 items for demo
@@ -323,6 +326,7 @@ function InfiniteScrollDemo() {
     setPage(0)
     setHasMore(true)
     setLoading(false)
+    nextIdRef.current = 1 // Reset ID counter
   }, [])
 
   return (
