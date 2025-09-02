@@ -27,3 +27,6 @@ export * from './chapter09'
 
 export { default as Chapter10Content } from './chapter10/Chapter10Content'
 export * from './chapter10'
+
+export { default as Chapter11Content } from './chapter11/Chapter11Content'
+export * from './chapter11'

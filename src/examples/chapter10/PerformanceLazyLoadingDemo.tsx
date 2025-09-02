@@ -42,7 +42,7 @@ function LazyImageDemo() {
 
   const resetImages = useCallback(() => {
     setImageStats({ loaded: 0, total: 6 })
-    setResetKey(prev => prev + 1) // Force component re-mount
+    setResetKey((prev) => prev + 1) // Force component re-mount
   }, [])
 
   const images = [
