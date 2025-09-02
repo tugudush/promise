@@ -138,18 +138,18 @@ function PromiseAllDemo() {
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='parallel-execution'>
             <strong>Parallel Execution:</strong> All promises start immediately
           </li>
-          <li>
+          <li key='all-or-nothing'>
             <strong>All-or-Nothing:</strong> If any promise rejects, the entire
             operation fails
           </li>
-          <li>
+          <li key='order-preserved'>
             <strong>Order Preserved:</strong> Results array matches input array
             order
           </li>
-          <li>
+          <li key='performance'>
             <strong>Performance:</strong> Total time = longest individual
             request (not sum)
           </li>
@@ -242,19 +242,19 @@ function Dashboard() {
       <h4>When to Use Promise.all()</h4>
 
       <ul>
-        <li>
+        <li key='dashboard-loading'>
           <strong>Dashboard Loading:</strong> Load multiple independent data
           sources
         </li>
-        <li>
+        <li key='batch-operations'>
           <strong>Batch Operations:</strong> Process multiple items
           simultaneously
         </li>
-        <li>
+        <li key='resource-fetching'>
           <strong>Resource Fetching:</strong> Load CSS, images, and data in
           parallel
         </li>
-        <li>
+        <li key='form-validation'>
           <strong>Form Validation:</strong> Run multiple async validations
           simultaneously
         </li>

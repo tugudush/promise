@@ -14,7 +14,7 @@ import {
 import { simulateApiCall } from '@/utils/async-helpers'
 
 interface InfiniteScrollItem {
-  id: number
+  id: string | number
   title: string
   description: string
   timestamp: string
@@ -37,6 +37,9 @@ function PerformanceOptimizationDemo() {
   const [searchTerm, setSearchTerm] = useState('react')
   const [searchResults, setSearchResults] = useState<string[]>([])
 
+  // Demo 3: Infinite scroll with proper key management
+  const scrollComponentId = useRef(Math.random().toString(36).substring(2, 15))
+  const itemCounter = useRef(0)
   const [scrollItems, setScrollItems] = useState<InfiniteScrollItem[]>([])
   const [scrollLoading, setScrollLoading] = useState(false)
   const [scrollPage, setScrollPage] = useState(1)
@@ -143,12 +146,15 @@ function PerformanceOptimizationDemo() {
 
         const newItems: InfiniteScrollItem[] = Array.from(
           { length: 10 },
-          (_, i) => ({
-            id: (page - 1) * 10 + i,
-            title: `Item ${(page - 1) * 10 + i + 1}`,
-            description: `Description for item ${(page - 1) * 10 + i + 1}`,
-            timestamp: new Date().toLocaleTimeString(),
-          })
+          (_, i) => {
+            const uniqueId = `${scrollComponentId.current}-${++itemCounter.current}`
+            return {
+              id: uniqueId,
+              title: `Item ${(page - 1) * 10 + i + 1}`,
+              description: `Description for item ${(page - 1) * 10 + i + 1}`,
+              timestamp: new Date().toLocaleTimeString(),
+            }
+          }
         )
 
         setScrollItems((prev) => [...prev, ...newItems])
@@ -186,6 +192,7 @@ function PerformanceOptimizationDemo() {
     setScrollPage(1)
     setHasMore(true)
     setScrollLoading(false)
+    itemCounter.current = 0 // Reset the counter to prevent duplicate IDs
   }
 
   return (
@@ -201,17 +208,17 @@ function PerformanceOptimizationDemo() {
       <ImportantNote>
         <strong>Key Performance Strategies:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='request-cancellation'>
             <strong>Request Cancellation:</strong> Prevent memory leaks and
             unnecessary processing
           </li>
-          <li>
+          <li key='memoization'>
             <strong>Memoization:</strong> Cache expensive async computations
           </li>
-          <li>
+          <li key='debouncing'>
             <strong>Debouncing:</strong> Reduce API calls for user input
           </li>
-          <li>
+          <li key='efficient-pagination'>
             <strong>Efficient Pagination:</strong> Load data incrementally
           </li>
         </ul>
@@ -524,19 +531,23 @@ function InfiniteScrollList() {
       <SuccessNote>
         <strong>Pro Tips:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>Always cleanup AbortControllers on component unmount</li>
-          <li>
+          <li key='cleanup-abortcontrollers'>
+            Always cleanup AbortControllers on component unmount
+          </li>
+          <li key='usememo-usecallback'>
             Use useMemo for expensive computations, useCallback for event
             handlers
           </li>
-          <li>
+          <li key='debouncing'>
             Implement proper debouncing for user input (300-500ms is optimal)
           </li>
-          <li>
+          <li key='virtualization'>
             Consider virtualization for very large lists
             (react-window/react-virtualized)
           </li>
-          <li>Monitor memory usage and implement cleanup strategies</li>
+          <li key='monitor-memory'>
+            Monitor memory usage and implement cleanup strategies
+          </li>
         </ul>
       </SuccessNote>
     </DemoSection>

@@ -179,19 +179,19 @@ function PromiseRaceDemo() {
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='first-to-finish'>
             <strong>First to Finish:</strong> Resolves/rejects with the first
             settled promise
           </li>
-          <li>
+          <li key='winner-takes-all'>
             <strong>Winner Takes All:</strong> Other promises are ignored (but
             still run)
           </li>
-          <li>
+          <li key='fails-fast'>
             <strong>Fails Fast:</strong> If fastest promise rejects, entire race
             rejects
           </li>
-          <li>
+          <li key='perfect-for-timeouts'>
             <strong>Perfect for Timeouts:</strong> Race data request vs timeout
             promise
           </li>
@@ -337,21 +337,21 @@ const waitForUserAction = () => {
       <h4>When to Use Promise.race()</h4>
 
       <ul>
-        <li>
+        <li key='timeouts'>
           <strong>Timeouts:</strong> Ensure requests don't hang indefinitely
         </li>
-        <li>
+        <li key='multiple-data-sources'>
           <strong>Multiple Data Sources:</strong> Use fastest available API
         </li>
-        <li>
+        <li key='user-experience'>
           <strong>User Experience:</strong> Show content as soon as any source
           responds
         </li>
-        <li>
+        <li key='failover-systems'>
           <strong>Failover Systems:</strong> Switch to backup when primary is
           slow
         </li>
-        <li>
+        <li key='performance-optimization'>
           <strong>Performance Optimization:</strong> Choose fastest CDN or
           server
         </li>

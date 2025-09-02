@@ -169,17 +169,17 @@ function CustomPromisePatternsDemo() {
       <ImportantNote>
         <strong>Key Benefits of Custom Promise Utilities:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='reusability'>
             <strong>Reusability:</strong> Write once, use everywhere
           </li>
-          <li>
+          <li key='consistency'>
             <strong>Consistency:</strong> Standardized error handling and retry
             logic
           </li>
-          <li>
+          <li key='maintainability'>
             <strong>Maintainability:</strong> Centralized async logic
           </li>
-          <li>
+          <li key='testing'>
             <strong>Testing:</strong> Easier to test isolated utility functions
           </li>
         </ul>

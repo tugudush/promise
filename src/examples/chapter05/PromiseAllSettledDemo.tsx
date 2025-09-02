@@ -165,17 +165,17 @@ function PromiseAllSettledDemo() {
       <ImportantNote>
         <strong>Key Characteristics:</strong>
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='never-rejects'>
             <strong>Never Rejects:</strong> Always resolves with all results
           </li>
-          <li>
+          <li key='complete-information'>
             <strong>Complete Information:</strong> Get both successes and
             failures
           </li>
-          <li>
+          <li key='graceful-degradation'>
             <strong>Graceful Degradation:</strong> Continue with partial data
           </li>
-          <li>
+          <li key='perfect-for-health-checks'>
             <strong>Perfect for Health Checks:</strong> Monitor multiple
             services
           </li>
@@ -316,20 +316,20 @@ function HealthDashboard() {
       <h4>When to Use Promise.allSettled()</h4>
 
       <ul>
-        <li>
+        <li key='system-health-checks'>
           <strong>System Health Checks:</strong> Monitor multiple services
           independently
         </li>
-        <li>
+        <li key='batch-processing'>
           <strong>Batch Processing:</strong> Process items where some might fail
         </li>
-        <li>
+        <li key='feature-flags'>
           <strong>Feature Flags:</strong> Load multiple configuration sources
         </li>
-        <li>
+        <li key='analytics-collection'>
           <strong>Analytics Collection:</strong> Send data to multiple endpoints
         </li>
-        <li>
+        <li key='social-media-posting'>
           <strong>Social Media Posting:</strong> Post to multiple platforms
         </li>
       </ul>

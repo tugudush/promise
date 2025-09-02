@@ -25,15 +25,25 @@ function Chapter05Content() {
       <LearningObjective>
         By the end of this chapter, you will understand:
         <ul style={{ marginLeft: '1rem', marginTop: '0.5rem' }}>
-          <li>
+          <li key='promise-utilities'>
             How to use Promise utilities (Promise.all, Promise.allSettled,
             Promise.race, Promise.any)
           </li>
-          <li>When to choose each Promise utility for different scenarios</li>
-          <li>How to create custom Promise patterns and utilities</li>
-          <li>Techniques for promisifying callback-based APIs</li>
-          <li>Performance optimization strategies for async operations</li>
-          <li>How to implement cancellation and cleanup in React</li>
+          <li key='choosing-utilities'>
+            When to choose each Promise utility for different scenarios
+          </li>
+          <li key='custom-patterns'>
+            How to create custom Promise patterns and utilities
+          </li>
+          <li key='promisifying-callbacks'>
+            Techniques for promisifying callback-based APIs
+          </li>
+          <li key='performance-optimization'>
+            Performance optimization strategies for async operations
+          </li>
+          <li key='cancellation-cleanup'>
+            How to implement cancellation and cleanup in React
+          </li>
         </ul>
       </LearningObjective>
 
